@@ -1,0 +1,74 @@
+body::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+  /* Handle on hover */
+  body::-webkit-scrollbar-thumb:hover {
+    background: lightgray; 
+  }
+  
+  /* Handle */
+  body::-webkit-scrollbar-thumb {
+    background: #f6f6f9; 
+  }
+  
+  /* Track */
+  body::-webkit-scrollbar-track {
+    background: #f6f6f9; 
+  }
+  .dashboard-form::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+  /* Handle on hover */
+  .dashboard-form::-webkit-scrollbar-thumb:hover {
+    background: lightgray; 
+  }
+  
+  /* Handle */
+  .dashboard-form::-webkit-scrollbar-thumb {
+    background: #f6f6f9; 
+  }
+  
+  /* Track */
+  .dashboard-form::-webkit-scrollbar-track {
+    background: #f6f6f9; 
+  }
+  .dash-box::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+  /* Handle on hover */
+  .dash-box::-webkit-scrollbar-thumb:hover {
+    background: lightgray; 
+  }
+  
+  /* Handle */
+  .dash-box::-webkit-scrollbar-thumb {
+    background: rgba(211, 211, 211, 0.744)
+  }
+  
+  /* Track */
+  .dash-box::-webkit-scrollbar-track {
+    background: #f6f6f9; 
+  }
+
+  
+  .modal-dialog::-webkit-scrollbar {
+    width: 12px; 
+  }
+  
+  /* Handle on hover */
+  .modal-dialog::-webkit-scrollbar-thumb:hover {
+    background: lightgray; 
+  }
+  
+  /* Handle */
+  .modal-dialog::-webkit-scrollbar-thumb {
+    background: rgba(211, 211, 211, 0.744)
+  }
+  
+  /* Track */
+  .modal-dialog::-webkit-scrollbar-track {
+    background: #f6f6f9; 
+  }

@@ -1,0 +1,174 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../images/booking_system.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    letter-spacing: 1px;
+    overflow: auto;
+}
+
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(60px);
+    border: 1px solid rgba(255,255,255,0.15);
+    align-items: center;
+    box-shadow: 5px 5px;
+}
+
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 40px;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar a {
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+}
+
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    height: calc(100vh - 140px);
+    align-items: center;
+    width: 100%;
+}
+
+.dashboard-box {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dashboard-form {
+    width: 90%;
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.pagination-container {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px; 
+    display: none; 
+}
+
+.pagination-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btns {
+    font-size: 24px;
+    width: 50px;
+}
+
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+    display: none !important;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.select select{
+    border-radius: 10px;
+    border: none;
+}
+
+.inp input{
+    border-radius: 10px;
+    border: none;
+}
+.cont{
+    background-color: white;
+    border-radius: 25px;
+    height: calc(70vh - 250px);
+    position: relative;
+    margin-top: 25%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    transition: transform 0.3s ease;
+}
+.cont:hover{
+    transform: translateY(-10px); 
+}
+.fb {
+    font-size: 100px; 
+    color: #4267B2; 
+    position: absolute;
+    top: -50px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white; 
+    border-radius: 50%; 
+    padding: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.call {
+    font-size: 100px; 
+    color: #006633; 
+    position: absolute;
+    top: -50px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white; 
+    border-radius: 50%; 
+    padding: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.add {
+    font-size: 90px; 
+    color: #a96800; 
+    position: absolute;
+    top: -50px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white; 
+    border-radius: 50%; 
+    padding: 20px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.top{
+    margin-top: 25%;
+}
