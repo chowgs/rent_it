@@ -223,6 +223,7 @@ if (!isset($_SESSION["AccountID"])) {
                                         <option value="apartment">Apartment</option>
                                         <option value="dormitory">Dormitory</option>
                                     </select> -->
+                                    hello
                                 </div>
                                 <div class="col-md-8 inp">
                                     <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
