@@ -70,7 +70,7 @@
             <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
         
         <div class="nav-links">
-            <a href="index.php">Home</a>
+            <a href="index.php">Home1</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
         </div>
