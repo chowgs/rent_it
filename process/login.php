@@ -31,7 +31,7 @@ if (isset($_POST["login"])) {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION['success_message'] = "Login successful!";
-                    header("Location: ../super_admin/login_page.php");
+                    header("Location: ../super_admin/dashboard.php");  //should be directed to dashboard
                     exit;
                 } else {
                     $_SESSION['error_message'] = "Your account is not active. Please contact the administrator.";
@@ -42,7 +42,7 @@ if (isset($_POST["login"])) {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION['success_message'] = "Login successful!";
-                    header("Location: ../super_admin/login_page.php");
+                    header("Location: ../super_admin/dashboard.php"); //should be directed to dashboard
                     exit;
                 } else {
                     $_SESSION['error_message'] = "Your account is not active. Please contact the administrator.";

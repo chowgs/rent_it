@@ -8,13 +8,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
-    <title>Rent IT - Login</title>
+    <title>Rent It</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/login_page.css">
-    <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <style>
+    <link rel="stylesheet" href="login_css/login.css">
+    <link rel="stylesheet" href="login_css/modal.css">
+    <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
+    <!-- <style>
         .password-container {
             position: relative;
         }
@@ -105,57 +105,103 @@
             text-decoration: none;
             color: gainsboro;
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="contact.php">Contact Us</a>
-        </div>
+<div class="navbar">
+    <img src="images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <a href="index.php">Home</a>
+        <a href="about.php">About</a>
+        <a href="contact.php">Contact us</a>
     </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
+</div>
+
+<!-- <button class="burger" onclick="toggleMenu()">☰</button>
     </div>
     <div class="dropdown-menu">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
         <a href="contact.php">Contact Us</a>
+    </div> -->
+
+<div class="login-container">
+    <div class="login-box">
+        <form action="process/login.php" method="post">
+            <h1>LOGIN</h1>
+            
+            <input type="text" id="username" name="username" placeholder="Username" autocomplete="off" required>
+            
+            <div class="password-container">
+                <input type="password" id="password" name="password" placeholder="Password" autocomplete="off" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility()">
+                    <ion-icon name="eye-outline"></ion-icon>
+                </span>
+            </div>
+            <a href="#" data-toggle="modal" data-target="#forgot" class="forgot">Forgot password?</a>
+            <button type="submit" class="login-btn" name="login">Log in</button>
+        </form>
+
+        <div class="signup-container">
+            <p class="not-member-text">Not a member? <br><span class="join-now-text"><a href="#" data-toggle="modal" data-target="#myModal">Join Now</a></span></p>
+        </div>
+        <div class="accreditation-container">
+            <h2>Application for Accreditation</h2>
+            <button class="login-btn">Apply for Accreditation</button>
+        </div><br>
+        <p class="not-member-text">Not a member?<span class="apply-now-text"><a href=""> Apply Now!</a></span></p>
     </div>
-    <div class="login-container">
-        <div class="login-box">
-            <div class="row log-cont">
-                <div class="col-md-6 login-form">
-                     <div class="">
-                        <form action="process/login.php" method="post">
-                            <h1 for="username">Login</h1><br>
-                            <input type="text" id="username" name="username" placeholder="username" autocomplete="off" required>
-                            <div class="password-container">
-                                <input type="password" id="password" name="password" placeholder="password" autocomplete="off" required>
-                                <span class="toggle-password" onclick="togglePasswordVisibility()"><ion-icon name="eye-outline"></ion-icon></span>
-                            </div><br>
-                            <div class="forgot">
-                                <a href="#" data-toggle="modal" data-target="#forgot" class="forgot">Forgot password?</a>
-                            </div>
-                            <br><br><br>
-                            <button type="submit" class="btn btn-success" name="login">Log in</button>
-                        </form>
-                    </div>
+</div>
+
+    <!------------------------ Forgot Password Modal -->
+    <div class="modal fade" id="forgot" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- <h5 class="modal-title" id="myModalLabel">Forgot password</h5> -->
+                    <h5 class="modal-title" id="myModalLabel">Find your account</h5>
+
                 </div>
-                <div class="col-md-6 signup-container">
-                    <div class="">
-                        <h2>HI! THERE</h2>
-                        <p>If you don't have an account,<br> you can Sign Up here!</p><br><br>
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Sign up</button>
-                    </div>
+                <div class="modal-body">
+                    <form id="forgotForm">
+                        <div class="form-group">
+                            <label class="forgotPass-label">Please enter your username.</label>
+                            <input type="text" class="form-control" name="usernamee" id="usernamee" placeholder="Enter your username">
+                        </div><hr>
+                        <div class="forgotPass-footer">
+                            <button type="button" class="btn-cancel" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn-submit">Search</button>
+                        </div>
+                    </form>
                 </div>
-            </div>  
+            </div>
         </div>
     </div>
 
+    <!------------------------ Security Question Modal -->
+    <div class="modal fade" id="securityQuestion" tabindex="-1" role="dialog" aria-labelledby="securityQuestionLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="securityQuestionLabel">Security Question</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="securityQuestionForm">
+                        <div class="form-group">
+                            <label id="forgotPass-label" class="forgotPass-label">What is the answer?</label>
+                            <input type="text" class="form-control" name="securityAnswer" id="securityAnswer" placeholder="Your answer?">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-cancel" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn-submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------ REGISTER MODAL  -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -176,59 +222,7 @@
         </div>
     </div>
 
-    <!-- Forgot Password Modal -->
-    <div class="modal fade" id="forgot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Forgot password</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="forgotForm">
-                        <div class="form-group" style="display: flex; justify-content: space-between; gap: 20px; align-items: center;">
-                            <label for="recovery">Username:</label>
-                            <input type="text" class="form-control" name="usernamee" id="usernamee" placeholder="Enter your username">
-                        </div>
-                        <div class="modal-footer" style="margin-bottom: -20px;">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Security Question Modal -->
-    <div class="modal fade" id="securityQuestion" tabindex="-1" role="dialog" aria-labelledby="securityQuestionLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="securityQuestionLabel">Security Question</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="securityQuestionForm">
-                        <div class="form-group">
-                            <label id="questionLabel"></label>
-                            <input type="text" class="form-control" name="securityAnswer" id="securityAnswer" placeholder="Enter your answer">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Change Password Modal -->
+    <!------------------------ CHANGE PASS MODAL -->
     <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="changePasswordLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -269,10 +263,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- CUSTOM SCRIPT  -->
     <script>
         $(document).ready(function() {
             $('#forgotForm').submit(function(event) {
@@ -428,13 +422,13 @@
                 dropdown.style.display = "block";
             }
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
+        //document.addEventListener('click', function(event) {
+           // var dropdown = document.getElementsByClassName("dropdown-menu")[0];
+          // var burger = document.querySelector('.burger');
+           // if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
+             //   dropdown.style.display = 'none';
+          //  }
+       // });
         window.addEventListener('resize', function() {
             var burger = document.querySelector('.burger');
             var dropdownMenu = document.querySelector('.dropdown-menu');
@@ -447,10 +441,10 @@
         <?php
 
         if (isset($_SESSION['error_message'])) {
-            echo 'toastr.error("' . $_SESSION['error_message'] . '", "", { positionClass: "toast-center", toastClass: "toast" });';
+            echo 'toastr.error("' . $_SESSION['error_message'] . '", "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-center", toastClass: "toast" });';
             unset($_SESSION['error_message']); // Clear the error message from session
         } elseif (isset($_SESSION['success_message'])) {
-            echo 'toastr.success("' . $_SESSION['success_message'] . '", "", { positionClass: "toast-center", toastClass: "toast" });';
+            echo 'toastr.success("' . $_SESSION['success_message'] . '", "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-center", toastClass: "toast" });';
             unset($_SESSION['success_message']); // Clear the success message from session
             echo 'setTimeout(function() { window.location.href = "super_admin/dashboard.php"; }, 1000);'; // Redirect after 2 seconds
         }
