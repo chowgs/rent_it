@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="login_css/login.css">
+    <link rel="stylesheet" href="css/headerStyle.css">
     <link rel="stylesheet" href="login_css/modal.css">
     <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
     <!-- <style>
