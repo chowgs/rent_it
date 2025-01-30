@@ -1,0 +1,36 @@
+.modal-title {
+    color: rgb(50, 50, 50);
+}
+
+.forgotPass-label{
+    color: rgb(50, 50, 50);
+}
+
+.forgotPass-footer {
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+}
+
+.forgotPass-footer button {
+    border-radius: 8px;
+    margin-left: 10px;
+    padding: 8px;
+}
+
+.btn-cancel{
+    color: rgb(50, 50, 50);
+}
+
+.btn-cancel:hover {
+    background-color: #dadada;
+}
+
+.btn-submit {
+    background-color: #45a049;
+    color: #fff;
+}
+
+.btn-submit:hover{
+    background-color: #1B5E20;
+}

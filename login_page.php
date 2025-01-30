@@ -113,7 +113,7 @@
     <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
+        <a href="contact.php">Contact us</a>
     </div>
 </div>
 
@@ -154,7 +154,6 @@
 </div>
 
     <!------------------------ Forgot Password Modal -->
-  <!-- <div class="modal fade" id="forgot" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"> -->
     <div class="modal fade" id="forgot" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -179,7 +178,30 @@
         </div>
     </div>
 
-    <!------------------------ REGISTER MODAL DIALOG  -->
+    <!------------------------ Security Question Modal -->
+    <div class="modal fade" id="securityQuestion" tabindex="-1" role="dialog" aria-labelledby="securityQuestionLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="securityQuestionLabel">Security Question</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="securityQuestionForm">
+                        <div class="form-group">
+                            <label id="forgotPass-label" class="forgotPass-label">What is the answer?</label>
+                            <input type="text" class="form-control" name="securityAnswer" id="securityAnswer" placeholder="Your answer?">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn-cancel" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn-submit">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!------------------------ REGISTER MODAL  -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -200,33 +222,7 @@
         </div>
     </div>
 
-    <!------------------------ Security Question Modal -->
-    <div class="modal fade" id="securityQuestion" tabindex="-1" role="dialog" aria-labelledby="securityQuestionLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="securityQuestionLabel">Security Question</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form id="securityQuestionForm">
-                        <div class="form-group">
-                            <label id="questionLabel"></label>
-                            <input type="text" class="form-control" name="securityAnswer" id="securityAnswer" placeholder="Enter your answer">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!------------------------ Change Password Modal -->
+    <!------------------------ CHANGE PASS MODAL -->
     <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="changePasswordLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -445,10 +441,10 @@
         <?php
 
         if (isset($_SESSION['error_message'])) {
-            echo 'toastr.error("' . $_SESSION['error_message'] . '", "", { positionClass: "toast-center", toastClass: "toast" });';
+            echo 'toastr.error("' . $_SESSION['error_message'] . '", "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-center", toastClass: "toast" });';
             unset($_SESSION['error_message']); // Clear the error message from session
         } elseif (isset($_SESSION['success_message'])) {
-            echo 'toastr.success("' . $_SESSION['success_message'] . '", "", { positionClass: "toast-center", toastClass: "toast" });';
+            echo 'toastr.success("' . $_SESSION['success_message'] . '", "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-center", toastClass: "toast" });';
             unset($_SESSION['success_message']); // Clear the success message from session
             echo 'setTimeout(function() { window.location.href = "super_admin/dashboard.php"; }, 1000);'; // Redirect after 2 seconds
         }
