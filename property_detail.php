@@ -10,7 +10,7 @@ require_once("config/connect.php");
     <title>Rent IT - Property</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/property.css">
+    <link rel="stylesheet" href="css/property-page.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -404,11 +404,14 @@ require_once("config/connect.php");
                             echo '<li class="lst">Kitchen - '.$kitchen.'</li>';
                             echo '<li class="lst">Description - '.$property['Description'].'</li>';
                             echo '</ul><br>';
-                            echo '<h5>Owner:</h5>';
-                            echo '<p style="margin-left: 5%; margin-bottom: 0;">'.$property['FullName'].'</p><br>';
+                            echo '<h5>Owner: '.$property['FullName'].'</h5><br>';
+                            
                             echo '<div class="btn-container">
+                            <a href="login_page.php"><button class="btn btn-success" >Login to Book Now</button></a> or
                             <a href="signup_boarder.php"><button class="btn btn-success" >Sign Up to Book Now</button></a>
                             </div>';
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'</p><br>';
+                        
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
@@ -446,6 +449,7 @@ require_once("config/connect.php");
                         <div class="col-md-4" style="padding: 10px;">
                         <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="call"></ion-icon> '.$row['ContNum'].'</div>
                         </div>
+                        
                         ';
                     }else{
                         echo '

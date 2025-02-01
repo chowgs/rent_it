@@ -54,12 +54,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $name_owner = $_POST['name_owner'];
     $user_owner = $_POST['user_owner'];
+    $Lastn_owner = $_POST['Lastn_owner'];
     $pass_owner = $_POST['pass_owner'];
     $cont_owner = $_POST['cont_owner'];
     $add_owner = $_POST['add_owner'];
     $email_owner = $_POST['email_owner'];
     $question = $_POST['question'];
     $answer = $_POST['answer'];
+    $fblink = $_POST['fblink'];
     $name_land = isset($_POST['name_land']) ? $_POST['name_land'] : null;
     $email_land = isset($_POST['email_land']) ? $_POST['email_land'] : null;
     $cont_land = isset($_POST['cont_land']) ? $_POST['cont_land'] : null;
@@ -96,9 +98,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $account_id = $stmt_account->insert_id;
 
         // Insert into owners table
-        $stmt_owner = $conn->prepare("INSERT INTO owner (OwnerID, FullName, ContNum, Address, Email, L_Name, L_Email, L_Num, AccountID) 
-                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt_owner->bind_param("sssssssss", $ownerID, $name_owner, $cont_owner, $add_owner, $email_owner, $name_land, $email_land, $cont_land, $accountID);
+        $stmt_owner = $conn->prepare("INSERT INTO owner (OwnerID, FullName, Lastn_owner, ContNum, fblink, Address, Email, L_Name, L_Email, L_Num, AccountID) 
+                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt_owner->bind_param("sssssssssss", $ownerID, $name_owner, $Lastn_owner, $cont_owner, $fblink, $add_owner, $email_owner, $name_land, $email_land, $cont_land, $accountID);
 
         if ($stmt_owner->execute()) {
             // Process uploaded images
