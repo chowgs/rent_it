@@ -1,5 +1,18 @@
 <?php
     session_start();
+if(isset($_SESSION['loggedIn'])){
+        if ($_SESSION['AccType'] === 'Super_Admin' || $_SESSION['AccType'] === 'Admin') {
+            header('Location: /booking_sys/super_admin/dashboard.php');
+            exit();
+        } else if ($_SESSION['AccType'] === 'Owner') {
+            header('Location: /booking_sys/owner/dashboard.php');
+            exit();
+        } else if ($_SESSION['AccType'] === 'Boarder') {
+            header('Location: /booking_sys/boarder/dashboard.php');
+            exit();
+        }
+        
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -13,100 +26,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="login_css/login.css">
     <link rel="stylesheet" href="css/headerStyle.css">
-    <link rel="stylesheet" href="login_css/modal.css">
-    <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
-    <!-- <style>
-        .password-container {
-            position: relative;
-        }
-        .password-container input[type="password"],
-        .password-container input[type="text"] {
-            padding-right: 30px; /* Adjust based on your icon size */
-        }
-        .password-container .toggle-password {
-            position: absolute;
-            right: 34px;
-            top: 35%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 25px;
-        }
-        .password-container .toggle {
-            position: absolute;
-            right: 10px;
-            top: 60%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 20px;
-        }
+    <link rel="stylesheet" href="login_css/dialog.css">
 
-        .password-container .togglee{
-            position: absolute;
-            right: 10px;
-            top: 60%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 20px;
-        }
-        .burger {
-            display: none;
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's above the dropdown */
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 80px; 
-            right: 10px; 
-            left: auto;
-            background: rgba(255, 255, 255, 0.9);
-            width: 200px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-            display: block;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .login-btn {
-                display: none;
-            }
-
-            .burger {
-                display: block;
-            }
-        }
-        .forgot{
-            color: white;
-        }
-        .forgot:hover{
-            text-decoration: none;
-            color: gainsboro;
-        }
-    </style> -->
 </head>
 <body>
 <div class="navbar">
@@ -148,20 +69,63 @@
         </div>
         <div class="accreditation-container">
             <h2>Application for Accreditation</h2>
-            <button class="login-btn">Apply for Accreditation</button>
-        </div><br>
-        <p class="not-member-text">Not a member?<span class="apply-now-text"><a href=""> Apply Now!</a></span></p>
+        </div>
+        <p class="not-member-text">Not a member?<span class="apply-now-text">
+            <a href="#" data-toggle="modal" data-target="#applyModal"> Apply Now!</a></span>
+        </p>
     </div>
 </div>
+
+    <!------------------------ Accreditation Modal -->
+    <div class="modal fade" id="applyModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Application Form</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="forgotForm">
+                        <div class="form-group">
+                            <label class="forgotPass-label">Name</label>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
+                            <label class="forgotPass-label">Contact No.</label>
+                            <input type="text" class="form-control" name="contact" id="contact" placeholder="Enter contact no.">
+                            <label class="forgotPass-label">Address</label>
+                            <input type="text" class="form-control" name="address" id="address" placeholder="Address">
+                        </div><hr>
+                        <label class="forgotPass-label">Letter of Application</label>
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">2x2 of the Owner</label>
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">Business Permit</label>
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">Community Tax Certificate</label>
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">DTI Certification</label>
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">BFP Clearance</label>
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">BIR Clearance</label>   
+                        <input type="file" name="" id="">
+                        <label class="forgotPass-label">RHU Medical Examination</label>
+                        <input type="file" name="" id="">
+                        <hr>
+                        <div class="forgotPass-footer">
+                            <button type="button" class="btn-cancel" data-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="submit" class="btn-submit">Apply</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!------------------------ Forgot Password Modal -->
     <div class="modal fade" id="forgot" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <!-- <h5 class="modal-title" id="myModalLabel">Forgot password</h5> -->
                     <h5 class="modal-title" id="myModalLabel">Find your account</h5>
-
                 </div>
                 <div class="modal-body">
                     <form id="forgotForm">
@@ -202,51 +166,42 @@
         </div>
     </div>
 
-    <!------------------------ REGISTER MODAL  -->
+    <!------------------------ Join Modal  -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-sm"  role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title" id="myModalLabel">Join as</h5>
                 </div>
                 <div class="modal-body">
-                    <h5>Signup As:</h5>
-                    <div class="button-container">
-                        <a href="signup_boarder.php" class="btn btn-success">Boarder</a>
-                        <a href="signup_owner.php" class="btn btn-primary">Owner</a>
+                    <div class="button-container text-center">
+                        <a href="signup_boarder.php" class="btn-boarder">Boarder</a>
+                        <a href="signup_owner.php" class="btn-owner">Owner</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!------------------------ CHANGE PASS MODAL -->
+    <!------------------------ Change Password MODAL -->
     <div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="changePasswordLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="changePasswordLabel">Change Password</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="changePasswordForm">
-                        <div class="form-group" style="display: flex; justify-content: space-between; gap: 20px; align-items: center;">
-                            <label style="width: 40%;" for="newPassword">New Password:</label>
+                        <div class="form-group">
                             <div class="password-container">
-                                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="Enter new password" autocomplete="off" required>
+                                <input type="password" class="form-control" id="newPassword" name="newPassword" placeholder="New Password" autocomplete="off" required>
                                 <span class="toggle" onclick="togglePassword()"><ion-icon name="eye-outline"></ion-icon></span>
                             </div>
                         </div>
-                        <div class="form-group" style="display: flex; justify-content: space-between; gap: 20px; align-items: center;">
-                            <label style="width: 40%;" for="confirmPassword">Confirm Password:</label>
+                        <div class="form-group">
                             <div class="password-container">
-                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm new password" autocomplete="off" required>
-                                <span class="togglee" onclick="togglePasswordd()"><ion-icon name="eye-outline"></ion-icon></span>
+                                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Confirm New Password" autocomplete="off" required>
+                                <span class="toggle" onclick="togglePasswordd()"><ion-icon name="eye-outline"></ion-icon></span>
                             </div>
                         </div>
                         <div class="modal-footer">

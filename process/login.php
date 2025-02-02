@@ -31,6 +31,7 @@ if (isset($_POST["login"])) {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION['success_message'] = "Login successful!";
+                    $_SESSION['loggedIn'] = 1;
                     header("Location: ../super_admin/dashboard.php");  //should be directed to dashboard
                     exit;
                 } else {
@@ -38,6 +39,7 @@ if (isset($_POST["login"])) {
                     header("Location: ../login_page.php");
                     exit;
                 }
+
             } elseif ($row['AccType'] == "Admin") {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
@@ -49,18 +51,20 @@ if (isset($_POST["login"])) {
                     header("Location: ../login_page.php");
                     exit;
                 }
+
             } elseif ($row['AccType'] == "Owner") {
                 if ($row['Approval'] == "Approved") {
                     if ($row['Status'] == 1) {
                         $_SESSION["AccountID"] = $row['AccountID'];
                         $_SESSION['success_message'] = "Login successful!";
-                        header("Location: ../owner/login_page.php");
+                        header("Location: ../owner/dashboard.php");
                         exit;
                     } else {
                         $_SESSION['error_message'] = "Your account is not active. Please contact the administrator.";
                         header("Location: ../login_page.php");
                         exit;
                     }
+
                 } else {
                     $_SESSION['error_message'] = "Your account is not approved yet. Please contact the administrator.";
                     header("Location: ../login_page.php");
@@ -70,7 +74,7 @@ if (isset($_POST["login"])) {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION['success_message'] = "Login successful!";
-                    header("Location: ../boarder/login_page.php");
+                    header("Location: ../boarder/dashboard.php");
                     exit;
                 } else {
                     $_SESSION['error_message'] = "Your account is not active. Please contact the administrator.";
