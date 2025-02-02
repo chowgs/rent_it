@@ -65,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $countResult = $countStmt->get_result();
     $totalProperties = $countResult->fetch_assoc()['total'];
     $totalPages = ceil($totalProperties / $itemsPerPage);
-
+    $propid= null;
     if ($properties) {
         foreach ($properties as $property) {
             // Split the image URL string by commas and get the first URL

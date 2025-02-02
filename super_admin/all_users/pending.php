@@ -239,6 +239,25 @@ if(!isset($_SESSION["AccountID"])){
         </div>
     </div>
 
+    <!-- PDF Preview Modal -->
+<div class="modal fade" id="pdfPreviewModal" tabindex="-1" role="dialog" aria-labelledby="pdfPreviewLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h5 class="modal-title" id="pdfPreviewLabel">PDF Preview</h5>
+            </div>
+            <div class="modal-body">
+                <!-- PDF iframe -->
+                <iframe id="pdfPreview" style="width: 100%; height: 500px;" frameborder="0"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <div class="modal fade" id="imagePreviewModal" tabindex="-1" role="dialog" aria-labelledby="imagePreviewLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -386,59 +405,92 @@ if(!isset($_SESSION["AccountID"])){
         };
 
         function setOwnerID(button) {
-            var ownerID = button.getAttribute("data-OwnerID");
+    var ownerID = button.getAttribute("data-OwnerID");
 
-            // Send AJAX request to fetch data based on OwnerID
-            $.ajax({
-                url: '../fetch/details.php',  // URL of the server-side script
-                type: 'POST',
-                data: { OwnerID: ownerID },
-                success: function(response) {
-                    var data = JSON.parse(response);
-                    if (data.error) {
-                        console.error(data.error);
-                        return;
-                    }
+    // Send AJAX request to fetch data based on OwnerID
+    $.ajax({
+        url: '../fetch/details.php',  // URL of the server-side script
+        type: 'POST',
+        data: { OwnerID: ownerID },
+        success: function(response) {
+            var data = JSON.parse(response);
+            if (data.error) {
+                console.error(data.error);
+                return;
+            }
 
-                    var permitImagesContainer = document.getElementById('permitImagesContainer');
-                    permitImagesContainer.innerHTML = '';
+            var permitImagesContainer = document.getElementById('permitImagesContainer');
+            permitImagesContainer.innerHTML = '';
 
-                    if (data.files && data.files.length > 0) {
-                        // Use the first file's details for modal title
-                        document.getElementById('ownerId').value = ownerID;
+            if (data.files && data.files.length > 0) {
+                document.getElementById('ownerId').value = ownerID;
 
-                        // Append images
-                        data.files.forEach(function(file) {
-                            var img = document.createElement('img');
-                            img.src = file.File_Path;
-                            img.alt = 'Permit Image';
-                            img.style.width = '100px'; 
-                            img.style.height = 'auto'; 
-                            img.style.cursor = 'pointer';
-                            img.onclick = function() {
-                                var imagePreview = document.getElementById('imagePreview');
-                                imagePreview.src = file.File_Path;
-                                $('#imagePreviewModal').modal('show');
-                            };
-                            permitImagesContainer.appendChild(img);
-                        });
-                        permitImagesContainer.style.display = 'flex';
+                data.files.forEach(function(file) {
+                    var fileElement;
+                    var fileExtension = file.File_Path.split('.').pop().toLowerCase();
+
+                    if (['jpg', 'jpeg', 'png', 'gif'].includes(fileExtension)) {
+                        // Display image
+                        fileElement = document.createElement('img');
+                        fileElement.src = file.File_Path;
+                        fileElement.alt = 'Permit Image';
+                        fileElement.style.width = '100px';
+                        fileElement.style.height = 'auto';
+                        fileElement.style.cursor = 'pointer';
+                        fileElement.onclick = function() {
+                            var imagePreview = document.getElementById('imagePreview');
+                            imagePreview.src = file.File_Path;
+                            $('#imagePreviewModal').modal('show');
+                        };
+                    } else if (fileExtension === 'pdf') {
+                        // Display PDF as a link
+                        fileElement = document.createElement('a');
+                        fileElement.href = file.File_Path;
+                        fileElement.target = '_blank';
+                        fileElement.textContent = file.File_Path.split('/').pop(); // Show only filename
+                        fileElement.style.display = 'block';
+                        fileElement.style.marginBottom = '5px';
+                        fileElement.style.color = 'blue';
+                        fileElement.style.textDecoration = 'underline';
+                    } else if (['docx', 'doc'].includes(fileExtension)) {
+                        // Display Word document as a link
+                        fileElement = document.createElement('a');
+                        fileElement.href = file.File_Path;
+                        fileElement.target = '_blank';
+                        fileElement.textContent = file.File_Path.split('/').pop();
+                        fileElement.style.display = 'block';
+                        fileElement.style.marginBottom = '5px';
+                        fileElement.style.color = 'blue';
+                        fileElement.style.textDecoration = 'underline';
                     } else {
-                        permitImagesContainer.style.display = 'flex';
-                        var noFilesMessage = document.createElement('p');
-                        noFilesMessage.textContent = 'No uploaded permits';
-                        permitImagesContainer.appendChild(noFilesMessage);
-                        document.getElementById('ownerId').value = ownerID;
+                        // Display unsupported file as a generic link
+                        fileElement = document.createElement('span');
+                        fileElement.textContent = 'Unsupported file type';
                     }
 
-                    // Open the main modal
-                    $('#details').modal('show');
-                },
-                error: function(error) {
-                    console.error("Error fetching details:", error);
-                }
-            });
+                    permitImagesContainer.appendChild(fileElement);
+                });
+
+                permitImagesContainer.style.display = 'flex';
+                permitImagesContainer.style.flexDirection = 'column';
+                permitImagesContainer.style.alignItems = 'start';
+            } else {
+                permitImagesContainer.style.display = 'flex';
+                var noFilesMessage = document.createElement('p');
+                noFilesMessage.textContent = 'No uploaded permits';
+                permitImagesContainer.appendChild(noFilesMessage);
+                document.getElementById('ownerId').value = ownerID;
+            }
+
+            $('#details').modal('show');
+        },
+        error: function(error) {
+            console.error("Error fetching details:", error);
         }
+    });
+}
+
+
     </script>
     
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
