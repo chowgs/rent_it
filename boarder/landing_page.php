@@ -221,14 +221,12 @@ if(!isset($_SESSION["AccountID"])){
                     <form id="searchForm">
                         <div class="type">
                             <div class="row">
-                                <div class="col-md-2 select">
-                                    <!-- <select name="type" id="type" style="width: 100%; padding: 12.5px;">
-                                        <option value="">Select Type</option>
-                                        <option value="apartment">Apartment</option>
+                                <div class=" select" style="display:none;">
+                                    <select name="type" id="type" style="width: 100%; padding: 12.5px;">
                                         <option value="dormitory">Dormitory</option>
-                                    </select> -->
+                                    </select>
                                 </div>
-                                <div class="col-md-8 inp">
+                                <div class="col-md-10 inp">
                                     <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
                                 </div>
                                 <div class="col-md-2">

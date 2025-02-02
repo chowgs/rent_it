@@ -394,7 +394,7 @@ require_once("config/connect.php");
                             echo '<div class="col-md-6" style="height: 96% !important; padding: 0;">';
                             echo '<div class="txt">';
                             echo '<h5>Location:</h5>';
-                            echo '<p style="margin-left: 5%;" class="loc"onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
+                            echo '<p  class="loc"onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
                             echo '<ul>';
                             echo '<li class="lst">Occupants - '.$property['Category'].'</li>';
                             echo '<li class="lst">Available Rooms - '.$vacantRoomsCount.'</li>';
@@ -405,13 +405,11 @@ require_once("config/connect.php");
                             echo '<li class="lst">Description - '.$property['Description'].'</li>';
                             echo '</ul><br>';
                             echo '<h5>Owner: '.$property['FullName'].'</h5><br>';
-                            
                             echo '<div class="btn-container">
                             <a href="login_page.php"><button class="btn btn-success" >Login to Book Now</button></a> or
                             <a href="signup_boarder.php"><button class="btn btn-success" >Sign Up to Book Now</button></a>
                             </div>';
-                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'</p><br>';
-                        
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['fblink'].'</p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';

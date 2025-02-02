@@ -148,7 +148,7 @@
         </div>
         <div class="accreditation-container">
             <h2>Application for Accreditation</h2>
-            <button class="login-btn">Apply for Accreditation</button>
+            <button class="login-btn"><a href="signup_accred.php">Apply for acrreditation</a></button>
         </div><br>
         <p class="not-member-text">Not a member?<span class="apply-now-text"><a href=""> Apply Now!</a></span></p>
     </div>
