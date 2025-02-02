@@ -113,13 +113,17 @@ require_once("config/connect.php");
                     <h3>Sign up as Owner</h3>
                     <h5 class="personal">Personal Details</h5>
                     <div class="row">
-                        <div class="col-md-4">
-                            <label for="fullname">Full Name</label><br>
-                            <input class="form-control" type="text" name="name_owner" placeholder="Enter your name" required>
+                        <div class="col-md-2">
+                            <label for="fullname">First Name</label><br>
+                            <input class="form-control" type="text" name="name_owner" placeholder="Enter first name" required>
                         </div>
                         <div class="col-md-2">
+                            <label for="Lastn_owner">Last Name</label><br>
+                            <input class="form-control" type="text" name="Lastn_owner" placeholder="Enter last name" required>
+                        </div>
+                        <div class="col-md-1">
                             <label for="username">Username</label><br>
-                            <input class="form-control" type="text" name="user_owner" placeholder="Enter your username" required>
+                            <input class="form-control" type="text" name="user_owner" placeholder="Enter username" required>
                         </div>
                         <div class="col-md-2">
                             <label for="fullname">Password</label><br>
@@ -128,9 +132,13 @@ require_once("config/connect.php");
                                 <span class="toggle-password" onclick="togglePasswordVisibility()"><ion-icon name="eye-outline"></ion-icon></span>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label for="ContactNumber">Contact Number</label><br>
                             <input class="form-control" type="text" name="cont_owner" placeholder="Enter your contact number" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="fblink">Facebook Link</label><br>
+                            <input class="form-control" type="text" name="fblink" placeholder="Enter your FB Link" required>
                         </div>
                     </div>
                     <div class="row">

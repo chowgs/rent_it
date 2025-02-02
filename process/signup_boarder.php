@@ -1,6 +1,13 @@
 <?php
 session_start();
 require_once("../config/connect.php");
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require_once '../vendor/autoload.php';
+
+function generateToken($length = 32) {
+    return bin2hex(random_bytes($length));  // Generate a unique token
+}
 
 function accountID($conn, $length = 8) {
     $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -32,7 +39,7 @@ function boarderID($conn, $length = 8) {
         $count = $checkResult->fetch_assoc()['count'];
     } while ($count > 0); // Keep generating until a unique ID is found
     return $scrambledId;
-}           
+}
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
@@ -51,10 +58,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $f_cont = $_POST['f_cont'];
     $file = $_FILES['file'];
 
+    // Validate required fields
+    if (empty($name) || empty($uname) || empty($pword) || empty($email)) {
+        $_SESSION['error_message'] = "Please fill all required fields.";
+        header("Location: ../signup_boarder.php");
+        exit;
+    }
+
     // Check if the username already exists
     $check_username_query = "SELECT COUNT(*) AS count FROM account WHERE UName = ?";
     $stmt_check_username = $conn->prepare($check_username_query);
-    $stmt_check_username->bind_param("s", $user_owner);
+    $stmt_check_username->bind_param("s", $uname);
     $stmt_check_username->execute();
     $result_check_username = $stmt_check_username->get_result();
     $username_count = $result_check_username->fetch_assoc()['count'];
@@ -64,58 +78,79 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: ../signup_boarder.php");
         exit;
     }
-
     $stmt_check_username->close();
 
+    // Generate account and boarder IDs
     $accountID = accountID($conn);
     $boarderID = boarderID($conn);
 
-    $upload_dir = "../cor/".$boarderID."/";
-
-    // Check if directory exists, create it if not
+    // Handle file upload
+    $upload_dir = "../cor/" . $boarderID . "/";
     if (!is_dir($upload_dir)) {
-        if (!mkdir($upload_dir, 0755, true)) { // 0755 is the default permission for directories
-            die("Failed to create directory: " . $upload_dir);
-        }
-    } 
+        mkdir($upload_dir, 0755, true);
+    }
     $file_name = $file['name'];
     $file_tmp = $file['tmp_name'];
-    // Generate unique file name to prevent overwriting
     $unique_filename = uniqid() . "_" . $file_name;
-    $file_path = $upload_dir . $unique_filename; 
+    $file_path = $upload_dir . $unique_filename;
+
+    
     move_uploaded_file($file_tmp, $file_path);
 
+    // Set account details
+    $accType = "Boarder";
+    $status = "0"; // Status: Not verified
+    $approval = "Approved"; // Verification pending
+    $hashed_password = password_hash($pword, PASSWORD_BCRYPT);
+    $verification_token = generateToken(); // Generate a verification token
 
-        $accType = "Boarder";
-        $status = "1";
-        $approval = "Approved";
-        $hashed_password = password_hash($pword, PASSWORD_BCRYPT);
-        // Insert into accounts table
-        $stmt_account = $conn->prepare("INSERT INTO account (AccountID, UName, PWord, AccType, Status, Approval, SQuestion, Answer) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt_account->bind_param("ssssssss", $accountID, $uname, $hashed_password, $accType, $status, $approval, $question, $answer);
+    // Insert into accounts table
+    $stmt_account = $conn->prepare("INSERT INTO account (AccountID, UName, PWord, AccType, Status, Approval, SQuestion, Answer, Email, VerificationToken) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt_account->bind_param("ssssssssss", $accountID, $uname, $hashed_password, $accType, $status, $approval, $question, $answer, $email, $verification_token);
 
-        if ($stmt_account->execute()) {
-            // Get the inserted account ID
-            $account_id = $stmt_account->insert_id;
-
-            // Insert into owners table
-            $stmt_owner = $conn->prepare("INSERT INTO boarder (BoarderID, FullName, Contact_No, YearLvl, Course, Email, COR, M_Name, F_Name, M_Cont, F_Cont, AccountID) 
+    if ($stmt_account->execute()) {
+        // Insert into boarder table
+        $stmt_boarder = $conn->prepare("INSERT INTO boarder (BoarderID, FullName, Contact_No, YearLvl, Course, Email, COR, M_Name, F_Name, M_Cont, F_Cont, AccountID) 
                                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            $stmt_owner->bind_param("ssssssssssss", $boarderID, $name, $contact, $year, $course, $email, $file_path, $mother, $father, $m_cont, $f_cont, $accountID);
+        $stmt_boarder->bind_param("ssssssssssss", $boarderID, $name, $contact, $year, $course, $email, $file_path, $mother, $father, $m_cont, $f_cont, $accountID);
 
-            if ($stmt_owner->execute()) {
-                
-                $_SESSION['success_message'] = "Sign up successful!"; 
-            } else {
-                $_SESSION['error_message'] = "Sign up failed.";
+        if ($stmt_boarder->execute()) {
+            // Send verification email using PHPMailer
+            $mail = new PHPMailer(true);
+            try {
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'jaxmucles@gmail.com'; // Your Gmail account
+                $mail->Password = 'bnea rwrh szmx khia'; // Your Gmail password or App password
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+
+                $mail->setFrom('jaxmucles@gmail.com', 'Sherwin');
+                $mail->addAddress($email, $name);
+
+                $mail->isHTML(true);
+                $mail->Subject = 'Verify Your Email';
+                $mail->Body    = "Hello $name,<br><br>Please click the link below to verify your email and activate your account:<br><a href='http://localhost/rent_it/process/verify.php?token=$verification_token'>Verify Email</a><br><br>Thank you!";
+
+                $mail->send();
+                $_SESSION['success_message'] = "Sign up successful! Please check your email to verify your account.";
+            } catch (Exception $e) {
+                $_SESSION['error_message'] = "Verification email could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
+        } else {
+            $_SESSION['error_message'] = "Boarder insertion failed. Error: " . $stmt_boarder->error;
+        }
 
-            $stmt_owner->close();
-        } else { 
-            $_SESSION['error_message'] = "Sign up failed.";
-        }    
+        $stmt_boarder->close();
+    } else {
+        $_SESSION['error_message'] = "Account insertion failed. Error: " . $stmt_account->error;
+    }
 
+    $stmt_account->close();
 }
+
 header("Location: ../signup_boarder.php");
 exit;
 $conn->close();

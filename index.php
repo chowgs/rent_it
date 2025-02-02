@@ -11,7 +11,7 @@
     <meta name="google-site-verification" content="_0Gl3ztRf0zyoPTl38KrHXFSLs_PvHN11hS-e6sK7t4" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/landing_page.css">
+    <link rel="stylesheet" href="css/index_page.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -66,7 +66,7 @@
             transition: transform 0.3s;
             display: flex;
             flex-direction: column;
-            height: 100%;
+            height: 300px;
         }
 
         .property-card:hover {
@@ -76,6 +76,8 @@
         .property-card a {
             display: block;
             width: 100%;
+            text-decoration:none;
+            color:inherit;
         }
 
         .image-card {
@@ -213,14 +215,13 @@
                     <form id="searchForm">
                         <div class="type">
                             <div class="row">
-                                <div class="col-md-2 select">
-                                  <!--  <select name="type" id="type" style="width: 100%; padding: 12.5px;">
-                                        <option value="">Select Type</option>
-                                        <option value="apartment">Apartment</option>
+                                <div class="select" style="display:none;">
+                                   <select name="type" id="type" style="width: 100%; padding: 12.5px;">
+                                     
                                         <option value="dormitory">Dormitory</option>
-                                    </select> -->
+                                    </select>
                                 </div>
-                                <div class="col-md-8 inp">
+                                <div class="col-md-10 inp">
                                     <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
                                 </div>
                                 <div class="col-md-2">
@@ -604,7 +605,7 @@
 
         $(document).ready(function() {
             let currentPage = 1;
-            const itemsPerPage = 3; // Number of properties per page
+            const itemsPerPage = 6; // Number of properties per page
 
             function loadProperties(page = 1) {
                 const formData = $('#searchForm').serialize() + `&page=${page}&itemsPerPage=${itemsPerPage}`;
