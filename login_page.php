@@ -71,54 +71,10 @@ if(isset($_SESSION['loggedIn'])){
             <h2>Application for Accreditation</h2>
         </div>
         <p class="not-member-text">Not a member?<span class="apply-now-text">
-            <a href="#" data-toggle="modal" data-target="#applyModal"> Apply Now!</a></span>
+            <a href="signup_accred.php"> Apply Now!</a></span>
         </p>
     </div>
 </div>
-
-    <!------------------------ Accreditation Modal -->
-    <div class="modal fade" id="applyModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="myModalLabel">Application Form</h5>
-                </div>
-                <div class="modal-body">
-                    <form id="accredForm">
-                        <div class="form-group">
-                            <label class="forgotPass-label">Name</label>
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
-                            <label class="forgotPass-label">Contact No.</label>
-                            <input type="text" class="form-control" name="contact" id="contact" placeholder="Enter contact no.">
-                            <label class="forgotPass-label">Address</label>
-                            <input type="text" class="form-control" name="address" id="address" placeholder="Address">
-                        </div><hr>
-                        <label class="forgotPass-label">Letter of Application</label>
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">2x2 of the Owner</label>
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">Business Permit</label>
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">Community Tax Certificate</label>
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">DTI Certification</label>
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">BFP Clearance</label>
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">BIR Clearance</label>   
-                        <input type="file" name="" id="">
-                        <label class="forgotPass-label">RHU Medical Examination</label>
-                        <input type="file" name="" id="">
-                        <hr>
-                        <div class="forgotPass-footer">
-                            <button type="button" class="btn-cancel" data-dismiss="modal" aria-label="Close">Cancel</button>
-                            <button type="submit" class="btn-submit">Apply</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!------------------------ Forgot Password Modal -->
     <div class="modal fade" id="forgot" tabindex="-1" role="dialog">
