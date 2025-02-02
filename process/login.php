@@ -70,7 +70,7 @@ if (isset($_POST["login"])) {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION['success_message'] = "Login successful!";
-                    header("Location: ../boarder/landing_page.php");
+                    header("Location: ../boarder/dashboard.php");
                     exit;
                 } else {
                     $_SESSION['error_message'] = "Your account is not active. Please contact the administrator.";
