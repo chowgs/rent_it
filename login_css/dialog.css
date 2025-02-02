@@ -34,3 +34,33 @@
 .btn-submit:hover{
     background-color: #1B5E20;
 }
+
+.btn-owner {
+    background-color: #45a049;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.btn-owner:hover {
+    background-color: #1B5E20;
+    color: #fff;
+    text-decoration: none;
+}
+
+.btn-boarder {
+    background-color: #3a5f7d;
+    padding: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+
+}
+
+.btn-boarder:hover {
+    background-color: #1b405e;
+    color: #fff;
+    text-decoration: none;
+}
+

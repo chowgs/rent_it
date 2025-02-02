@@ -1,3 +1,19 @@
+<?php
+    session_start();
+if(isset($_SESSION['loggedIn'])){
+        if ($_SESSION['AccType'] === 'Super_Admin' || $_SESSION['AccType'] === 'Admin') {
+            header('Location: super_admin/dashboard.php');
+            exit();
+        } else if ($_SESSION['AccType'] === 'Owner') {
+            header('Location: owner/dashboard.php');
+            exit();
+        } else if ($_SESSION['AccType'] === 'Boarder') {
+            header('Location: boarder/dashboard.php');
+            exit();
+        }
+        
+    } 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
