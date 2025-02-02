@@ -84,7 +84,7 @@ if(isset($_SESSION['loggedIn'])){
                     <h5 class="modal-title" id="myModalLabel">Application Form</h5>
                 </div>
                 <div class="modal-body">
-                    <form id="forgotForm">
+                    <form id="accredForm">
                         <div class="form-group">
                             <label class="forgotPass-label">Name</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name">
