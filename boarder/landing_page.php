@@ -83,6 +83,8 @@ if(!isset($_SESSION["AccountID"])){
     .property-card a {
         display: block;
         width: 100%;
+        text-decoration:none;
+        color: inherit;
     }
 
     .image-card {
@@ -217,6 +219,7 @@ if(!isset($_SESSION["AccountID"])){
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form">
+                <h1 style="text-align: center; letter-spacing: 3px; font-weight: 600 !important;">RENT LIKE<span style="color: rgb(0 84 6);"> HOME</span></h1>
                     <form id="searchForm">
                         <div class="type">
                             <div class="row">
