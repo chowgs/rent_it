@@ -1,8 +1,6 @@
 <?php
-session_start();
-require_once("config/connect.php");
-
-// Your PHP logic here...
+    session_start();
+    require_once("config/connect.php");
 ?>
 
 <!DOCTYPE html>

@@ -17,7 +17,8 @@ if(!isset($_SESSION["AccountID"])){
     <title>Rent IT - Contact</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="boarder-css/cb.css">
+    <link rel="stylesheet" href="boarder-css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -76,18 +77,14 @@ if(!isset($_SESSION["AccountID"])){
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
+        <img src="../images/logo.png" alt="Rent It" class="logo">
         <div class="nav-links">
-            <a href="landing_page.php">Home</a>
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
-        </div>
-    </div>
         <button class="burger-drop" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+        <a class="login-link" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+        </div>
     </div>
     <div class="dropdown-menu">
         <a href="landing_page.php">Home</a>
@@ -96,6 +93,7 @@ if(!isset($_SESSION["AccountID"])){
         <a href="contact.php">Contact Us</a>
         <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
+</div><br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -114,7 +112,7 @@ if(!isset($_SESSION["AccountID"])){
                             <div class="col-md-4">
                             <div class="cont">
                             <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
-                            <h3 class="top">Rent IT</h3>
+                            <h3 class="top" style="color: black;">Rent IT</h3>
                             <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
                             <p id="fbb" style="display:none;"><input name="fb" class="inp" type="text" value="'.$row["FB"].'" disabled></p>
                             </div>
@@ -122,17 +120,17 @@ if(!isset($_SESSION["AccountID"])){
                             <div class="col-md-4">
                             <div class="cont">
                             <ion-icon name="call" class="call"></ion-icon><br>
-                            <h5 class="top">Cellphone Number:</h5>
-                            <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'.$row["ContNum"].'</p>
+                            <h5 class="top" style="color: black;">Cellphone Number:</h5>
+                            <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">'.$row["ContNum"].'</p>
                             <p id="cont" style="display:none;"><input name="cont" class="inp" type="text" value="'.$row["ContNum"].'" disabled></p>
                             </div>
                             </div>
                             <div class="col-md-4">
                             <div class="cont">
                             <ion-icon name="business" class="add"></ion-icon><br>
-                            <h5 class="top">Address:</h5>
-                            <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
-                            <p id="address" style="display:none;"><input name="address" class="inp" type="text" value="'.$row["Address"].'" disabled></p>
+                            <h5 class="top" style="color: black;">Address:</h5>
+                            <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
+                            <p id="address" style="display:none; color: black;"><input name="address" class="inp" type="text" value="'.$row["Address"].'" disabled></p>
                             </div>
                             </div>
                             ';
@@ -168,7 +166,7 @@ if(!isset($_SESSION["AccountID"])){
         </div>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
             background: rgba(255, 255, 255, 0.6) !important;
             -webkit-backdrop-filter: blur(15px) !important;
@@ -227,7 +225,7 @@ if(!isset($_SESSION["AccountID"])){
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

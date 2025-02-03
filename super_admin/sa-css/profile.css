@@ -1,0 +1,309 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../../images/booking_system.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    overflow: hidden;
+    letter-spacing: 1px;
+}
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(60px);
+    border: 1px solid rgba(255,255,255,0.15);
+    align-items: center;
+    box-shadow: 5px 5px;
+}
+.logo{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 40px;
+    align-items: center;
+    text-align: center;
+}
+.navbar a {
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+}
+.navbar a:hover {
+    text-decoration: underline;
+}
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    height: 100%;
+} 
+.dashboard-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 5000px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    -webkit-box-shadow: 4px 4px 6px 2px #000000;
+    -moz-box-shadow: 4px 4px 6px 2px #000000;
+    box-shadow: 4px 4px 6px 2px #000000;
+}
+.dashboard {
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,0.15);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    overflow: auto;
+}
+.dashboard .head{
+    color: rgba(240, 240, 240, 0.877);
+    margin-bottom: 10px;
+}
+.dashboard .sub{
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    font-size: 20px;
+    align-items: center;
+}
+.dashboard .sub2{
+    color: white;
+    font-size: 20px;
+}
+.sidebar {
+    background-color: #659ba1;
+    width: 21%;
+    height: 100%;
+    padding: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.burger {
+    display: none;
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.burger ion-icon {
+    font-size: 30px;
+    color: #ffffff;
+}
+
+.sub2, .sub {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s;
+}
+.sub2:hover{
+    text-decoration: none;
+    transform: translateY(-5px);
+}
+.sub:hover{
+    text-decoration: none;
+    transform: translateY(-5px);
+}
+.d-item {
+    color: #ffffff;
+    text-decoration: none;
+    margin-left: 20px;
+    transition: transform 0.3s !important;
+}
+.d-item:hover{
+    text-decoration: none;
+    transform: translateY(-5px) !important;
+    color: rgb(0, 96, 16);
+}
+
+.group {
+    display: flex;
+    align-items: center;
+}
+
+.arrow-icon {
+    margin-left: auto;
+}
+@media (max-width: 768px) {
+    .sidebar {
+        width: 40%;
+        height: 100%;
+        transform: translateX(-100%);
+        z-index: 1000;
+    }
+    .dashboard-form{
+        margin-left: 10% !important;
+        width: 100% !important;
+    }
+    .burger {
+        display: block;
+        margin-bottom: 10px !important;
+        user-select: none;
+    }
+    .sidebar.active {
+        transform: translateX(0%);
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 100%;
+    }
+    .dashboard-form{
+        margin-left: 10% !important;
+        width: 100% !important;
+    }
+}
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.rotate-down {
+    transform: rotate(90deg);
+}
+.dashboard-form{
+    margin-left: 21%;
+    padding: 20px;
+    width: 80%;
+    height: calc(100vh - 50px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.dashboard-form h2{
+    margin-left: 10px;
+}
+.sub-dash{
+    margin-left: 10px;
+    color: rgb(75, 75, 75);
+}
+.dash-box h4{
+    display: flex;
+    justify-content: space-between;
+}
+.sidebar a.sub + br {
+    display: block;
+}
+.sidebar .sub.open + br {
+    display: none;
+    margin-bottom: -50% !important;
+}
+.prof-container{
+    padding: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    background-color: white;
+    text-align: center;
+}
+.prof-inp{
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 16px;
+    padding: 5px;
+    text-align: center;
+}
+.image-preview {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row-reverse; 
+}
+.image-preview img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.personal{
+    color: gray;
+    font-weight: 100;
+}
+
+.form-group {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+    gap: 20px;
+}
+.form-groupp {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-evenly;
+}
+.form-group label {
+    width: 15%;
+    text-align: left;
+}
+.image-container {
+    position: relative;
+    display: inline-block;
+    margin: 5px;
+}
+
+.image-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.permit-image {
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.permit-image:hover {
+    transform: translateY(-10px); 
+    color: #ccc;
+}
+
+.delete-permit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.8); /* Optional: Background color for icon */
+    padding: 5px;
+    border-radius: 50%; /* Optional: Makes the delete icon circular */
+    z-index: 1; /* Ensure it's above the image */
+}
+
+.delete-icon ion-icon {
+    color: red; /* Optional: Customize delete icon color */
+    font-size: 24px; /* Optional: Adjust delete icon size */
+}
+.toast-center {
+    top: 5% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+.toast{
+    font-size: 20px;
+    width: 100% !important;
+    opacity: 0.99 !important;
+}
+.btn-container{
+    text-align: right;
+}
+.group{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

@@ -27,213 +27,32 @@ if(isset($_SESSION['loggedIn'])){
     <meta name="google-site-verification" content="_0Gl3ztRf0zyoPTl38KrHXFSLs_PvHN11hS-e6sK7t4" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/index_page.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
-    <style>
-        .burger {
-            display: none;
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's above the dropdown */
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 80px; 
-            right: 10px; 
-            left: auto;
-            background: rgba(255, 255, 255, 0.9);
-            width: 200px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-            display: block;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .col-md-4 {
-            padding: 15px;
-            z-index: 5000;
-        }
-
-        .property-card {
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s;
-            display: flex;
-            flex-direction: column;
-            height: 300px;
-        }
-
-        .property-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .property-card a {
-            display: block;
-            width: 100%;
-            text-decoration:none;
-            color:inherit;
-        }
-
-        .image-card {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-        }
-
-        .txt, .txtt {
-            padding: 15px;
-        }
-        .txt{
-            min-height: 24%;
-        }
-        .txt p, .txtt p {
-            margin: 0 0 10px;
-            font-size: 16px;
-            color: #666666;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-
-        .txt p:hover, .txtt p:hover {
-            color: #0056b3;
-        }
-
-        .icon {
-            vertical-align: middle;
-            margin-right: 5px;
-            color: #007bff;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        table td {
-            padding: 10px;
-            border-top: 1px solid #dddddd;
-            text-align: center;
-            font-size: 14px;
-            color: #666666;
-        }
-
-        table td:nth-child(odd) {
-            background-color: #f9f9f9;
-        }
-
-        .current-booked {
-            border: 3px solid #4CAF50;
-            box-shadow: 0 4px 12px rgba(0, 128, 0, 0.4);
-            position: relative;
-        }
-
-        .booked-badge {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            background-color: #4CAF50;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            z-index: 1;
-        }
-
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .txt p, .txtt p, table td {
-                font-size: 14px;
-            }
-
-            table td {
-                padding: 8px;
-            }
-            .nav-links {
-                display: none;
-            }
-
-            .login-btn {
-                display: none;
-            }
-
-            .burger {
-                display: block;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .txt, .txtt {
-                padding: 10px;
-            }
-
-            .txt p, .txtt p, table td {
-                font-size: 12px;
-            }
-
-            table td {
-                padding: 6px;
-            }
-
-            .property-card {
-                margin-bottom: 20px;
-            }
-        }
-    </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="contact.php">Contact Us</a>
-        </div>
-    </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="login_page.php">Log in</a>
-    </div>
-    <div class="dropdown-menu">
+<div class="navbar">
+    <img src="images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="login_page.php">Log in</a>
+        <a href="contact.php">Contact us</a>
+        <a href="login_page.php" class="login-link">Log in</a>
     </div>
+</div>
+    </div>
+    <br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form">
-                    <h1 style="text-align: center; letter-spacing: 3px; font-weight: 600 !important;">RENT LIKE<span style="color: rgb(0 84 6);"> HOME</span></h1>
                     <form id="searchForm">
                         <div class="type">
                             <div class="row">
                                 <div class="select" style="display:none;">
                                    <select name="type" id="type" style="width: 100%; padding: 12.5px;">
-                                     
                                         <option value="dormitory">Dormitory</option>
                                     </select>
                                 </div>
@@ -262,17 +81,10 @@ if(isset($_SESSION['loggedIn'])){
         </div>
     </div>
 
-    <footer>
-        <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
-            background: rgba(255, 255, 255, 0.6) !important;
-            -webkit-backdrop-filter: blur(15px) !important;
-            backdrop-filter: blur(60px) !important;
-            border: 1px solid rgba(255,255,255,0.15) !important;
-            align-items: center ;
-            box-shadow: 5px 5px !important;
-            letter-spacing: 3px;">
-            <div class="container" style="text-align: center; font-size: 12px;">
-                <div class="row" style=" display: flex; align-items: center;">
+    <!-- <footer>
+    <div class="footer-container">
+        <div class="container">
+            <div class="row">
                     <?php
                     require_once("config/connect.php");
                     $sql = "SELECT * FROM info";
@@ -292,15 +104,15 @@ if(isset($_SESSION['loggedIn'])){
                         ';
                     }else{
                         echo '
-                        <div class="col-md-4" style="padding: 10px;">
-                        <div><ion-icon name="mail"></ion-icon> rentit@gmail.com</div>
-                        </div>
-                        <div class="col-md-4" style="padding: 10px;">
-                        <div><ion-icon name="logo-facebook"></ion-icon> Rent IT</div>
-                        </div>
-                        <div class="col-md-4" style="padding: 10px;">
-                        <div><ion-icon name="call"></ion-icon> +63 992 2762 412</div>
-                        </div>
+                            <div class="col-md-4">
+                                <div><ion-icon name="mail"></ion-icon> rentit@gmail.com</div>
+                            </div>
+                            <div class="col-md-4">
+                                <div><ion-icon name="logo-facebook"></ion-icon> <a href="https://facebook.com/rentit" target="_blank">Rent IT</a></div>
+                            </div>
+                            <div class="col-md-4">
+                                <div><ion-icon name="call"></ion-icon> +63 992 2762 412</div>
+                            </div>
                         ';
                     }
                     
@@ -316,12 +128,12 @@ if(isset($_SESSION['loggedIn'])){
 
                 <div class="row">
                     <div class="col-md-12 text-center">
-                        <p class="text-muted" style="margin-top: 10px; font-size: 10px;">Rent IT | est. 2024</p>
+                        <p class="text-muted">Rent IT | est. 2024</p>
                     </div>
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -375,37 +187,6 @@ if(isset($_SESSION['loggedIn'])){
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         
     <script>
-        function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
-        }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
-        let map;
-        let userMarker;
-        let inputLocationMarker;
-        let propertyMarker;
-        let currentLocation;
-        let routingControl;
-
         // Function to initialize Leaflet map
         function initializeMap() {
             map = L.map('map').setView([0, 0], 13);

@@ -7,88 +7,26 @@
     <title>Rent IT - About</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/aboutS.css">
     <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <style>
-        .burger {
-            display: none;
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's above the dropdown */
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 80px; 
-            right: 10px; 
-            left: auto;
-            background: rgba(255, 255, 255, 0.9);
-            width: 200px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-            display: block;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .login-btn {
-                display: none;
-            }
-
-            .burger {
-                display: block;
-            }
-        }
-    </style>
+    <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="contact.php">Contact Us</a>
-        </div>
-    </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="login_page.php">Log in</a>
-    </div>
-    <div class="dropdown-menu">
+<div class="navbar">
+    <img src="images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="login_page.php">Log in</a>
+        <a href="contact.php">Contact us</a>
+        <a href="login_page.php" class="login-link">Log in</a>
     </div>
+</div><br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form">
-                <h2>About Us</h2>
+                <h2>About us</h2>
                     <div class="row" style="margin: 0 !important;">
                         <div class="col-md-4 about-cont text-center">
                             <div class="about">
@@ -131,7 +69,7 @@
         </div>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
             background: rgba(255, 255, 255, 0.6) !important;
             -webkit-backdrop-filter: blur(15px) !important;
@@ -190,7 +128,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

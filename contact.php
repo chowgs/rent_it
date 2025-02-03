@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="css/contact.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
-    <style>
+    <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
+    <!-- <style>
         .burger {
             display: none;
             position: absolute;
@@ -62,28 +63,18 @@
                 display: block;
             }
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
-            <a href="index.php">Home</a>
-            <a href="about.php">About</a>
-            <a href="contact.php">Contact Us</a>
-        </div>
-    </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="login_page.php">Log in</a>
-    </div>
-    <div class="dropdown-menu">
+<div class="navbar">
+    <img src="images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
         <a href="index.php">Home</a>
         <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="login_page.php">Log in</a>
+        <a href="contact.php">Contact us</a>
+        <a href="login_page.php" class="login-link">Log in</a>
     </div>
+</div><br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -102,25 +93,25 @@
                             <div class="col-md-4">
                             <div class="cont">
                             <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
-                            <h3 class="top">Rent IT</h3>
-                            <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
+                            <h3 class="top" style="color: black;">Rent IT</h3>
+                            <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
                           
                             </div>
                             </div>
                             <div class="col-md-4">
                             <div class="cont">
                             <ion-icon name="call" class="call"></ion-icon><br>
-                            <h5 class="top">Cellphone Number:</h5>
-                            <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'.$row["ContNum"].'</p>
+                            <h5 class="top" style="color: black;">Cellphone Number:</h5>
+                            <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">'.$row["ContNum"].'</p>
                             
                             </div>
                             </div>
                             <div class="col-md-4">
                             <div class="cont">
                             <ion-icon name="business" class="add"></ion-icon><br>
-                            <h5 class="top">Address:</h5>
-                            <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
-                            <p id="address" style="display:none;"><input name="address" class="inp" type="text" value="'.$row["Address"].'" disabled></p>
+                            <h5 class="top" style="color: black;">Address:</h5>
+                            <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
+                            <p id="address" style="display:none; color: black;"><input name="address" class="inp" type="text" value="'.$row["Address"].'" disabled></p>
                             </div>
                             </div>
                             ';
@@ -156,7 +147,7 @@
         </div>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
             background: rgba(255, 255, 255, 0.6) !important;
             -webkit-backdrop-filter: blur(15px) !important;
@@ -215,7 +206,7 @@
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -229,31 +220,5 @@
     <!-- Ionicons JS -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-    <script>
-        function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
-        }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
-    </script>
 </body>
 </html>

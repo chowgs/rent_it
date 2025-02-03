@@ -416,7 +416,11 @@ if(!isset($_SESSION["AccountID"])){
                                 $result = $stmt->get_result();
                                 $row = $result->fetch_assoc();
                                 $stmt->close();
-                                return $row['FullName'];
+                                if ($row && isset($row['FullName'])) {
+                                    return $row['FullName'];
+                                } else {
+                                    return null; 
+                                }
                             }
 
                             // Function to get receiver's full name based on AccountID and account type

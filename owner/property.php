@@ -18,7 +18,7 @@ if(!isset($_SESSION["AccountID"])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
-    <link rel="stylesheet" href="css/property.css">
+    <link rel="stylesheet" href="owner-css/property.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
         .burger-drop {

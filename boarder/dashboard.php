@@ -16,7 +16,7 @@ if(!isset($_SESSION["AccountID"])){
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Dashboard</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/dashboard_admin.css">
+    <link rel="stylesheet" href="boarder-css/dashboard.css">
     <link rel="stylesheet" href="../css/modal.css">
 <style>
 .burger-drop {

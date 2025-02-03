@@ -16,7 +16,8 @@ if (!isset($_SESSION["AccountID"])) {
     <title>Rent IT - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/landing_page.css">
+    <link rel="stylesheet" href="owner-css/lo.css">
+    <link rel="stylesheet" href="owner-css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -192,17 +193,14 @@ if (!isset($_SESSION["AccountID"])) {
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
+        <img src="../images/logo.png" alt="Rent It" class="logo">
         <div class="nav-links">
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
-        </div>
-    </div>
         <button class="burger-drop" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+        <a class="login-link" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+        </div>
     </div>
     <div class="dropdown-menu">
         <a href="dashboard.php">Dashboard</a>
@@ -210,6 +208,7 @@ if (!isset($_SESSION["AccountID"])) {
         <a href="contact.php">Contact Us</a>
         <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
+        <br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -250,7 +249,7 @@ if (!isset($_SESSION["AccountID"])) {
         </div>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
             background: rgba(255, 255, 255, 0.6) !important;
             -webkit-backdrop-filter: blur(15px) !important;
@@ -309,7 +308,7 @@ if (!isset($_SESSION["AccountID"])) {
                 </div>
             </div>
         </div>
-    </footer> 
+    </footer>  -->
 
     <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">

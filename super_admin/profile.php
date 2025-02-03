@@ -16,7 +16,7 @@ if(!isset($_SESSION["AccountID"])){
     <title>Rent IT - Profile</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="sa-css/profile.css">
     <link rel="stylesheet" href="css/modal.css">
     <style>
         .burger-drop {

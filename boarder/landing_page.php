@@ -17,11 +17,12 @@ if(!isset($_SESSION["AccountID"])){
     <title>Rent IT - Home</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/landing_page.css">
+    <link rel="stylesheet" href="boarder-css/landing_boarder.css">
+    <link rel="stylesheet" href="boarder-css/header.css">
     <link rel="stylesheet" href="css/modal.css">
-    <link rel="stylesheet" href="css/scrollbar.css">
+    <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
 <style>
-.burger-drop {
+    .burger-drop {
             display: none;
             position: absolute;
             top: 10px; /* Adjust as needed */
@@ -195,29 +196,27 @@ if(!isset($_SESSION["AccountID"])){
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
+        <img src="../images/logo.png" alt="Rent It" class="logo">
         <div class="nav-links">
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
+        <button class="burger-drop" onclick="toggleMenu()">☰</button>
+        <a class="login-link" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
         </div>
     </div>
-        <button class="burger-drop" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
-    </div>
+
     <div class="dropdown-menu">
         <a href="dashboard.php">Dashboard</a>
         <a href="about.php">About</a>
         <a href="contact.php">Contact Us</a>
         <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
+    <br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form">
-                <h1 style="text-align: center; letter-spacing: 3px; font-weight: 600 !important;">RENT LIKE<span style="color: rgb(0 84 6);"> HOME</span></h1>
                     <form id="searchForm">
                         <div class="type">
                             <div class="row">
@@ -251,7 +250,7 @@ if(!isset($_SESSION["AccountID"])){
         </div>
     </div>
 
-    <footer>
+    <!-- <footer>
         <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
             background: rgba(255, 255, 255, 0.6) !important;
             -webkit-backdrop-filter: blur(15px) !important;
@@ -310,7 +309,7 @@ if(!isset($_SESSION["AccountID"])){
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -633,7 +632,7 @@ if(!isset($_SESSION["AccountID"])){
 
         $(document).ready(function() {
             let currentPage = 1;
-            const itemsPerPage = 3; // Number of properties per page
+            const itemsPerPage = 6; // Number of properties per page
 
             function loadProperties(page = 1) {
                 const formData = $('#searchForm').serialize() + `&page=${page}&itemsPerPage=${itemsPerPage}`;

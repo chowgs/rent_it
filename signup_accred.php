@@ -14,145 +14,84 @@ require_once("config/connect.php");
     <title>Rent IT - Signup (Owner)</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="css/signup_owner.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/signup_accred.css">
     <link rel="stylesheet" href="css/modal.css">
-        <style>
-        .password-container {
-            position: relative;
-        }
-        .password-container input[type="password"],
-        .password-container input[type="text"] {
-           
-            padding-right: 30px; /* Adjust based on your icon size */
-        }
-        .password-container .toggle-password {
-            position: absolute;
-            right: 10px;
-            top: 60%;
-            transform: translateY(-50%);
-            cursor: pointer;
-            font-size: 20px;
-        }
-        .burger {
-            display: none;
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's above the dropdown */
-        }
 
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 80px; 
-            right: 10px; 
-            left: auto;
-            background: rgba(255, 255, 255, 0.9);
-            width: 200px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-            display: block;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .login-btn {
-                display: none;
-            }
-
-            .burger {
-                display: block;
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
+        <img src="images/logo.png" alt="Rent It" class="logo">
         <div class="nav-links">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
-            <a href="contact.php">Contact Us</a>
+            <a href="contact.php">Contact us</a>
+            <a href="login_page.php" class="login-link">Log in</a>
         </div>
-    </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="login_page.php">Log in</a>
-    </div>
-    <div class="dropdown-menu">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="login_page.php">Log in</a>
-    </div>
+    </div><br><br><br><br>
     <div class="signup-container">
         <div class="signup-box">
             <div class="signup-form">
                 <form action="process/accreditation.php" method="post" enctype="multipart/form-data" autocomplete="off">
-                    <h3>Sign up as Owner</h3>
-                    <h5 class="personal">Personal Details</h5>
+                    <h3>Sign up as Owner</h3>                    
+                    <!-- Row 1 -->
                     <div class="row">
-                        <div class="col-md-2">
-                            <label for="fullname">First Name</label><br>
-                            <input class="form-control" type="text" name="name_owner" placeholder="Enter first name" required>
+                        <div class="col-md-6">
+                            <input class="form-control" type="text" name="name_owner" placeholder="First Name" required>
                         </div>
-                        <div class="col-md-2">
-                            <label for="Lastn_owner">Last Name</label><br>
-                            <input class="form-control" type="text" name="Lastn_owner" placeholder="Enter last name" required>
-                        </div>
-                        <div class="col-md-1">
-                            <label for="username">Username</label><br>
-                            <input class="form-control" type="text" name="user_owner" placeholder="Enter username" required>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="fullname">Password</label><br>
-                            <div class="password-container">
-                                <input class="form-control" type="password" id="password" name="pass_owner" placeholder="Enter your password" required>
-                                <span class="toggle-password" onclick="togglePasswordVisibility()"><ion-icon name="eye-outline"></ion-icon></span>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <label for="ContactNumber">Contact Number</label><br>
-                            <input class="form-control" type="text" name="cont_owner" placeholder="Enter your contact number" required>
-                        </div>
-                        <div class="col-md-3">
-                            <label for="fblink">Facebook Link</label><br>
-                            <input class="form-control" type="text" name="fblink" placeholder="Enter your FB Link" required>
+                        <div class="col-md-6">
+                            <!-- <label for="Lastn_owner">Last Name</label> -->
+                            <input class="form-control" type="text" name="Lastn_owner" placeholder="Last Name" required>
                         </div>
                     </div>
+
+                    <!-- Row 2 -->
                     <div class="row">
-                        <div class="col-md-4">
-                            <label for="Department">Address</label><br>
-                            <input class="form-control" type="text" name="add_owner" placeholder="Enter your address" required>
+                        <div class="col-md-6">
+                            <!-- <label for="username">Username</label> -->
+                            <input class="form-control" type="text" name="user_owner" placeholder="Username" required>
                         </div>
-                        <div class="col-md-2">
-                            <label for="Email">Email</label><br>
-                            <input class="form-control" type="text" name="email_owner" placeholder="Enter your email">
+                        <div class="col-md-6">
+                            <!-- <label for="fullname">Password</label> -->
+                            <div class="password-container">
+                                <input class="form-control" type="password" id="password" name="pass_owner" placeholder="Password" required>
+                                <span class="toggle-password" onclick="togglePasswordVisibility()">
+                                    <ion-icon name="eye-outline"></ion-icon>
+                                </span>
+                            </div>
                         </div>
-                        <div class="col-md-4">
-                            <label for="question">Security Question:</label>
+                    </div>
+
+                    <!-- Row 3 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <label for="ContactNumber">Contact Number</label> -->
+                            <input class="form-control" type="text" name="cont_owner" placeholder="Contact No." required>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <label for="fblink">Facebook Link</label> -->
+                            <input class="form-control" type="text" name="fblink" placeholder="Facebook Link" required>
+                        </div>
+                    </div>
+
+                    <!-- Row 4 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <label for="Department">Address</label> -->
+                            <input class="form-control" type="text" name="add_owner" placeholder="Address" required>
+                        </div>
+                        <div class="col-md-6">
+                            <!-- <label for="Email">Email</label> -->
+                            <input class="form-control" type="text" name="email_owner" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <!-- Row 5 -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- <label for="question">Security Question:</label> -->
                             <select class="form-control" style="font-size: 14px;" name="question" id="question">
+                                <option value="" disabled selected>Select a security question:</option>
                                 <option value="What is the name of your first pet?">What is the name of your first pet?</option>
                                 <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
                                 <option value="What was the name of your elementary school?">What was the name of your elementary school?</option>
@@ -165,116 +104,94 @@ require_once("config/connect.php");
                                 <option value="What is the name of the hospital where you were born?">What is the name of the hospital where you were born?</option>
                             </select>
                         </div>
-                        <div class="col-md-2">
-                            <label for="recovery">Answer:</label>
-                            <input class="form-control" type="text" name="answer" id="answer" placeholder="Enter your answer">
+                        <div class="col-md-6">
+                            <!-- <label for="recovery">Answer:</label> -->
+                            <input class="form-control" type="text" name="answer" id="answer" placeholder="Answer">
                         </div>
                     </div>
+
+                    <!-- Checkbox for with landlord -->
                     <div class="row">
                         <div class="col-md-12">
                             <input id="withLandlord" value="with_landlord" style="width: 20px !important; margin-top: -20px !important; margin-right: 10px; margin-left: 10px;" type="checkbox">with Landlord
                         </div>
                     </div>
+
+                    <!-- Landlord Details -->
                     <div id="landlord-details" class="row" style="display: none;">
                         <div class="col-md-4">
-                            <label for="fullname">Full Name</label><br>
+                            <label for="fullname">Full Name</label>
                             <input class="form-control" type="text" name="name_land" placeholder="Enter your name" autocomplete="off">
                         </div>
                         <div class="col-md-4">
-                            <label for="Email">Email</label><br>
+                            <label for="Email">Email</label>
                             <input class="form-control" type="text" name="email_land" placeholder="Enter your email" autocomplete="off">
                         </div>
                         <div class="col-md-4">
-                            <label for="ContactNumber">Contact Number</label><br>
+                            <label for="ContactNumber">Contact Number</label>
                             <input class="form-control" type="text" name="cont_land" placeholder="Enter your contact number" autocomplete="off">
                         </div>
                     </div>
+
                     <div class="container">
-                   
                         <p class="personal" style="font-size: 14px;">Please upload the following documents for accreditation:</p>
-                        
-                        <table class="table-form">
-                            <tr>
-                                <td><label for="application-letter">1. Application Letter:</label></td>
-                                <td>
-                                    <input type="file" name="application_letter" id="application-letter" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="application-letter-preview"></div>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td><label for="owner-photo">2. 2x2 Photo of Owner:</label></td>
-                                <td>
-                                    <input type="file" name="owner_photo" id="owner-photo" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="owner-photo-preview"></div>
-                                </td>
-                            </tr>
-                            
-                            <tr>
-                                <td><label for="business-permit">3. Business Permit:</label></td>
-                                <td>
-                                    <input type="file" name="business_permit" id="business-permit" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="business-permit-preview"></div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="tax-certificate">4. Tax Certificate:</label></td>
-                                <td>
-                                    <input type="file" name="tax_certificate" id="tax-certificate" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="tax-certificate-preview"></div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="dti-certificate">5. DTI Certificate:</label></td>
-                                <td>
+                        <div class="file-upload-grid">
+                            <div class="file-upload-item">
+                                <label for="application-letter">1. Application Letter:</label>
+                                <input type="file" name="application_letter" id="application-letter" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="application-letter-preview"></div>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="owner-photo">2. 2x2 Photo of Owner:</label>
+                                <input type="file" name="owner_photo" id="owner-photo" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="owner-photo-preview"></div>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="business-permit">3. Business Permit:</label>
+                                <input type="file" name="business_permit" id="business-permit" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="business-permit-preview"></div>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="tax-certificate">4. Tax Certificate:</label>
+                                <input type="file" name="tax_certificate" id="tax-certificate" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="tax-certificate-preview"></div>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="dti-certificate">5. DTI Certificate:</label>
                                 <input type="file" name="dti_certificate" id="dti-certificate" accept="image/*, .pdf" onchange="validateFile(this)" required>
                                 <div id="dti-certificate-preview"></div>
-                                </td>
-                            </tr>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="clearance">6. Clearance:</label>
+                                <input type="file" name="clearance" id="clearance" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="clearance-preview"></div>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="bir-certificate">7. BIR Certificate:</label>
+                                <input type="file" name="bir_certificate" id="bir-certificate" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="bir-certificate-preview"></div>
+                            </div>
+                            <div class="file-upload-item">
+                                <label for="medical-certificate">8. Medical Certificate:</label>
+                                <input type="file" name="medical_certificate" id="medical-certificate" accept="image/*, .pdf" onchange="validateFile(this)" required>
+                                <div id="medical-certificate-preview"></div>
+                            </div>
+                        </div>
+                    </div>
 
-                            <tr>
-                                <td><label for="clearance">6. Clearance:</label></td>
-                                <td>
-                                    <input type="file" name="clearance" id="clearance" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="clearance-preview"></div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="bir-certificate">7. BIR Certificate:</label></td>
-                                <td>
-                                    <input type="file" name="bir_certificate" id="bir-certificate" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="bir-certificate-preview"></div>
-                                </td>
-                            </tr>
-
-                            <tr>
-                                <td><label for="medical-certificate">8. Medical Certificate:</label></td>
-                                <td>
-                                    <input type="file" name="medical_certificate" id="medical-certificate" accept="image/*, .pdf," onchange="validateFile(this)" required>
-                                    <div id="medical-certificate-preview"></div>
-                                </td>
-                            </tr>
-                        </table>
-
-                
                     
-                </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-primary">Sign up</button>
+                        <button type="submit" class="btn">Sign up</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div> 
+    </div>
 
+        
     <script>
-
         function validateFile(input) {
             var file = input.files[0];
-
             if (file) {
                 var allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'pdf'];
                 var fileExtension = file.name.split('.').pop().toLowerCase();
@@ -286,7 +203,6 @@ require_once("config/connect.php");
                 }
             }
         }
-
         function togglePasswordVisibility() {
             const passwordField = document.getElementById('password');
             const passwordFieldType = passwordField.getAttribute('type');
@@ -328,7 +244,6 @@ require_once("config/connect.php");
             var landlordDetails = document.getElementById('landlord-details');
             landlordDetails.style.display = this.checked ? 'flex' : 'none';
         });
-
         function previewFile(previewId, input) {
         var preview = document.getElementById(previewId);
         preview.innerHTML = ''; // Clear previous previews

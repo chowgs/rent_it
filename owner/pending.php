@@ -15,7 +15,7 @@ if(!isset($_SESSION["AccountID"])){
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Pending Reservations</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/pending.css">
+    <link rel="stylesheet" href="owner-css/pending.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
 
