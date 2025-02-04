@@ -115,11 +115,11 @@ if(!isset($_SESSION["AccountID"])){
                             $aboutText = $row['About'] ?? '';
                             if (!empty($aboutText)) {
                                 echo "
-                                <div class='col-md-8 us'>
-                              
-                                <p id='about-link'>".nl2br(htmlspecialchars($aboutText))."</p>
-                                </div>
-                                ";
+    <div class='col-md-8 us' style='background-color:rgb(190, 190, 186); padding: 25px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);'>
+        <p id='about-link' style='color: #333333; font-size: 16px; line-height: 1.6;'>".nl2br(htmlspecialchars($aboutText))."</p>
+    </div>
+";
+
                             }else{
                                 echo "
                                 <div class='col-md-8 us'>
