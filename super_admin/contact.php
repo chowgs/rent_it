@@ -207,21 +207,21 @@ if ($result->num_rows > 0) {
     <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
     <div class="row">
         <div class="col-md-4">
-            <div class="cont">
+            <div class="cont" style="background-color:rgb(219, 219, 211);">
                 <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
                 <h3 class="top">Rent IT</h3>
                 <a href=""><input id="p" name="p" class="inp" type="text" value="" disabled></a>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="cont">
+            <div class="cont" style="background-color:rgb(219, 219, 211);">
                 <ion-icon name="call" class="call"></ion-icon><br>
                 <h5 class="top">Cellphone Number:</h5>
                 <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
             </div>
         </div>
         <div class="col-md-4">
-            <div class="cont">
+            <div class="cont" style="background-color:rgb(219, 219, 211);">
                 <ion-icon name="business" class="add"></ion-icon><br>
                 <h5 class="top">Address:</h5>
                 <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
