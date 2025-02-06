@@ -1,6 +1,9 @@
 <?php
 require_once("../config/connect.php");
 
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $type = $_POST['type'];
     $location = $_POST['location'];
@@ -10,14 +13,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Query to fetch properties along with the owner's name and checking the owner's status
     $query = "SELECT property.*, owner.FullName AS name 
-              FROM property 
-              JOIN owner ON property.OwnerID = owner.OwnerID 
-              JOIN account ON owner.AccountID = account.AccountID 
-              WHERE account.Status = '1' AND Location LIKE ? AND (Type = ? OR ? = '') 
-              LIMIT ?, ?";
+            FROM property 
+            JOIN owner ON property.OwnerID = owner.OwnerID 
+            JOIN account ON owner.AccountID = account.AccountID 
+            WHERE account.Status COLLATE utf8mb4_unicode_ci = '1' 
+            AND Location COLLATE utf8mb4_unicode_ci LIKE ? 
+            AND (Type COLLATE utf8mb4_unicode_ci = ? OR ? = '') 
+            LIMIT ?, ?";
+
     $stmt = $conn->prepare($query);
     $searchLocation = "%$location%";
-    $stmt->bind_param("sssss", $searchLocation, $type, $type, $offset, $itemsPerPage);
+    $stmt->bind_param("ssssi", $searchLocation, $type, $type, $offset, $itemsPerPage);  // Correct bind_param type
+
     $stmt->execute();
     $result = $stmt->get_result();
     $properties = $result->fetch_all(MYSQLI_ASSOC);
@@ -64,30 +71,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo '<div class="col-md-4">';
             echo '<div class="property-card">';
+            echo '<img src="gallery/NnksQyuy/669a4f848e508_booking_system.jpg">';
             echo '<a href="property_detail.php?id=' . htmlspecialchars($property['PropertyID']) . '">';
             // echo '<img class="image-card" src="' . htmlspecialchars($firstImageUrl) . '" alt="Property Image" style="width:100%; height: 220px;">';
             
             echo '<div class="txt">';
             echo '<p onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
             echo '</div>';
-            echo '<table>';
-            echo '<tbody>';
-            echo '<tr>';
-            echo '<td>'.$property['Total_Room'].'</td>';
-            echo '<td>'.$bed.'</td>';
-            echo '<td>'.$kitchen.'</td>';
-            echo '<td>'.$liv.'</td>';
-            echo '<td>'.$cr.'</td>';
-            echo '</tr>';
-            echo '<tr>';
-            echo '<td>Rooms</td>';
-            echo '<td>Beds</td>';
-            echo '<td>Kitchen</td>';
-            echo '<td>Living Room</td>';
-            echo '<td>Rest Room</td>';
-            echo '</tr>';
-            echo '</tbody>';
-            echo '</table>';
+            // echo '<table>';
+            // echo '<tbody>';
+            // echo '<tr>';
+            // echo '<td>'.$property['Total_Room'].'</td>';
+            // echo '<td>'.$bed.'</td>';
+            // echo '<td>'.$kitchen.'</td>';
+            // echo '<td>'.$liv.'</td>';
+            // echo '<td>'.$cr.'</td>';
+            // echo '</tr>';
+            // echo '<tr>';
+            // echo '<td>Rooms</td>';
+            // echo '<td>Beds</td>';
+            // echo '<td>Kitchen</td>';
+            // echo '<td>Living Room</td>';
+            // echo '<td>Rest Room</td>';
+            // echo '</tr>';
+            // echo '</tbody>';
+            // echo '</table>';
             echo '<div class="txtt">';
             echo '<p>Owner: ' . htmlspecialchars($property['name']) . '</p>';
             echo '</a>';

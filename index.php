@@ -53,27 +53,36 @@ if(isset($_SESSION['loggedIn'])){
     </div>
 </div>
     <img src="images/booking_system.jpg" alt="" class="background-image">
+    <div class="search">
+        <h3>Find your next home that suits you</h3>
+        <p>Easy to use. Convenient. All in one place.</p>
+        <form id="searchForm">
+        <div class="type">
+            <div class="row">
+                <div class="select" style="display:none;">
+                    <select name="type" id="type" style="width: 100%; padding: 12.5px;">
+                        <option value="dormitory">Dormitory</option>
+                    </select>
+                </div>
+                <div class="col-md-10 inp mb-2">
+                    <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn-search btn btn-success" style="">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    </div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
+                <div class="title">
+                    <h1>Explore our neigborhoods</h1>
+                    <p>Browse our list of boarding house and rooms for rent from these locations:</p>
+                </div>
                 <div class="dashboard-form">
-                    <form id="searchForm">
-                        <div class="type">
-                            <div class="row">
-                                <div class="select" style="display:none;">
-                                   <select name="type" id="type" style="width: 100%; padding: 12.5px;">
-                                        <option value="dormitory">Dormitory</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-10 inp mb-2">
-                                    <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-success" style="border-radius: 10px; width: 100%; min-width: 50px; padding: 10px;">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    
                     <div class="properties-container">
                         <div class="row" id="propertiesContainer">
                             <!-- Properties will be displayed here -->

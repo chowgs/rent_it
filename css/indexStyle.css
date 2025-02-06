@@ -1,9 +1,36 @@
+.search {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.search h3,
+.search p {
+  text-align: center;
+}
+
 .dashboard-container {
+  margin-top: 50px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: calc(100vh - 140px);
   width: 100%;
+}
+
+.col-md-4 {
+  padding: 0 15px 15px 15px !important;
+}
+
+.title {
+  width: 80%;
+  padding-left: 15px;
+}
+
+.title h1 {
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .dashboard-box {
@@ -17,27 +44,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 20px;
-  padding-right: 20px;
+}
+
+.dashboard h3 {
+  align-self: start;
 }
 
 .dashboard-form {
-  width: 90%;
-  max-height: calc(100vh - 160px);
+  padding: 0 20px;
+  width: 80%;
+  height: 400px;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .pagination-container {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 100%;
-  transform: translateY(-50%);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 15px;
   display: none;
 }
 
@@ -84,11 +105,16 @@
   transition: transform 0.3s;
   display: flex;
   flex-direction: column;
-  height: 300px;
+  height: 100%;
+}
+
+.property-card img {
+  cursor: pointer;
+  width: 100%;
+  height: 200px;
 }
 
 .property-card:hover {
-  transform: translateY(-10px);
 }
 
 .property-card a {

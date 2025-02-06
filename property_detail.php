@@ -78,6 +78,10 @@ require_once("config/connect.php");
             width: 100% !important;
         }
 
+        .img-cont {
+            object-fit: cover;
+        }
+
         .image-cardd {
             width: 100%;
             border-bottom: 1px solid #dddddd;
