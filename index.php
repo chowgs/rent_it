@@ -21,6 +21,12 @@ if(isset($_SESSION['loggedIn'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <title>Rent IT - Home</title>
+
+    <?php
+        // Custom font from google
+        include("css/fonts.html");
+    ?>
+
     <meta name="description" content="Find and rent the best properties with Rent IT. Explore our listings and discover your next home or rental property today.">
     <meta name="keywords" content="rent, rentit, rent it, property, home, rental, Rent IT, apartments, houses, property listings, real estate">
     <meta http-equiv="content-language" content="en-gb">
@@ -36,14 +42,17 @@ if(isset($_SESSION['loggedIn'])){
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact us</a>
-        <a href="login_page.php" class="login-link">Log in</a>
+        <div class="">
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact us</a>
+        </div>
+        <div>
+            <a href="login_page.php" class="login-link">Log in</a>
+        </div>
     </div>
 </div>
-    </div>
-    <br><br><br><br><br>
+    <img src="images/booking_system.jpg" alt="" class="background-image">
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -56,7 +65,7 @@ if(isset($_SESSION['loggedIn'])){
                                         <option value="dormitory">Dormitory</option>
                                     </select>
                                 </div>
-                                <div class="col-md-10 inp">
+                                <div class="col-md-10 inp mb-2">
                                     <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
                                 </div>
                                 <div class="col-md-2">
