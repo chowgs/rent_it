@@ -105,9 +105,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $verification_token = generateToken(); // Generate a verification token
 
     // Insert into accounts table
-    $stmt_account = $conn->prepare("INSERT INTO account (AccountID, UName, PWord, AccType, Status, Approval, SQuestion, Answer, Email, VerificationToken) 
-                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt_account->bind_param("ssssssssss", $accountID, $uname, $hashed_password, $accType, $status, $approval, $question, $answer, $email, $verification_token);
+    $stmt_account = $conn->prepare("INSERT INTO account (AccountID, UName, PWord, AccType, Status, Approval, SQuestion, Answer) 
+                                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt_account->bind_param("ssssssss", $accountID, $uname, $hashed_password, $accType, $status, $approval, $question, $answer);
 
     if ($stmt_account->execute()) {
         // Insert into boarder table

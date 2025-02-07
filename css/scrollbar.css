@@ -1,56 +1,20 @@
-body::-webkit-scrollbar {
-  width: 12px; 
-}
-
-/* Handle on hover */
-body::-webkit-scrollbar-thumb:hover {
-  background: lightgray; 
-}
-
-/* Handle */
-body::-webkit-scrollbar-thumb {
-  background: #f6f6f9; 
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
 }
 
 /* Track */
-body::-webkit-scrollbar-track {
-  background: #f6f6f9; 
-}
-.dashboard-form::-webkit-scrollbar {
-  width: 12px; 
-}
-
-/* Handle on hover */
-.dashboard-form::-webkit-scrollbar-thumb:hover {
-  background: lightgray; 
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
 }
 
 /* Handle */
-.dashboard-form::-webkit-scrollbar-thumb {
-  background: #f6f6f9; 
-}
-
-/* Track */
-.dashboard-form::-webkit-scrollbar-track {
-  background: #f6f6f9; 
-}
-
-
-.img-cont::-webkit-scrollbar {
-  width: 12px; 
+::-webkit-scrollbar-thumb {
+  background: rgb(101, 209, 80);
+  border-radius: 10px;
 }
 
 /* Handle on hover */
-.img-cont::-webkit-scrollbar-thumb:hover {
-  background: lightgray; 
-}
-
-/* Handle */
-.img-cont::-webkit-scrollbar-thumb {
-  background: #006023; 
-}
-
-/* Track */
-.img-cont::-webkit-scrollbar-track {
-  background: #f6f6f9; 
+::-webkit-scrollbar-thumb:hover {
+  background: #05ee24;
 }

@@ -21,6 +21,12 @@ if(isset($_SESSION['loggedIn'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <title>Rent IT - Home</title>
+
+    <?php
+        // Custom font from google
+        include("css/fonts.html");
+    ?>
+
     <meta name="description" content="Find and rent the best properties with Rent IT. Explore our listings and discover your next home or rental property today.">
     <meta name="keywords" content="rent, rentit, rent it, property, home, rental, Rent IT, apartments, houses, property listings, real estate">
     <meta http-equiv="content-language" content="en-gb">
@@ -36,18 +42,47 @@ if(isset($_SESSION['loggedIn'])){
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact us</a>
-        <a href="login_page.php" class="login-link">Log in</a>
+        <div class="">
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact us</a>
+        </div>
+        <div>
+            <a href="login_page.php" class="login-link">Log in</a>
+        </div>
     </div>
 </div>
+    <img src="images/booking_system.jpg" alt="" class="background-image">
+    <div class="search">
+        <h3>Find your next home that suits you</h3>
+        <p>Easy to use. Convenient. All in one place.</p>
+        <form id="searchForm">
+        <div class="type">
+            <div class="row">
+                <div class="select" style="display:none;">
+                    <select name="type" id="type" style="width: 100%; padding: 12.5px;">
+                        <option value="dormitory">Dormitory</option>
+                    </select>
+                </div>
+                <div class="col-md-10 inp mb-2">
+                    <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn-search btn btn-success" style="">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
     </div>
-    <br><br><br><br><br>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
+                <div class="title">
+                    <h1>Explore our neigborhoods</h1>
+                    <p>Browse our list of boarding house and rooms for rent from these locations:</p>
+                </div>
                 <div class="dashboard-form">
+<<<<<<< HEAD
                 <h1 style="text-align: center; letter-spacing: 3px; font-weight: 600 !important;">RENT LIKE<span style="color: rgb(0 84 6);"> HOME</span></h1>
                     <form id="searchForm">
                         <div class="type">
@@ -66,6 +101,9 @@ if(isset($_SESSION['loggedIn'])){
                             </div>
                         </div>
                     </form>
+=======
+                    
+>>>>>>> 139a3c18861fd7260f324027292ae3fee0dba69f
                     <div class="properties-container">
                         <div class="row" id="propertiesContainer">
                             <!-- Properties will be displayed here -->
