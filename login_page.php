@@ -22,6 +22,12 @@ if(isset($_SESSION['loggedIn'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <title>Rent It</title>
+
+    <?php
+        // Custom font from google
+        include("css/fonts.html");
+    ?>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="login_css/login.css">

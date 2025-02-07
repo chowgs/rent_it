@@ -96,8 +96,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // echo '</tr>';
             // echo '</tbody>';
             // echo '</table>';
-            echo '<div class="txtt">';
-            echo '<p>Owner: ' . htmlspecialchars($property['name']) . '</p>';
+            // echo '<div class="txtt">';
+            // echo '<p>Owner: ' . htmlspecialchars($property['name']) . '</p>';
             echo '</a>';
             echo '</div>';
             echo '</div>';
