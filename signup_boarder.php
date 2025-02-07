@@ -113,9 +113,18 @@ require_once("config/connect.php");
                     <h3>Sign up as Boarder</h3>
                     <h5 class="personal">Personal Details</h5>
                     <div class="row">
-                        <div class="col-md-4">
-                            <label for="fullname">Full Name</label><br>
-                            <input class="form-control" type="text" name="name" placeholder="Enter your name" required>
+                        <div class="col-md-2">
+                            <label for="fullname">First Name</label><br>
+                            <input class="form-control" type="text" name="name" placeholder="Enter your First name" required>
+                        </div>
+                        
+                        <div class="col-md-2">
+                            <label for="lastname">Last Name</label><br>
+                            <input class="form-control" type="text" name="lname" placeholder="Enter your Last name" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="middlename">Middle Name</label><br>
+                            <input class="form-control" type="text" name="mname" placeholder="Enter your Middle name" required>
                         </div>
                         <div class="col-md-2">
                             <label for="username">Username</label><br>
@@ -128,7 +137,7 @@ require_once("config/connect.php");
                                 <span class="toggle-password" onclick="togglePasswordVisibility()"><ion-icon name="eye-outline"></ion-icon></span>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                             <label for="ContactNumber">Contact Number</label><br>
                             <input class="form-control" type="text" name="contact" placeholder="Enter your contact number" required>
                         </div>
@@ -191,21 +200,20 @@ require_once("config/connect.php");
                             <input class="form-control" type="text" name="f_cont" placeholder="Enter your father's contact number" autocomplete="off" required>
                         </div>  
                     </div>
-                    <h6 class="personal">Upload COR</h6>
-                    <div class="row">
-                    
-                        <div class="col-md-12">
-                            <div class="upload-wrapper">
-                                <div id="image-preview" class="image-preview"></div>
-                                <div class="upload-container" onclick="document.getElementById('file-input').click();">
-                                    <input type="file" name="file" id="file-input" multiple onchange="previewImages()">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="button-container">
-                        <button type="submit" class="btn btn-primary">Sign up</button>
-                    </div>
+                    <h6 class="personal">Upload Registration Form</h6>
+<div class="row">
+    <div class="col-md-12">
+        <div class="upload-wrapper">
+            <div id="image-preview" class="image-preview"></div>
+            <div class="upload-container" onclick="document.getElementById('file-input').click();">
+                <input type="file" name="file" id="file-input" multiple required onchange="previewImages()">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="button-container">
+    <button type="submit" class="btn btn-primary" onclick="return validateFileInput()">Sign up</button>
+</div>
                 </form>
             </div>
         </div>
@@ -217,6 +225,15 @@ require_once("config/connect.php");
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script>
+
+        function validateFileInput() {
+            var fileInput = document.getElementById('file-input');
+            if (fileInput.files.length === 0) {
+                alert("Please upload a registration form before submitting.");
+                return false; 
+            }
+            return true; 
+        }
         function togglePasswordVisibility() {
             const passwordField = document.getElementById('password');
             const passwordFieldType = passwordField.getAttribute('type');

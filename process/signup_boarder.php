@@ -44,6 +44,8 @@ function boarderID($conn, $length = 8) {
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Get form data
     $name = $_POST['name'];
+    $lname = $_POST['lname'];
+    $mname = $_POST['mname'];
     $uname = $_POST['uname'];
     $pword = $_POST['pword'];
     $contact = $_POST['contact'];
@@ -59,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $file = $_FILES['file'];
 
     // Validate required fields
-    if (empty($name) || empty($uname) || empty($pword) || empty($email)) {
+    if (empty($name) || empty($lname) || empty($mname) || empty($uname) || empty($pword) || empty($email)) {
         $_SESSION['error_message'] = "Please fill all required fields.";
         header("Location: ../signup_boarder.php");
         exit;
@@ -110,10 +112,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_account->bind_param("ssssssss", $accountID, $uname, $hashed_password, $accType, $status, $approval, $question, $answer);
 
     if ($stmt_account->execute()) {
-        // Insert into boarder table
-        $stmt_boarder = $conn->prepare("INSERT INTO boarder (BoarderID, FullName, Contact_No, YearLvl, Course, Email, COR, M_Name, F_Name, M_Cont, F_Cont, AccountID) 
-                                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt_boarder->bind_param("ssssssssssss", $boarderID, $name, $contact, $year, $course, $email, $file_path, $mother, $father, $m_cont, $f_cont, $accountID);
+        
+        $stmt_boarder = $conn->prepare("INSERT INTO boarder (BoarderID, FullName, LastName, MiddleName, Contact_No, YearLvl, Course, Email, COR, M_Name, F_Name, M_Cont, F_Cont, AccountID) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt_boarder->bind_param("ssssssssssssss", $boarderID, $name, $lname, $mname, $contact, $year, $course, $email, $file_path, $mother, $father, $m_cont, $f_cont, $accountID);
 
         if ($stmt_boarder->execute()) {
             // Send verification email using PHPMailer
@@ -127,7 +129,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
                 $mail->Port = 587;
 
-                $mail->setFrom('jaxmucles@gmail.com', 'Sherwin');
+                $mail->setFrom('jaxmucles@gmail.com', 'Rent IT');
                 $mail->addAddress($email, $name);
 
                 $mail->isHTML(true);

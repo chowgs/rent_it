@@ -82,28 +82,7 @@ if(isset($_SESSION['loggedIn'])){
                     <p>Browse our list of boarding house and rooms for rent from these locations:</p>
                 </div>
                 <div class="dashboard-form">
-<<<<<<< HEAD
-                <h1 style="text-align: center; letter-spacing: 3px; font-weight: 600 !important;">RENT LIKE<span style="color: rgb(0 84 6);"> HOME</span></h1>
-                    <form id="searchForm">
-                        <div class="type">
-                            <div class="row">
-                                <div class="select" style="display:none;">
-                                   <select name="type" id="type" style="width: 100%; padding: 12.5px;">
-                                        <option value="dormitory">Dormitory</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-10 inp">
-                                    <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-success" style="border-radius: 10px; width: 100%; min-width: 50px; padding: 10px;">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-=======
                     
->>>>>>> 139a3c18861fd7260f324027292ae3fee0dba69f
                     <div class="properties-container">
                         <div class="row" id="propertiesContainer">
                             <!-- Properties will be displayed here -->
