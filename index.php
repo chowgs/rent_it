@@ -46,6 +46,8 @@ if(isset($_SESSION['loggedIn'])){
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact us</a>
+            <a href="accredited.php">Accredited</a>
+
         </div>
         <div>
             <a href="login_page.php" class="login-link">Log in</a>
