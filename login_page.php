@@ -36,12 +36,15 @@ if(isset($_SESSION['loggedIn'])){
 
 </head>
 <body>
+<img src="images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact us</a>
+        <div class="">
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact us</a>
+        </div>
     </div>
 </div>
 

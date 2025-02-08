@@ -25,15 +25,15 @@ html {
   scroll-behavior: smooth;
 }
 
-.navbar {
-  background-color: rgba(0, 0, 0, 0.7);
-  width: 100%;
-}
-
 .logo {
   border-radius: 40px;
   margin-left: 20px;
   height: 70px;
+}
+
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7);
+  width: 100%;
 }
 
 .nav-links {
@@ -59,12 +59,6 @@ html {
   transform: scale(1.1);
 }
 
-.btn-search {
-  padding: 10px 20px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-}
 
 @media (max-width: 768px) {
   .navbar {

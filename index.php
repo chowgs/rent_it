@@ -33,13 +33,13 @@ if(isset($_SESSION['loggedIn'])){
     <meta name="google-site-verification" content="_0Gl3ztRf0zyoPTl38KrHXFSLs_PvHN11hS-e6sK7t4" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
 </head>
 <body>
-<img src="images/booking_system.jpg" alt="" class="background-image" style="height: 1000px;">
+<img src="images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
@@ -78,8 +78,8 @@ if(isset($_SESSION['loggedIn'])){
     <div class="dashboard-box">
         <div class="dashboard">
             <div class="title">
-                <h1>Explore our neigborhoods</h1>
-                <p>Browse our list of boarding house and rooms for rent from these locations:</p>
+                <h1>Explore our neighborhoods</h1>
+                <p>Browse our list of boarding houses and rooms for rent from these locations:</p>
             </div>
             <div class="dashboard-form">
                 <div class="properties-container">
@@ -89,8 +89,12 @@ if(isset($_SESSION['loggedIn'])){
                 </div>
                 <div class="pagination-container" id="paginationContainer">
                     <div class="pagination-buttons">
-                        <button id="prevButton" class="btn btn-secondary btns" disabled><ion-icon name="caret-back"></ion-icon></button>
-                        <button id="nextButton" class="btn btn-secondary btns"><ion-icon name="caret-forward"></ion-icon></button>
+                        <button id="prevButton" class="btn btn-secondary btns" disabled>
+                            <ion-icon name="caret-back"></ion-icon> Previous
+                        </button>
+                        <button id="nextButton" class="btn btn-secondary btns">
+                            Next <ion-icon name="caret-forward"></ion-icon>
+                        </button>
                     </div>
                 </div>
             </div>  

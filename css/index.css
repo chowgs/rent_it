@@ -12,8 +12,15 @@
   text-align: center;
 }
 
+.btn-search {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+}
+
 .dashboard-container {
-  margin-top: 50px;
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   width: 100%;
@@ -56,18 +63,39 @@
 }
 
 .pagination-container {
-  display: none;
+  display: flex;
+  justify-content:end;
+  margin-top: 5px;
 }
 
 .pagination-buttons {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 10px;
 }
 
 .btns {
-  font-size: 24px;
-  width: 50px;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  background-color: #f8f9fa;
+  color: #333;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btns:disabled {
+  background-color: #e0e0e0;
+  color: #aaa;
+}
+
+.btns:hover:not(:disabled) {
+  background-color: #4caf50;
+  color: white;
+  transform: scale(1.05);
+}
+
+.btns ion-icon {
+  vertical-align: middle;
 }
 
 .leaflet-touch .leaflet-control-layers,
@@ -204,3 +232,58 @@ input[type="text"] {
 input[type="text"]:focus {
   border-radius: 0;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+
+  .btn-search {
+    width: 215px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+}
+

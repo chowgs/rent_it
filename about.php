@@ -5,23 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <title>Rent IT - About</title>
+
+    <?php
+        // Custom font from google
+        include("css/fonts.html");
+    ?>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/aboutS.css">
+    <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/modal.css">
-    <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
+    <link rel="stylesheet" href="css/scrollbar.css">
 </head>
 <body>
+<img src="images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact us</a>
-        <a href="login_page.php" class="login-link">Log in</a>
+        <div class="">
+            <a href="index.php">Home</a>
+            <a href="about.php">About</a>
+            <a href="contact.php">Contact us</a>
+        </div>
+        <div>
+            <a href="login_page.php" class="login-link">Log in</a>
+        </div>
     </div>
-</div><br><br><br><br><br>
+</div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
