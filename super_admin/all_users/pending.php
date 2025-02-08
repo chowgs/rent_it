@@ -18,6 +18,8 @@ if(!isset($_SESSION["AccountID"])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="../sa-css/all_user.css">
     <link rel="stylesheet" href="../sa-css/modal.css">
+    <link rel="stylesheet" href="../sa-css/all_user.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <style>
         .burger-drop {
             display: none;

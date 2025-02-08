@@ -15,7 +15,7 @@ if (!isset($_SESSION["AccountID"])) {
     <title>Rent IT - Property (Info)</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="css/property_landing.css">
+    <link rel="stylesheet" href="sa-css/property_landing.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -352,7 +352,7 @@ if (!isset($_SESSION["AccountID"])) {
                             echo '<div class="col-md-6" style="height: 96% !important; padding: 0;">';
                             echo '<div class="txt">';
                             echo '<h5>Location:</h5>';
-                            echo '<p style="margin-left: 5%;" class="loc"onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
+                            echo '<p class="loc"onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
                             echo '<ul>';
                             echo '<li class="lst">Occupants - '.$property['Category'].'</li>';
                             echo '<li class="lst">Available Rooms - '.$vacantRoomsCount.'</li>';
@@ -362,10 +362,10 @@ if (!isset($_SESSION["AccountID"])) {
                             echo '<li class="lst">Kitchen - '.$kitchen.'</li>';
                             echo '<li class="lst">Description - '.$property['Description'].'</li>';
                             echo '</ul><br>';
-                            echo '<h5>Owner:</h5>';
-                            echo '<p style="margin-left: 5%; margin-bottom: 0;">'.$property['FullName'].'</p><br>';
+                            echo '<h5>Owner: '.$property['FullName'].'</h5><br>';
                             echo '<div class="btn-container">
                             <button class="btn btn-success view-rooms-btn" data-id="'.$propertyID.'" data-toggle="modal" data-target="#viewRooms">View Rooms</button></div>';
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['fblink'].'</p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';

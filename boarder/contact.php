@@ -110,7 +110,7 @@ if(!isset($_SESSION["AccountID"])){
                             $row = $result->fetch_assoc();
                             echo'
                             <div class="col-md-4">
-                            <div class="cont">
+                             <div class="cont" style="background-color:rgb(219, 219, 211);">
                             <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
                             <h3 class="top" style="color: black;">Rent IT</h3>
                             <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
@@ -118,7 +118,7 @@ if(!isset($_SESSION["AccountID"])){
                             </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="cont">
+                            <div class="cont" style="background-color:rgb(219, 219, 211);">
                             <ion-icon name="call" class="call"></ion-icon><br>
                             <h5 class="top" style="color: black;">Cellphone Number:</h5>
                             <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">'.$row["ContNum"].'</p>
@@ -126,7 +126,7 @@ if(!isset($_SESSION["AccountID"])){
                             </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="cont">
+                             <div class="cont" style="background-color:rgb(219, 219, 211);">
                             <ion-icon name="business" class="add"></ion-icon><br>
                             <h5 class="top" style="color: black;">Address:</h5>
                             <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;" title="'. $row["Address"] .'">'.$row["Address"].'</p>

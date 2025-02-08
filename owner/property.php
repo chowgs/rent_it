@@ -392,12 +392,12 @@ if(!isset($_SESSION["AccountID"])){
                             </div>
                         </div><br>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-4" style="display: none;">
                                 <label for="type">Type:</label>
                                 <select style="padding: 5px;" name="type" id="type" required>
-                                    <option value="">Select</option>
+                                   
                                     <option value="dormitory">Dormitory</option>
-                                    <option value="apartment">Apartment</option>
+                                    
                                 </select>
                             </div>
                             <div class="col-md-4">

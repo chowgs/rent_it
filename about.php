@@ -39,7 +39,7 @@
                 <div class="dashboard-form">
                 <h2>About us</h2>
                     <div class="row" style="margin: 0 !important;">
-                        <div class="col-md-4 about-cont text-center">
+                        <div class="col-md-4 about-cont text-center" >
                             <div class="about">
                                 <img src="images/logo.png" alt="Rent IT" height="200" style=" border-radius: 25px;">
                                 <h5>Provide digital solution for your life.</h5>
@@ -54,14 +54,14 @@
                             $aboutText = $row['About'] ?? '';
                             if (!empty($aboutText)) {
                                 echo "
-                                <div class='col-md-8 us'>
-                              
-                                <p id='about-link'>".nl2br(htmlspecialchars($aboutText))."</p>
+                               <div class='col-md-8 us' style='background-color:rgb(190, 190, 186); padding: 25px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);'>
+                                    <p id='about-link' style='color: #333333; font-size: 16px; line-height: 1.6;'>".nl2br(htmlspecialchars($aboutText))."</p>
                                 </div>
-                                ";
+                            ";
+                            
                             }else{
                                 echo "
-                                <div class='col-md-8 us'>
+                                <div class='col-md-8 us' >
 
                                 <div id='aboutt-link'>
                                     <p>Welcome to Rent IT, your trusted partner for seamless dorm and apartment bookings. We specialize in connecting boarders with comfortable and affordable accommodations tailored to their needs. Whether you're a student looking for a convenient dormitory or a professional seeking a cozy apartment, our platform offers a diverse range of options to suit every lifestyle and budget.</p><br>
