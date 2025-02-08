@@ -2,7 +2,6 @@
 require_once("../../config/connect.php");
 include_once('../../TCPDF-main/tcpdf.php');
 
-// Create new PDF document
 $pdf = new TCPDF('P', 'mm', 'A4', true, 'UTF-8', false);
 $pdf->SetCreator(PDF_CREATOR);
 $pdf->SetAuthor('Admin');
@@ -14,6 +13,7 @@ $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 $pdf->SetMargins(15, 27, 15);
 $pdf->SetAutoPageBreak(TRUE, 25);
 $pdf->SetFont('helvetica', '', 12);
+$pdf->SetFillColor(204, 255, 204); 
 $pdf->AddPage();
 
 $sql = "SELECT o.OwnerID, o.FullName, p.PropertyID, p.Type, p.Total_Room,
@@ -23,8 +23,16 @@ $sql = "SELECT o.OwnerID, o.FullName, p.PropertyID, p.Type, p.Total_Room,
 
 $result = $conn->query($sql);
 
-$html = '<h2>Owner and Property Report</h2>';
-$html .= '<table border="1" cellspacing="3" cellpadding="4">
+$html = '<style>
+            h2 { color: #2E7D32; text-align: center; }
+            table { width: 100%; border-collapse: collapse; font-size: 12px; }
+            th { background-color: #66BB6A; color: white; padding: 8px; }
+            td { border: 1px solid #ddd; padding: 8px; }
+            tr:nth-child(even) { background-color: #E8F5E9; }
+            .type { text-transform: uppercase; }
+        </style>';
+$html .= '<h2>Owner and Property Report</h2>';
+$html .= '<table>
             <tr>
                 <th>Owner Name</th>
                 <th>Property ID</th>
@@ -39,7 +47,7 @@ while ($row = $result->fetch_assoc()) {
     $html .= '<tr>
                 <td>' . $row['FullName'] . '</td>
                 <td>' . $row['PropertyID'] . '</td>
-                <td>' . $row['Type'] . '</td>
+                <td>' . ucfirst($row['Type']) . '</td>
                 <td>' . $row['Total_Room'] . '</td>
                 <td>' . $row['OccupiedRooms'] . '</td>
                 <td>' . $vacant . '</td>
