@@ -101,8 +101,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<div class="property-card ' . $isCurrentBooked . '">';
             echo $bookedBadge;
             echo '<a href="property_detail.php?id=' . htmlspecialchars($property['PropertyID']) . '">';
-            echo '<img class="image-card" src="../' . htmlspecialchars($firstImageUrl) . '" alt="Property Image" style="width:100%; height:190px;">';
-            echo '</a>';
+            
             echo '<div class="txt">';
             echo '<p onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
             echo '</div>';
@@ -131,6 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '</table>';
             echo '<div class="txtt">';
             echo '<p>Owner: ' . htmlspecialchars($property['name']) . '</p>';
+            echo '</a>';
             echo '</div>';
             echo '</div>';
             echo '</div>';

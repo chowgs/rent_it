@@ -82,6 +82,8 @@ if (!isset($_SESSION["AccountID"])) {
         .property-card a {
             display: block;
             width: 100%;
+            text-decoration: none;
+                    color: inherit;
         }
 
         .image-card {
@@ -217,14 +219,13 @@ if (!isset($_SESSION["AccountID"])) {
                     <form id="searchForm">
                         <div class="type">
                             <div class="row">
-                                <div class="col-md-2 select">
+                                <div class="select" style="display: none;">
                                     <select name="type" id="type" style="width: 100%; padding: 12.5px;">
-                                        <option value="">Select Type</option>
-                                        <option value="apartment">Apartment</option>
+                             
                                         <option value="dormitory">Dormitory</option>
                                     </select>
                                 </div>
-                                <div class="col-md-8 inp">
+                                <div class="col-md-10 inp">
                                     <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
                                 </div>
                                 <div class="col-md-2">
@@ -631,7 +632,7 @@ if (!isset($_SESSION["AccountID"])) {
 
         $(document).ready(function() {
             let currentPage = 1;
-            const itemsPerPage = 3; // Number of properties per page
+            const itemsPerPage = 6; // Number of properties per page
 
             function loadProperties(page = 1) {
                 const formData = $('#searchForm').serialize() + `&page=${page}&itemsPerPage=${itemsPerPage}`;

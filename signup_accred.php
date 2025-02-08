@@ -33,7 +33,7 @@ require_once("config/connect.php");
         <div class="signup-box">
             <div class="signup-form">
                 <form action="process/accreditation.php" method="post" enctype="multipart/form-data" autocomplete="off">
-                    <h3>Sign up as Owner</h3>                    
+                    <h3>Application Form</h3>                    
                     <!-- Row 1 -->
                     <div class="row">
                         <div class="col-md-6">
@@ -181,7 +181,7 @@ require_once("config/connect.php");
 
                     
                     <div class="button-container">
-                        <button type="submit" class="btn">Sign up</button>
+                        <button type="submit" class="btn">Apply</button>
                     </div>
                 </form>
             </div>
