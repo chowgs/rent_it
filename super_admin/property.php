@@ -15,8 +15,8 @@ if(!isset($_SESSION["AccountID"])){
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Property</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all_user.css">
-    <link rel="stylesheet" href="css/modal.css">
+    <link rel="stylesheet" href="sa-css/all_user.css">
+    <link rel="stylesheet" href="sa-css/modal.css">
 
     <style>
         .dash-box table tbody td{
@@ -80,6 +80,28 @@ if(!isset($_SESSION["AccountID"])){
                     display: block;
                 }
         }
+
+        .dash-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .dash-title h6 {
+            margin: 0;
+        }
+
+        .dash-title button {
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .dash-title button a {
+            text-decoration: none;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -140,8 +162,11 @@ if(!isset($_SESSION["AccountID"])){
                 </aside>
                 <div class="dashboard-form">
                     <h2>Property</h2>
-                    <h6 class="sub-dash" style="font-weight: 600;">Dashboard / <span style="font-weight: 100;">Property</span></h6>
-
+                    <div class="dash-title">
+                        <h6 class="sub-dash" style="font-weight: 600;">Dashboard / <span style="font-weight: 100;">Property</span></h6>
+                        <button class="btn btn-primary"><a href="process/generatePDF.php">Generate Reports</a></button>
+                        
+                    </div>
                     <div class="row">
 
                         <div class="col-md-12">
