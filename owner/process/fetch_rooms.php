@@ -39,6 +39,7 @@ if(isset($_POST['id'])){
                   <th>Kitchen</th>
                   <th>Living Room</th>
                   <th>Status</th>
+                  <th>Room Image</th>
                   <th>Action</th>
               </thead>";
         
@@ -59,6 +60,11 @@ if(isset($_POST['id'])){
             echo "<td>".$row["Kitchen"]."</td>";
             echo "<td>".$row["Liv_Room"]."</td>";
             echo "<td>".$row["Status"]."</td>";
+            echo "<td>
+                    <img src='../".$row["RoomImageURL"]."' alt='No Image' class='img-thumbnail' 
+                    style='width: 50px; height: 50px; cursor: pointer;' 
+                    onclick='viewImage(\"".$row["RoomImageURL"]."\")'>
+                </td>";
             echo "<td>
                     <button class='btn btn-primary' data-toggle='modal' data-target='#editRoom' data-id='".$row["RoomID"]."'>Edit</button>
                     <button class='btn btn-danger' data-toggle='modal' data-target='#deleteRoom' data-id='".$row["RoomID"]."'>Delete</button>
