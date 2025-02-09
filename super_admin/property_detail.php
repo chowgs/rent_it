@@ -284,6 +284,16 @@ if (!isset($_SESSION["AccountID"])) {
                     $result = $stmt->get_result();
                     $properties = $result->fetch_all(MYSQLI_ASSOC);
 
+                    $relativePath = "../";
+                    $roomImageQuery = "SELECT *
+                                FROM room
+                                WHERE PropertyID = ?";
+                    $roomImageQuerystmt = $conn->prepare($roomImageQuery);
+                    $roomImageQuerystmt->bind_param("s", $propertyID);
+                    $roomImageQuerystmt->execute();
+                    $roomImageQueryResult = $roomImageQuerystmt->get_result();
+                    $roomImageQueryImages = $roomImageQueryResult->fetch_all(MYSQLI_ASSOC);
+
                     // Count vacant rooms for this property
                     $vacantRoomsQuery = "SELECT COUNT(*) AS vacant_count FROM room WHERE PropertyID = ? AND (Status = 'Vacant' OR Status = 'Pending')";
                     $vacantRoomsStmt = $conn->prepare($vacantRoomsQuery);
@@ -344,6 +354,18 @@ if (!isset($_SESSION["AccountID"])) {
                                 echo '<div class="thumbnail-cont" >';
                                 foreach ($imageUrls as $imageUrl) {
                                     echo '<img class="thumbnail" src="' . htmlspecialchars($imageUrl) . '" alt="Thumbnail Image">';
+                                }
+                                echo '</div>';
+                            }
+                            if (!empty($roomImageQueryImages)) {
+                                echo '<p>Room Images</p>';
+                                echo '<div class="thumbnail-cont" >';
+                                foreach ($roomImageQueryImages as $room) {
+                                    if (!empty($room['RoomImageURL'])) {
+                                        echo '<img class="thumbnail" src="' . $relativePath . $room['RoomImageURL'] . '" alt="Thumbnail Image">';
+                                    } else {
+                                        echo '<p>No room image available</p>';
+                                    }
                                 }
                                 echo '</div>';
                             }
