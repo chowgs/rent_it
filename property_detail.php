@@ -336,6 +336,15 @@ require_once("config/connect.php");
                     $result = $stmt->get_result();
                     $properties = $result->fetch_all(MYSQLI_ASSOC);
 
+                    $roomImageQuery = "SELECT *
+                                FROM room
+                                WHERE PropertyID = ?";
+                    $roomImageQuerystmt = $conn->prepare($roomImageQuery);
+                    $roomImageQuerystmt->bind_param("s", $propertyID);
+                    $roomImageQuerystmt->execute();
+                    $roomImageQueryResult = $roomImageQuerystmt->get_result();
+                    $roomImageQueryImages = $roomImageQueryResult->fetch_all(MYSQLI_ASSOC);
+
                     // Count vacant rooms for this property
                     $vacantRoomsQuery = "SELECT COUNT(*) AS vacant_count FROM room WHERE PropertyID = ? AND (Status = 'Vacant' OR Status = 'Pending')";
                     $vacantRoomsStmt = $conn->prepare($vacantRoomsQuery);
@@ -354,6 +363,7 @@ require_once("config/connect.php");
                             
                             // Get the first image URL
                             $firstImageUrl = array_shift($imageUrls); // Get the first URL and remove it from the array
+                            
 
                             // Fetch all rooms for this property
                             $roomsQuery = "SELECT * FROM room WHERE PropertyID = ? AND (Status = 'Vacant' OR Status = 'Pending')";
@@ -385,15 +395,29 @@ require_once("config/connect.php");
                             echo '<a>';
                             echo '<img class="image-cardd" src="' . htmlspecialchars($firstImageUrl) . '" alt="Property Image">';
                             echo '</a>';
+                            
                             // Display remaining images
                             if (!empty($imageUrls)) {
                                 echo '<div class="thumbnail-cont" >';
                                 foreach ($imageUrls as $imageUrl) {
+                                    
                                     echo '<img class="thumbnail" src="' . htmlspecialchars($imageUrl) . '" alt="Thumbnail Image">';
                                 }
                                 echo '</div>';
                             }
-                             echo '</div>';
+                            if (!empty($roomImageQueryImages)) {
+                                echo '<p>Room Images</p>';
+                                echo '<div class="thumbnail-cont" >';
+                                foreach ($roomImageQueryImages as $room) {
+                                    if (!empty($room['RoomImageURL'])) {
+                                        echo '<img class="thumbnail" src="' . $room['RoomImageURL'] . '" alt="Thumbnail Image">';
+                                    } else {
+                                        echo '<p>No room image available</p>';
+                                    }
+                                }
+                                echo '</div>';
+                            }
+                            echo '</div>';
                             echo '</div>';
                             echo '<div class="col-md-6" style="height: 96% !important; padding: 0;">';
                             echo '<div class="txt">';
@@ -413,7 +437,7 @@ require_once("config/connect.php");
                             <a href="login_page.php"><button class="btn btn-success" >Login to Book Now</button></a> or
                             <a href="signup_boarder.php"><button class="btn btn-success" >Sign Up to Book Now</button></a>
                             </div>';
-                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['FbLink'].'</p><br>';
+                            echo '<p style="margin-top:50px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['FbLink'].'</p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
