@@ -1,12 +1,11 @@
 <?php
-session_start();
-require_once("../config/connect.php");
-if (!isset($_SESSION["AccountID"])) {
-    header("location:../index.php");
-    exit;
-}
+    session_start();
+    require_once("../config/connect.php");
+    if (!isset($_SESSION["AccountID"])) {
+        header("location:../index.php");
+        exit;
+    }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +13,16 @@ if (!isset($_SESSION["AccountID"])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Home</title>
+
+    <?php
+        // Custom font from google
+        include("../css/fonts.html");
+    ?>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="sa-css/landing_page.css">
+    <link rel="stylesheet" href="sa-css/asAdminIndex.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -25,8 +31,8 @@ if (!isset($_SESSION["AccountID"])) {
             position: absolute;
             top: 10px; /* Adjust as needed */
             right: 20px; /* Adjust as needed */
-            background: none;
-            border: none;
+            background-color: #fff;
+            border-radius: 4px;
             font-size: 24px;
             cursor: pointer;
             z-index: 2; /* Ensure it's above the dropdown */
@@ -192,69 +198,74 @@ if (!isset($_SESSION["AccountID"])) {
     </style> 
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
+<img src="../images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
+<div class="navbar">
+    <img src="../images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
         </div>
-    </div>
-        <button class="burger-drop" onclick="toggleMenu()">☰</button>
         <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
-    <div class="dropdown-menu">
-        <a href="dashboard.php">Dashboard</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-    <div class="dashboard-container">
-        <div class="dashboard-box">
-            <div class="dashboard">
-                <div class="dashboard-form">
-                <h1 style="text-align: center; letter-spacing: 3px; font-weight: 600 !important;">RENT LIKE<span style="color: rgb(0 84 6);"> HOME</span></h1>
-                    <form id="searchForm">
-                        <div class="type">
-                            <div class="row">
-                                <div class="select" style="display: none;">
-                                   <select name="type" id="type" style="width: 100%; padding: 12.5px;">  
-                                 
-                                        <option value="dormitory">Dormitory</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-10 inp">
-                                    <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
-                                </div>
-                                <div class="col-md-2">
-                                    <button type="submit" class="btn btn-success" style="border-radius: 10px; width: 100%; min-width: 50px; padding: 10px;">Search</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <div class="properties-container">
-                        <div class="row" id="propertiesContainer">
-                            <!-- Properties will be displayed here -->
-                        </div>
-                    </div>
-                    <div class="pagination-container" id="paginationContainer">
-                        <div class="pagination-buttons">
-                            <button id="prevButton" class="btn btn-secondary btns" disabled><ion-icon name="caret-back"></ion-icon></button>
-                            <button id="nextButton" class="btn btn-secondary btns"><ion-icon name="caret-forward"></ion-icon></button>
-                        </div>
-                    </div>
-                </div>  
+</div>
+
+<div class="search">
+    <h3>RENT LIKE HOME</h3>
+    <form id="searchForm">
+    <div class="type">
+        <div class="row">
+            <div class="select" style="display:none;">
+                <select name="type" id="type" style="width: 100%; padding: 12.5px;">
+                    <option value="dormitory">Dormitory</option>
+                </select>
+            </div>
+            <div class="col-md-10 inp mb-2">
+                <input type="text" name="location" placeholder="Enter location" style="width: 100%; padding: 10px;">
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="btn-search btn btn-success" style="">Search</button>
             </div>
         </div>
     </div>
+    </form>
+</div>
+<div class="dashboard-container">
+    <div class="dashboard-box">
+        <div class="dashboard">
+            <div class="title">
 
-    <footer>
+            </div>
+            <div class="dashboard-form">
+                <div class="properties-container">
+                    <div class="row" id="propertiesContainer">
+                    <!-- Properties will be displayed here -->
+                    </div>
+                </div>
+                <div class="pagination-container" id="paginationContainer">
+                    <div class="pagination-buttons">
+                        <button id="prevButton" class="btn btn-secondary btns" disabled>
+                            <ion-icon name="caret-back"></ion-icon> Previous
+                        </button>
+                        <button id="nextButton" class="btn btn-secondary btns">
+                            Next <ion-icon name="caret-forward"></ion-icon>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- <footer>
         <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
-            background: rgba(255, 255, 255, 0.6) !important;
             -webkit-backdrop-filter: blur(15px) !important;
-            backdrop-filter: blur(60px) !important;
             border: 1px solid rgba(255,255,255,0.15) !important;
             align-items: center ;
             box-shadow: 5px 5px !important;
@@ -281,13 +292,16 @@ if (!isset($_SESSION["AccountID"])) {
                     }else{
                         echo '
                         <div class="col-md-4" style="padding: 10px;">
-                        <div><ion-icon name="mail"></ion-icon> rentit@gmail.com</div>
+                        <div>
+                            <ion-icon name="mail"></ion-icon> rentit@gmail.com
                         </div>
                         <div class="col-md-4" style="padding: 10px;">
-                        <div><ion-icon name="logo-facebook"></ion-icon> Rent IT</div>
+                        <div>
+                        <ion-icon name="logo-facebook"></ion-icon> Rent IT
                         </div>
                         <div class="col-md-4" style="padding: 10px;">
-                        <div><ion-icon name="call"></ion-icon> +63 992 2762 412</div>
+                        <div>
+                        <ion-icon name="call"></ion-icon> +63 992 2762 412
                         </div>
                         ';
                     }
@@ -309,7 +323,7 @@ if (!isset($_SESSION["AccountID"])) {
                 </div>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
     <div class="modal fade" id="mapModal" tabindex="-1" role="dialog" aria-labelledby="mapModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
@@ -349,7 +363,6 @@ if (!isset($_SESSION["AccountID"])) {
         </div>
     </div>
 
-
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -387,29 +400,9 @@ if (!isset($_SESSION["AccountID"])) {
         
     <script>
         function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger-drop');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger-drop');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
         let map;
         let userMarker;
         let inputLocationMarker;
