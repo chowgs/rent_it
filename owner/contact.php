@@ -12,10 +12,16 @@ if(!isset($_SESSION["AccountID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Contact</title>
+
+    <?php
+        // Custom font from google
+        include("../css/fonts.html");
+    ?>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="owner-css/contact_owner.css">
-    <link rel="stylesheet" href="owner-css/header.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -73,29 +79,29 @@ if(!isset($_SESSION["AccountID"])){
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <img src="../images/logo.png" alt="Rent It" class="logo">
-        <div class="nav-links">
+<img src="../images/booking_system.jpg" alt="" class="background-image">
+<div class="navbar">
+    <img src="../images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
+            <a href="landing_page.php">Home</a>
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
-        <button class="burger-drop" onclick="toggleMenu()">☰</button>
-        <a class="login-link" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
         </div>
+        <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
-    <div class="dropdown-menu">
-        <a href="landing_page.php">Home</a>
-        <a href="dashboard.php">Dashboard</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-    </div><br><br><br><br><br>
+</div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form text-center">
-                    <h2>Contact Us</h2>
+                    <h2>CONTACT US</h2>
                     
                     <p>Get in touch and let us know how we can help.</p>
                     <div class="row">
@@ -107,7 +113,7 @@ if(!isset($_SESSION["AccountID"])){
                             $row = $result->fetch_assoc();
                             echo'
                             <div class="col-md-4">
-                            <div class="cont" style="background-color:rgb(219, 219, 211);">
+                            <div class="cont" style="">
                             <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
                             <h3 class="top" style="color: black;">Rent IT</h3>
                             <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
@@ -115,7 +121,7 @@ if(!isset($_SESSION["AccountID"])){
                             </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="cont" style="background-color:rgb(219, 219, 211);">
+                            <div class="cont" >
                             <ion-icon name="call" class="call"></ion-icon><br>
                             <h5 class="top" style="color: black;">Cellphone Number:</h5>
                             <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">'.$row["ContNum"].'</p>
@@ -123,7 +129,7 @@ if(!isset($_SESSION["AccountID"])){
                             </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="cont" style="background-color:rgb(219, 219, 211);">
+                            <div class="cont">
                             <ion-icon name="business" class="add"></ion-icon><br>
                             <h5 class="top" style="color: black;">Address:</h5>
                             <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
@@ -260,29 +266,10 @@ if(!isset($_SESSION["AccountID"])){
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
         function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger-drop');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger-drop');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
+    </script>
 
 </body>
 </html>

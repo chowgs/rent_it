@@ -1,0 +1,288 @@
+.search {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.search h3,
+.search p {
+    text-align: center;
+}
+
+.btn-search {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+}
+
+.dashboard-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.col-md-4 {
+    padding: 0 15px 15px 15px !important;
+}
+
+.title {
+    width: 80%;
+    padding-left: 15px;
+}
+
+.title h1 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.dashboard-box {
+    display: flex;
+    width: 100%;
+    max-width: 1400px;
+}
+
+.dashboard {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dashboard h3 {
+    align-self: start;
+}
+
+.dashboard-form {
+    padding: 0 20px;
+    width: 80%;
+}
+
+.pagination-container {
+    display: flex;
+    justify-content: end;
+    margin-top: 5px;
+}
+
+.pagination-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.btns {
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f8f9fa;
+    color: #333;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btns:disabled {
+    background-color: #e0e0e0;
+    color: #aaa;
+}
+
+.btns:hover:not(:disabled) {
+    background-color: #4caf50;
+    color: white;
+    transform: scale(1.05);
+}
+
+.btns ion-icon {
+    vertical-align: middle;
+}
+
+.leaflet-touch .leaflet-control-layers,
+.leaflet-touch .leaflet-bar {
+    display: none !important;
+}
+
+.icon {
+    margin-right: 5px;
+}
+
+.select select {
+    border-radius: 10px;
+    border: none;
+}
+
+.inp input {
+    border-radius: 10px;
+    border: none;
+}
+
+.col-md-4 {
+    padding: 15px;
+    z-index: 5000;
+}
+
+.property-card {
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.property-card:hover {
+    transform: scale(1.02);
+}
+
+.property-card img {
+    cursor: pointer;
+    width: 100%;
+    height: 200px;
+}
+
+.property-card a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+}
+
+.image-card {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.txt,
+.txtt {
+    padding: 15px;
+}
+
+.txt {
+    min-height: 24%;
+}
+
+.txt p,
+.txtt p {
+    margin: 0 0 10px;
+    font-size: 16px;
+    color: #666666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.txt p:hover,
+.txtt p:hover {
+    color: #0056b3;
+}
+
+.icon {
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #007bff;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table td {
+    padding: 10px;
+    border-top: 1px solid #dddddd;
+    text-align: center;
+    font-size: 14px;
+    color: #666666;
+}
+
+table td:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.current-booked {
+    border: 3px solid #4caf50;
+    box-shadow: 0 4px 12px rgba(0, 128, 0, 0.4);
+    position: relative;
+}
+
+.booked-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #4caf50;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 1;
+}
+
+input[type="text"] {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    padding-left: 30px !important;
+    transition: all 200ms ease-in-out;
+}
+
+input[type="text"]:focus {
+    border-radius: 0;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .properties-container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+
+    .btn-search {
+        width: 215px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .properties-container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .properties-container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .properties-container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}
