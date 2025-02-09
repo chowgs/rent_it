@@ -286,7 +286,7 @@ if(!isset($_SESSION["AccountID"])){
                 </div>
                 <div class="modal-body">
                     <form action="../process/logout.php">
-                        <h5>Are you sure you want to logout?</h5>
+                        <h5 style="color:black;">Are you sure you want to logout?</h5>
                         <div class="button-container">
                             <button type="button" class="btn btn-danger" data-dismiss="modal" aria-label="Close">Cancel</button>
                             <button type="submit" class="btn btn-primary">Logout</button>
