@@ -413,7 +413,7 @@ require_once("config/connect.php");
                             <a href="login_page.php"><button class="btn btn-success" >Login to Book Now</button></a> or
                             <a href="signup_boarder.php"><button class="btn btn-success" >Sign Up to Book Now</button></a>
                             </div>';
-                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['fblink'].'</p><br>';
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['FbLink'].'</p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
