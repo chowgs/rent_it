@@ -43,16 +43,18 @@ if(isset($_SESSION['loggedIn'])){
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <div class="">
+        <div class="nav-items">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact us</a>
             <a href="accredited.php">Accredited</a>
-
         </div>
-        <div>
-            <a href="login_page.php" class="login-link">Log in</a>
-        </div>
+        <a href="login_page.php" class="login-link">Login</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 </div>
 <div class="search">
@@ -210,6 +212,10 @@ if(isset($_SESSION['loggedIn'])){
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         
 <script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+    }
     // Function to initialize Leaflet map
     function initializeMap() {
         map = L.map('map').setView([0, 0], 13);

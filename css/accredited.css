@@ -1,0 +1,65 @@
+.container {
+
+}
+
+h2 {
+    font-size: 30px; 
+    margin-top: 50px;
+    margin-bottom: 40px; 
+    text-align: center; 
+}
+
+p {
+    font-size: 20px;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+/* @media only screen and (min-width: 600px) {
+  .properties-container {
+      max-height: 600px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      padding-right: 10px;
+    }
+} */
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .properties-container {
+        max-height: 600px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding-right: 10px;
+    }
+}

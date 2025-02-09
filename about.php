@@ -23,21 +23,25 @@
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <div class="">
+        <div class="nav-items">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact us</a>
+            <a href="accredited.php">Accredited</a>
         </div>
-        <div>
-            <a href="login_page.php" class="login-link">Log in</a>
-        </div>
+        <a href="login_page.php" class="login-link">Login</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 </div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form">
-                <h2>About us</h2>
+                <h2>ABOUT US</h2>
                     <div class="row" style="margin: 0 !important;">
                         <div class="col-md-4 about-cont text-center" >
                             <div class="about">
@@ -54,8 +58,8 @@
                             $aboutText = $row['About'] ?? '';
                             if (!empty($aboutText)) {
                                 echo "
-                               <div class='col-md-8 us' style='background-color:rgb(190, 190, 186); padding: 25px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);'>
-                                    <p id='about-link' style='color: #333333; font-size: 16px; line-height: 1.6;'>".nl2br(htmlspecialchars($aboutText))."</p>
+                               <div class='col-md-8 us'style='background-color: rgba(0, 0, 0, 0.7); padding: 25px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);''>
+                                    <p id='about-link' style='color: #fff; font-size: 16px; line-height: 1.6;'>".nl2br(htmlspecialchars($aboutText))."</p>
                                 </div>
                             ";
                             
@@ -154,30 +158,10 @@
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
-        }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+    }
     </script>  
 </body>
 </html>

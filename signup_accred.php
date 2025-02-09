@@ -12,6 +12,12 @@ require_once("config/connect.php");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <title>Rent IT - Signup (Owner)</title>
+
+    <?php
+        // Custom font from google
+        include("css/fonts.html");
+    ?>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="css/header.css">
@@ -20,15 +26,24 @@ require_once("config/connect.php");
 
 </head>
 <body>
-    <div class="navbar">
-        <img src="images/logo.png" alt="Rent It" class="logo">
-        <div class="nav-links">
+<img src="images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
+<div class="navbar">
+    <img src="images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact us</a>
-            <a href="login_page.php" class="login-link">Log in</a>
+            <a href="accredited.php">Accredited</a>
         </div>
-    </div><br><br><br><br>
+        <a href="login_page.php" class="login-link">Login</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+</div>
     <div class="signup-container">
         <div class="signup-box">
             <div class="signup-form">
@@ -272,12 +287,15 @@ require_once("config/connect.php");
         }
     }
     </script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+    }
         $(document).ready(function () {
             toastr.options = {
                 "timeOut": "1000",

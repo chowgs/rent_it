@@ -40,11 +40,18 @@ if(isset($_SESSION['loggedIn'])){
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <div class="">
+        <div class="nav-items">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact us</a>
+            <a href="accredited.php">Accredited</a>
         </div>
+        <a href="login_page.php" class="login-link">Login</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 </div>
 
@@ -370,6 +377,12 @@ if(isset($_SESSION['loggedIn'])){
             echo 'setTimeout(function() { window.location.href = "super_admin/dashboard.php"; }, 1000);'; // Redirect after 2 seconds
         }
         ?>
+    </script>
+    <script>
+            function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+    }
     </script>
 
 </body>

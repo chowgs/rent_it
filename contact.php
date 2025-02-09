@@ -76,23 +76,26 @@
 <div class="navbar">
     <img src="images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
-        <div class="">
+        <div class="nav-items">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact us</a>
+            <a href="accredited.php">Accredited</a>
         </div>
-        <div>
-            <a href="login_page.php" class="login-link">Log in</a>
-        </div>
+        <a href="login_page.php" class="login-link">Login</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
 </div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form text-center">
-                    <h2>Contact Us</h2>
-                    
-                    <p>Get in touch and let us know how we can help.</p>
+                    <h2 style="font-size: 30px;margin-top: 50px;">CONTACT US</h2>
+                    <p style="margin-bottom: 40px;">Get in touch and let us know how we can help.</p>
                     <div class="row">
                     <?php
                         require_once("config/connect.php");
@@ -102,7 +105,7 @@
                             $row = $result->fetch_assoc();
                             echo'
                             <div class="col-md-4">
-                            <div class="cont" style="background-color:rgb(219, 219, 211);">
+                            <div class="cont">
                             <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
                             <h3 class="top" style="color: black;">Rent IT</h3>
                             <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
@@ -110,7 +113,7 @@
                             </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="cont" style="background-color:rgb(219, 219, 211);">
+                            <div class="cont">
                             <ion-icon name="call" class="call"></ion-icon><br>
                             <h5 class="top" style="color: black;">Cellphone Number:</h5>
                             <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">'.$row["ContNum"].'</p>
@@ -118,7 +121,7 @@
                             </div>
                             </div>
                             <div class="col-md-4">
-                            <div class="cont" style="background-color:rgb(219, 219, 211);">
+                            <div class="cont">
                             <ion-icon name="business" class="add"></ion-icon><br>
                             <h5 class="top" style="color: black;">Address:</h5>
                             <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
@@ -231,5 +234,11 @@
     <!-- Ionicons JS -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+    function toggleMenu() {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+    }
+    </script>
 </body>
 </html>
