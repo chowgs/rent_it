@@ -336,6 +336,22 @@ if(!isset($_SESSION["AccountID"])){
                         
                     </table>
                 </div>
+                <!-- Image Modal -->
+                <div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Room Image</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImage" src="" class="img-fluid" alt="Room Image">
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -504,7 +520,7 @@ if(!isset($_SESSION["AccountID"])){
                 </button>
             </div>
             <div class="modal-body">
-                <form id="editRoomForm">
+                <form id="editRoomForm" enctype="multipart/form-data">
                 <input type="hidden" id="roomID" name="roomID">
                 <div class="form-groups">
                     <label for="roomNo">Room Number</label>
@@ -531,6 +547,10 @@ if(!isset($_SESSION["AccountID"])){
                     <input type="text" style="text-align: center;" class="form-control" id="livingRoom" name="livingRoom" autocomplete="off">
                 </div>
                 <div class="form-groups">
+                    <label for="livingRoom">Room Picture</label>
+                    <input type="file" style="text-align: center;" class="form-control" id="roomPicture" name="roomPicture">
+                </div>
+                <div class="form-groups">
                     <label for="status">Status</label>
                     <input type="text" style="text-align: center;" class="form-control" id="status" name="status" disabled>
                 </div>
@@ -546,6 +566,12 @@ if(!isset($_SESSION["AccountID"])){
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script>
+
+        function viewImage(imageUrl) {
+            $('#modalImage').attr('src', "../" + imageUrl); // Set image source
+            $('#imageModal').modal('show'); // Show modal
+        }
+        
         function toggleMenu() {
             var dropdown = document.getElementsByClassName("dropdown-menu")[0];
             if (dropdown.style.display === "block") {
@@ -1120,26 +1146,33 @@ if(!isset($_SESSION["AccountID"])){
                     $('#editRoom #kitchen').val(room.Kitchen);
                     $('#editRoom #livingRoom').val(room.Liv_Room);
                     $('#editRoom #status').val(room.Status);
+                    $('#editRoom #roomPicture').val(room.RoomImageURL);
                 }
             });
         });
 
         $(document).on('click', '#updateRoomBtn', function () {
-            var formData = $('#editRoomForm').serialize();
-
+            // var formData = $('#editRoomForm').serialize();
+            var form = document.getElementById('editRoomForm');
+            var formData = new FormData(form);
             $.ajax({
                 url: 'process/update_room.php',
                 type: 'POST',
                 data: formData,
+                contentType: false,
+                processData: false,
                 success: function(response) {
                     if(response === 'success'){
                         toastr.success('Room updated successfully!');
                         $('#editRoom').modal('hide');
                         location.reload();
                     } else {
-                        toastr.error('Failed to update room.');
+                        toastr.error(response);
                     }
-                }
+                },
+                error: function(xhr, status, error) {
+                    console.log("AJAX ERROR: " + error);
+                } 
             });
         });
 
