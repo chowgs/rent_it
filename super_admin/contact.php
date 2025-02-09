@@ -77,6 +77,16 @@ if(!isset($_SESSION["AccountID"])){
             background-color: #f1f1f1;
         }
 
+        /* para ma fixed ung footer sa dulo dvh - device viewport height*/
+        .background-image {
+            height: 100dvh;
+        }
+
+        /* konting space sa taas */
+        .footer-container {
+            margin-top: 20px;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -93,7 +103,8 @@ if(!isset($_SESSION["AccountID"])){
     </style>
 </head>
 <body>
-<img src="../images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
+<!-- Remove the styling since mas mataas hierarchy ng inline css -->
+<img src="../images/booking_system.jpg" alt="" class="background-image">
 <div class="navbar">
     <img src="../images/logo.png" alt="Rent It" class="logo">
     <div class="nav-links">
