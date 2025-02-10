@@ -110,6 +110,9 @@
         <div class="bar"></div>
     </div>
 </div>
+<?php 
+    include("../components/ResponsiveNavSA.html");
+?>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -300,7 +303,7 @@
             }
         }
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.querySelector('.navbarsmall');
             navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
     </script>

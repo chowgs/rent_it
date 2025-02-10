@@ -216,6 +216,10 @@
     </div>
 </div>
 
+<?php 
+    include("../components/ResponsiveNavSA.html");
+?>
+
 <div class="search">
     <h3>RENT LIKE HOME</h3>
     <form id="searchForm">
@@ -400,7 +404,7 @@
         
     <script>
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.querySelector('.navbarsmall');
             navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
         let map;
