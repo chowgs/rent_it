@@ -55,6 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $type = $_POST['type'];
     $totalRooms = $_POST['totalRooms'];
     $desc = $_POST['description'];
+    $propName = $_POST['PropName'];
 
     // Get owner_id from owner table using account_id
     $ownerQuery = "SELECT OwnerID FROM owner WHERE AccountID = ?";
@@ -117,9 +118,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         if(!empty($location)){
             // Insert property details into the property table
-            $propertyQuery = "INSERT INTO property (PropertyID, Type, Category, Location, Total_Room, ImgURL,  OwnerID, Description) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $propertyQuery = "INSERT INTO property (PropertyID, Type, Category, Location, Total_Room, ImgURL, OwnerID, Description, PropertyName) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conn->prepare($propertyQuery);
-            $stmt->bind_param("ssssisss", $propertyID, $type, $cat, $location, $totalRooms, $imageLinksString,  $ownerId, $desc);
+            $stmt->bind_param("ssssissss", $propertyID, $type, $cat, $location, $totalRooms, $imageLinksString, $ownerId, $desc, $propName);
 
             // Close the statement for owner query
             $stmtOwner->close();

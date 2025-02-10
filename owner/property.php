@@ -416,7 +416,7 @@ if(!isset($_SESSION["AccountID"])){
                                     
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="cat">Category:</label>
                                 <select style="padding: 5px;" name="cat" id="cat" required>
                                     <option value="Both">Both</option>
@@ -427,6 +427,10 @@ if(!isset($_SESSION["AccountID"])){
                             <div class="col-md-4">
                                 <label for="totalRooms">Total Rooms:</label>
                                 <input type="number" style="width: 25%;" id="totalRooms" name="totalRooms" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="totalRooms">Property Name:</label>
+                                <input type="text" style="width: 50%;" id="PropName" name="PropName" required>
                             </div>
                         </div><br>
                         <div class="row">
