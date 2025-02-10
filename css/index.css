@@ -64,7 +64,7 @@
 
 .pagination-container {
   display: flex;
-  justify-content:end;
+  justify-content: end;
   margin-top: 5px;
 }
 
@@ -156,11 +156,6 @@
   object-fit: cover;
 }
 
-.txt,
-.txtt {
-  padding: 15px;
-}
-
 .txt {
   min-height: 24%;
 }
@@ -236,11 +231,11 @@ input[type="text"]:focus {
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   .properties-container {
-      max-height: 600px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: 10px;
-    }
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+  }
 
   .btn-search {
     width: 215px;
@@ -260,30 +255,29 @@ input[type="text"]:focus {
 /* Medium devices (landscape tablets, 768px and up) */
 @media only screen and (min-width: 768px) {
   .properties-container {
-      max-height: 600px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: 10px;
-    }
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+  }
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
   .properties-container {
-      max-height: 600px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: 10px;
-    }
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+  }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
   .properties-container {
-      max-height: 600px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      padding-right: 10px;
-    }
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 10px;
+  }
 }
-

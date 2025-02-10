@@ -121,6 +121,25 @@ html {
   flex-direction: column;
 }
 
+.txtt {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.txt {
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+#mapModal {
+  z-index: 10000;
+}
+
+#mapModal #mapModalLabel {
+  color: black;
+}
+
 @media (max-width: 921px) {
   .nav-links {
     width: 80dvw;
