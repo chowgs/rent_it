@@ -54,6 +54,9 @@ if(isset($_SESSION['loggedIn'])){
         <div class="bar"></div>
     </div>
 </div>
+<?php 
+    include('./components/ResponsiveNav.html');
+?>
 
 <!-- <button class="burger" onclick="toggleMenu()">☰</button>
     </div>
@@ -342,14 +345,6 @@ if(isset($_SESSION['loggedIn'])){
                 togglePassword.innerHTML = '<ion-icon name="eye-outline"></ion-icon>'; // Change icon to indicate invisibility
             }
         }
-        function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
-        }
         //document.addEventListener('click', function(event) {
            // var dropdown = document.getElementsByClassName("dropdown-menu")[0];
           // var burger = document.querySelector('.burger');
@@ -379,10 +374,10 @@ if(isset($_SESSION['loggedIn'])){
         ?>
     </script>
     <script>
-            function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
-        navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
-    }
+        function toggleMenu() {
+            const navLinks = document.querySelector('.navbarsmall');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+        }
     </script>
 
 </body>
