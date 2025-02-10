@@ -3,7 +3,7 @@ session_start();
 require_once("../config/connect.php");
 
 function accountID($conn, $length = 8) {
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $characters = '0123456789';
     do {
         $scrambledId = '';
         for ($i = 0; $i < $length; $i++) {

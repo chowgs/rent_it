@@ -10,7 +10,7 @@ function generateToken($length = 32) {
 }
 
 function accountID($conn, $length = 8) {
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $characters = '0123456789';
     do {
         $scrambledId = '';
         for ($i = 0; $i < $length; $i++) {
@@ -26,7 +26,7 @@ function accountID($conn, $length = 8) {
 }
 
 function boarderID($conn, $length = 8) {
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    $characters = '0123456789';
     do {
         $scrambledId = '';
         for ($i = 0; $i < $length; $i++) {
