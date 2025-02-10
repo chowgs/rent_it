@@ -98,9 +98,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $account_id = $stmt_account->insert_id;
 
         // Insert into owners table
-        $stmt_owner = $conn->prepare("INSERT INTO owner (OwnerID, FullName, ContNum, Address, Email, L_Name, L_Email, L_Num, AccountID) 
-                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt_owner->bind_param("sssssssss", $ownerID, $name_owner, $cont_owner, $add_owner, $email_owner, $name_land, $email_land, $cont_land, $accountID);
+        $stmt_owner = $conn->prepare("INSERT INTO owner (OwnerID, FullName, Lastn_owner, ContNum, fblink, Address, Email, L_Name, L_Email, L_Num, AccountID) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt_owner->bind_param("sssssssssss", $ownerID, $name_owner, $Lastn_owner, $cont_owner, $fblink, $add_owner, $email_owner, $name_land, $email_land, $cont_land, $accountID);
 
         if ($stmt_owner->execute()) {
             // Process uploaded images

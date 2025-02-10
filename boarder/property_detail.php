@@ -392,8 +392,7 @@ if (!isset($_SESSION["AccountID"])) {
                             echo '<li class="lst">Kitchen - '.$kitchen.'</li>';
                             echo '<li class="lst">Description - '.$property['Description'].'</li>';
                             echo '</ul><br>';
-                            echo '<h5>Owner:</h5><br>';
-                            echo '<p style="margin-left: 5%;  margin-bottom: 0;">'.$property['FullName'].'</p>';
+                            echo '<h5>Owner: '.$property['FullName'].'</h5><br>';
                             if ($existingBoarderID) {
                             echo '<div class="btn-container">
                                 <button class="btn btn-success" data-bid="'.$boarderID.'" data-id="'.$propertyID.'" data-toggle="modal" data-target="#review" onclick="setID(this)">Write a review!</button>
@@ -404,7 +403,7 @@ if (!isset($_SESSION["AccountID"])) {
                                 <button data-boarderid="' . htmlspecialchars($accountID)     . '" data-ownerid="' . htmlspecialchars($property['OwnerID']) . '" class="btn btn-primary" data-toggle="modal" data-target="#message">Message</button>
                                 </div>';
                             }
-
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: <a href="'.$property['fblink'].'" target="_blank">'.$property['fblink'].'</a></p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
