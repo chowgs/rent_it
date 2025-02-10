@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             echo '<div class="col-md-4">';
             echo '<div class="property-card">';
-            echo '<img src="gallery/NnksQyuy/669a4f848e508_booking_system.jpg">';
+            echo '<img src="' . htmlspecialchars($firstImageUrl) . '">';
             echo '<a href="property_detail.php?id=' . htmlspecialchars($property['PropertyID']) . '">';
             // echo '<img class="image-card" src="' . htmlspecialchars($firstImageUrl) . '" alt="Property Image" style="width:100%; height: 220px;">';
             
