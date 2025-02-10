@@ -1220,8 +1220,20 @@ if(!isset($_SESSION["AccountID"])){
                 }
             });
         });
-
+        
         var selectedFiles = [];
+
+        function checkFileInput() {
+            var fileInput = document.getElementById("file-input");
+            var uploadContainer = document.querySelector(".upload-container");
+            if (selectedFiles.length > 0) {
+                uploadContainer.style.display = "none";
+            } else {
+                uploadContainer.style.display = "block";
+                fileInput.value = ""; // Reset file input to allow re-selection
+            }
+        }
+
         function previewImages() {
             var preview = document.getElementById('image-preview');
             var files = document.getElementById('file-input').files;
@@ -1251,6 +1263,7 @@ if(!isset($_SESSION["AccountID"])){
                             removeBtn.addEventListener('click', function() {
                                 imgContainer.remove(); // Remove the image preview container
                                 removeFromSelectedFiles(file); // Remove file from selectedFiles array
+                                checkFileInput(); // Remove file from selectedFiles array
                             });
                             imgContainer.appendChild(removeBtn);
 
@@ -1260,12 +1273,14 @@ if(!isset($_SESSION["AccountID"])){
                     reader.readAsDataURL(file);
                 }
             }
+            checkFileInput();
         }
         // Function to remove file from selectedFiles array
         function removeFromSelectedFiles(fileToRemove) {
             selectedFiles = selectedFiles.filter(function(file) {
                 return file !== fileToRemove;
             });
+            checkFileInput();
         }
         // Function to update the form submission with selectedFiles
         function updateFormSubmission() {
