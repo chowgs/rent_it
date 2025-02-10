@@ -217,6 +217,9 @@ if (!isset($_SESSION["AccountID"])) {
         <div class="bar"></div>
     </div>
 </div>
+<?php
+    include("../components/ResponsiveNavOwner.html");
+?>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -397,7 +400,7 @@ if (!isset($_SESSION["AccountID"])) {
         
     <script>
         function toggleMenu() {
-            const navLinks = document.querySelector('.nav-links');
+            const navLinks = document.querySelector('.navbarsmall');
             navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
         let map;
