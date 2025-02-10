@@ -135,13 +135,13 @@ if(!isset($_SESSION["AccountID"])){
                                     <table id="profileTable">
                                         <thead>
                                             <tr>
-                                                <th colspan="5">Property List</th>
-                                                <th style="text-align: right; font-size: 16px;">
+                                                <th colspan="6">Property List</th>
+                                                <th style="text-align: right; font-size: 12px;">
                                                     <button type="button" data-toggle="modal" data-target="#addProperty" class="btn btn-success" >Add Property</button>
                                                 </th>
                                             </tr>
                                             <tr>
-                                                <td colspan="6">
+                                                <td colspan="12">
                                                     <div class="filter-container">
                                                         <div class="show">
                                                         </div>
@@ -155,6 +155,7 @@ if(!isset($_SESSION["AccountID"])){
                                             <tr>
                                                 <th>Type</th>
                                                 <th>Category</th>
+                                                <th>Property Name</th>
                                                 <th>Description</th>
                                                 <th>Location</th>
                                                 <th>Rooms</th>
@@ -185,6 +186,7 @@ if(!isset($_SESSION["AccountID"])){
                                                             echo '<tr>';
                                                             echo "<td>" . $row["Type"] . "</td>";
                                                             echo "<td>" . $row["Category"] . "</td>";
+                                                            echo "<td>" . $row["PropertyName"] . "</td>";
                                                             echo "<td>" . $row["Description"] . "</td>";
                                                             echo "<td>" . $row["Location"] . "</td>";
                                                             echo "<td>" . $row["Total_Room"] . "</td>";
@@ -205,7 +207,7 @@ if(!isset($_SESSION["AccountID"])){
                                                 $conn->close();
                                             ?>
                                             <tr class="page-tr"> 
-                                                <td colspan="6">
+                                                <td colspan="12">
                                                     <div class="pagination-container">
                                                         <div>
                                                             <button id="prevBtn" onclick="prevPage()">Previous</button>

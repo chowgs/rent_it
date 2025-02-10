@@ -632,7 +632,7 @@ if(!isset($_SESSION["AccountID"])){
             function loadProperties(page = 1) {
                 const formData = $('#searchForm').serialize() + `&page=${page}&itemsPerPage=${itemsPerPage}`;
                 $.ajax({
-                    url: 'process/search_property.php',
+                    url: '../process/search_property.php',
                     type: 'POST',
                     data: formData,
                     success: function(response) {

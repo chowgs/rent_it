@@ -1,5 +1,6 @@
 <?php
 require_once("../config/connect.php");
+session_start();
 
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -69,14 +70,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             } 
 
-            echo '<div class="col-md-4">';
+            if (isset($_SESSION["Type"])) {
+                echo '<div class="col-md-4 mt-4">';
+            } else {
+                echo '<div class="col-md-4">';
+            }
             echo '<div class="property-card">';
-            echo '<img src="' . htmlspecialchars($firstImageUrl) . '">';
+            $result = $firstImageUrl;
+            $resultURL = str_replace("../", "", $result);
+            if (isset($_SESSION["Type"]) && $_SESSION["Type"] === "Admin") {
+                echo '<img src="../' . htmlspecialchars($resultURL) . '">';
+            } else if (isset($_SESSION["Type"]) && $_SESSION["Type"] === "Owner") {
+                echo '<img src="../' . htmlspecialchars($resultURL) . '">';
+            } else if (isset($_SESSION["Type"]) && $_SESSION["Type"] === "Boarder") {
+                echo '<img src="../' . htmlspecialchars($resultURL) . '">';
+            } 
+            else {
+                echo '<img src="' . htmlspecialchars($firstImageUrl) . '">';
+            }
             echo '<a href="property_detail.php?id=' . htmlspecialchars($property['PropertyID']) . '">';
             // echo '<img class="image-card" src="' . htmlspecialchars($firstImageUrl) . '" alt="Property Image" style="width:100%; height: 220px;">';
             
             echo '<div class="txt">';
-            echo '<p onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
+            echo '<p style="font-weight: bold;" class="text-uppercase">' . htmlspecialchars($property['PropertyName']) .'</p>';
             echo '</div>';
             // echo '<table>';
             // echo '<tbody>';
@@ -99,6 +115,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // echo '<div class="txtt">';
             // echo '<p>Owner: ' . htmlspecialchars($property['name']) . '</p>';
             echo '</a>';
+            echo '<p style="color: black; padding-top: 0; cursor: pointer" class="txt" onclick="openDirections(\'' . htmlspecialchars($property['Location']) . '\')"><ion-icon class="icon" name="location"></ion-icon>' . htmlspecialchars($property['Location']) . '</p>';
             echo '</div>';
             echo '</div>';
             echo '</div>';

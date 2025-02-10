@@ -30,6 +30,7 @@ if (isset($_POST["login"])) {
             if ($row['AccType'] == "Super_Admin") {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
+                    $_SESSION["Type"] = "Admin";
                     $_SESSION['success_message'] = "Login successful!";
                     $_SESSION['loggedIn'] = 1;
                     header("Location: ../super_admin/dashboard.php");  //should be directed to dashboard
@@ -43,6 +44,7 @@ if (isset($_POST["login"])) {
             } elseif ($row['AccType'] == "Admin") {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
+                    $_SESSION["Type"] = "Admin";
                     $_SESSION['success_message'] = "Login successful!";
                     header("Location: ../super_admin/dashboard.php"); //should be directed to dashboard
                     exit;
@@ -56,6 +58,7 @@ if (isset($_POST["login"])) {
                 if ($row['Approval'] == "Approved") {
                     if ($row['Status'] == 1) {
                         $_SESSION["AccountID"] = $row['AccountID'];
+                        $_SESSION["Type"] = "Owner";
                         $_SESSION['success_message'] = "Login successful!";
                         header("Location: ../owner/dashboard.php");
                         exit;
@@ -73,6 +76,7 @@ if (isset($_POST["login"])) {
             } elseif ($row['AccType'] == "Boarder") {
                 if ($row['Status'] == 1) {
                     $_SESSION["AccountID"] = $row['AccountID'];
+                    $_SESSION["Type"] = "Boarder";
                     $_SESSION['success_message'] = "Login successful!";
                     header("Location: ../boarder/dashboard.php");
                     exit;
