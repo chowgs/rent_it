@@ -18,20 +18,28 @@ function accountID($conn, $length = 8) {
     return $scrambledId;
 }
 
-function ownerID($conn, $length = 8) {
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    do {
-        $scrambledId = '';
-        for ($i = 0; $i < $length; $i++) {
-            $randomIndex = mt_rand(0, strlen($characters) - 1);
-            $scrambledId .= $characters[$randomIndex];
-        }
-        // Check if the generated ID already exists in the database
-        $checkQuery = "SELECT COUNT(*) AS count FROM owner WHERE OwnerID = '$scrambledId'";
-        $checkResult = $conn->query($checkQuery);
-        $count = $checkResult->fetch_assoc()['count'];
-    } while ($count > 0); // Keep generating until a unique ID is found
-    return $scrambledId;
+function ownerID($conn) {
+    // Define the prefix part of the ID
+    $prefix = '25R-';
+
+    // Get the last number used in the ID from the database
+    $checkQuery = "SELECT OwnerID FROM owner WHERE OwnerID LIKE '25R-%' ORDER BY OwnerID DESC LIMIT 1";
+    $checkResult = $conn->query($checkQuery);
+
+    // If no result, start from 0001
+    if ($checkResult->num_rows === 0) {
+        $newId = $prefix . '0001';
+    } else {
+        // Fetch the last OwnerID and extract the number part
+        $lastOwnerId = $checkResult->fetch_assoc()['OwnerID'];
+        $lastNumber = (int)substr($lastOwnerId, 4); // Get the number after '25R-'
+
+        // Increment the number and pad it to 4 digits
+        $newNumber = str_pad($lastNumber + 1, 4, '0', STR_PAD_LEFT);
+        $newId = $prefix . $newNumber;
+    }
+
+    return $newId;
 }
 
 function fileID($conn, $length = 8) {
@@ -141,14 +149,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
-            $_SESSION['success_message'] = "Sign up successful!";
+            $_SESSION['success_message'] = "Application success!";
         } else {
-            $_SESSION['error_message'] = "Sign up failed.";
+            $_SESSION['error_message'] = "Application failed failed.";
         }
 
         $stmt_owner->close();
     } else {
-        $_SESSION['error_message'] = "Sign up failed.";
+        $_SESSION['error_message'] = "Application failed.";
     }
     $stmt_account->close();
 }
