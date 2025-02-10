@@ -15,10 +15,16 @@ if(!isset($_SESSION["AccountID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - About</title>
+
+    <?php
+        // Custom font from google
+        include("../css/fonts.html");
+    ?>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
     <link rel="stylesheet" href="owner-css/about_owner.css">
-    <link rel="stylesheet" href="owner-css/header.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -76,30 +82,30 @@ if(!isset($_SESSION["AccountID"])){
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <img src="../images/logo.png" alt="Rent It" class="logo">
-        <div class="nav-links">
+<img src="../images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
+<div class="navbar">
+    <img src="../images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
+            <a href="landing_page.php">Home</a>
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
-        <button class="burger-drop" onclick="toggleMenu()">☰</button>
-        <a class="login-link" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
         </div>
+        <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
-    <div class="dropdown-menu">
-        <a href="landing_page.php">Home</a>
-        <a href="dashboard.php">Dashboard</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-</div><br><br><br><br><br>
+</div>
 
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form">
-                <h2>About Us</h2>
+                <h2>ABOUT US</h2>
                     <div class="row" style="margin: 0 !important;">
                         <div class="col-md-4 about-cont text-center">
                             <div class="about">
@@ -116,8 +122,8 @@ if(!isset($_SESSION["AccountID"])){
                             $aboutText = $row['About'] ?? '';
                             if (!empty($aboutText)) {
                                 echo "
-                                <div class='col-md-8 us' style='background-color:rgb(190, 190, 186); padding: 25px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);'>
-                                    <p id='about-link' style='color: #333333; font-size: 16px; line-height: 1.6;'>".nl2br(htmlspecialchars($aboutText))."</p>
+                                <div class='col-md-8 us' style='background-color: rgba(0, 0, 0, 0.7); padding: 25px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);''>
+                                    <p id='about-link' style='color:rgb(255, 255, 255); font-size: 16px; line-height: 1.6;'>".nl2br(htmlspecialchars($aboutText))."</p>
                                 </div>
                             ";
                             }else{
@@ -239,29 +245,9 @@ if(!isset($_SESSION["AccountID"])){
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
         function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger-drop');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger-drop');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
     </script>
 </body>
 </html>

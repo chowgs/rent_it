@@ -2,6 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .signup-box {
@@ -24,6 +25,7 @@
     max-width: 5000px;
     height: 100%;
     border-radius: 10px;
+
 }
 
 .signup-form form {

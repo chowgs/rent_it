@@ -15,10 +15,16 @@ if(!isset($_SESSION["AccountID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Home</title>
+
+    <?php
+        // Custom font from google
+        include("../css/fonts.html");
+    ?>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="boarder-css/landing_boarder.css">
-    <link rel="stylesheet" href="boarder-css/header.css">
+    <link rel="stylesheet" href="boarder-css/asBoarderIndex.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="css/modal.css">
     <!-- <link rel="stylesheet" href="css/scrollbar.css"> -->
 <style>
@@ -197,24 +203,23 @@ if(!isset($_SESSION["AccountID"])){
 </style>
 </head>
 <body>
-    <div class="navbar">
-        <img src="../images/logo.png" alt="Rent It" class="logo">
-        <div class="nav-links">
+<img src="../images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
+<div class="navbar">
+    <img src="../images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
-        <button class="burger-drop" onclick="toggleMenu()">☰</button>
-        <a class="login-link" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
         </div>
+        <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
-
-    <div class="dropdown-menu">
-        <a href="dashboard.php">Dashboard</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-    <br><br><br><br><br>
+</div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -244,8 +249,12 @@ if(!isset($_SESSION["AccountID"])){
                     </div>
                     <div class="pagination-container" id="paginationContainer">
                         <div class="pagination-buttons">
-                            <button id="prevButton" class="btn btn-secondary btns" disabled><ion-icon name="caret-back"></ion-icon></button>
-                            <button id="nextButton" class="btn btn-secondary btns"><ion-icon name="caret-forward"></ion-icon></button>
+                            <button id="prevButton" class="btn btn-secondary btns" disabled>
+                                <ion-icon name="caret-back"></ion-icon> Previous
+                            </button>
+                            <button id="nextButton" class="btn btn-secondary btns">
+                                Next <ion-icon name="caret-forward"></ion-icon>
+                            </button>
                         </div>
                     </div>
                 </div>  
@@ -390,29 +399,9 @@ if(!isset($_SESSION["AccountID"])){
         
     <script>
         function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger-drop');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger-drop');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
         let map;
         let userMarker;
         let inputLocationMarker;

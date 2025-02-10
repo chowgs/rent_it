@@ -70,10 +70,10 @@
     border: none;
 }
 .dashboard-form h2 {
-    letter-spacing: 3px;
-    font-size: 24px; /* Larger heading for prominence */
+    font-size: 30px; /* Larger heading for prominence */
     color: black; /* Blue color for the heading */
-    margin-bottom: 15px; /* Space below the heading */
+    margin-top: 50px;
+    margin-bottom: 40px; /* Space below the heading */
     text-align: center; /* Center align the heading */
 }
 
@@ -87,6 +87,7 @@
     background-color: rgb(0 84 6);
     border-top-left-radius: 25px !important;
     border-bottom-left-radius: 25px !important;
+    color: #fff;
 }
 .about{
     padding: 30px;

@@ -15,10 +15,17 @@ if(!isset($_SESSION["AccountID"])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="../images/logo.png" />
     <title>Rent IT - Contact</title>
+
+    <?php
+        // Custom font from google
+        include("../css/fonts.html");
+    ?>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <link rel="stylesheet" href="sa-css/contact.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/contact.css">
     <link rel="stylesheet" href="css/modal.css">
     <link rel="stylesheet" href="css/scrollbar.css">
     <style>
@@ -70,6 +77,16 @@ if(!isset($_SESSION["AccountID"])){
             background-color: #f1f1f1;
         }
 
+        /* para ma fixed ung footer sa dulo dvh - device viewport height*/
+        .background-image {
+            height: 100dvh;
+        }
+
+        /* konting space sa taas */
+        .footer-container {
+            margin-top: 20px;
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -86,190 +103,188 @@ if(!isset($_SESSION["AccountID"])){
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="../images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
+<!-- Remove the styling since mas mataas hierarchy ng inline css -->
+<img src="../images/booking_system.jpg" alt="" class="background-image">
+<div class="navbar">
+    <img src="../images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
             <a href="landing_page.php">Home</a>
             <a href="dashboard.php">Dashboard</a>
             <a href="about.php">About</a>
             <a href="contact.php">Contact Us</a>
         </div>
-    </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
         <a class="login-btn" href="#" data-toggle="modal" data-target="#myModal">Logout</a>
     </div>
-    <div class="dropdown-menu">
-        <a href="landing_page.php">Home</a>
-        <a href="dashboard.php">Dashboard</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="#" data-toggle="modal" data-target="#myModal">Logout</a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
+</div>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
                 <div class="dashboard-form text-center">
                     <?php
-require_once("../config/connect.php");
-$sql = "SELECT * FROM info";
-$result = $conn->query($sql);
-if ($result->num_rows > 0) {
-    $row = $result->fetch_assoc();
-    echo '<div class="col-md-12">
-    <div class="dash-box">
+                        require_once("../config/connect.php");
+                        $sql = "SELECT * FROM info";
+                        $result = $conn->query($sql);
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            echo '<div class="col-md-12">
+                            <div class="dash-box">
 
-    <form id="profile-form" action="process/edit_contact.php" method="post">
-    <h2><span class="parent">Contact Us</span>
-    <button type="button" id="edit-save-button" class="btn btn-primary" onclick="toggleEditSave()">Edit</button>
-          <button type="submit" id="save-button" class="btn btn-success" style="display:none;">Save</button>
-    </h2><br>
-    <p id="p">'.$row["P"].'</p>
-    <p id="pp" style="display:none;"><input name="p" class="inp" type="text" value="'.$row["P"].'" disabled></p>
-    
-    <div class="row">
-        <div class="col-md-4">
-            <div class="cont">
-                <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
-                <h3 class="top">Rent IT</h3>
-                <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
-                <p id="fbb" style="display:none;"><input name="fb" class="inp" type="text" value="'.$row["FB"].'" disabled></p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="cont">
-                <ion-icon name="call" class="call"></ion-icon><br>
-                <h5 class="top">Cellphone Number:</h5>
-                <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">'.$row["ContNum"].'</p>
-                <p id="cont" style="display:none;"><input name="cont" class="inp" type="text" value="'.$row["ContNum"].'" disabled></p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="cont">
-                <ion-icon name="business" class="add"></ion-icon><br>
-                <h5 class="top">Address:</h5>
-                <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
-                <p id="address" style="display:none;"><input name="address" class="inp" type="text" value="'.$row["Address"].'" disabled></p>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <footer>
-    <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
-    background: rgba(255, 255, 255, 0.6) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    backdrop-filter: blur(60px) !important;
-    border: 1px solid rgba(255,255,255,0.15) !important;
-    align-items: center ;
-    box-shadow: 5px 5px !important;
-    letter-spacing: 3px;">
-    <div class="container" style="text-align: center; font-size: 12px;">
-    <div class="row" style=" display: flex; align-items: center;">
- 
-    <div class="col-md-4" style="padding: 10px;">
-        <div id="ggm"style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="mail"></ion-icon> '.$row["Gmail"].'</div>
-        <div id="ggmail" style="display:none;"><input name="gmail"  class="inp" type="text" value="'.$row["Gmail"].'" disabled></div>
-    </div>
-    <div class="col-md-4" style="padding: 10px;">
-    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="logo-facebook"></ion-icon> <a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></div>
-    </div>
-    <div class="col-md-4" style="padding: 10px;">
-    <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="call"></ion-icon> '.$row["ContNum"].'</div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-    <div class="border"></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12 text-center">
-    <p class="text-muted" style="margin-top: 10px; font-size: 10px;">Rent IT | est. 2024</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </footer>';
-} else {
-    echo '<div class="col-md-12">
-    <div class="dash-box">
-    <form id="profile-form" action="process/edit_contact.php" method="post">
-    <h2><span class="parent">Contact Us</span>
-    <button type="button" id="edit-save-button" class="btn btn-primary" onclick="toggleEditSave()">Edit</button>
-          <button type="submit" id="save-button" class="btn btn-success" style="display:none;">Save</button>
-    </h2><br>
-    <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
-    <div class="row">
-        <div class="col-md-4">
-            <div class="cont" style="background-color:rgb(219, 219, 211);">
-                <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
-                <h3 class="top">Rent IT</h3>
-                <a href=""><input id="p" name="p" class="inp" type="text" value="" disabled></a>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="cont" style="background-color:rgb(219, 219, 211);">
-                <ion-icon name="call" class="call"></ion-icon><br>
-                <h5 class="top">Cellphone Number:</h5>
-                <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="cont" style="background-color:rgb(219, 219, 211);">
-                <ion-icon name="business" class="add"></ion-icon><br>
-                <h5 class="top">Address:</h5>
-                <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
-            </div>
-        </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    </div>
-    <footer>
-    <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
-    background: rgba(255, 255, 255, 0.6) !important;
-    -webkit-backdrop-filter: blur(15px) !important;
-    backdrop-filter: blur(60px) !important;
-    border: 1px solid rgba(255,255,255,0.15) !important;
-    align-items: center ;
-    box-shadow: 5px 5px !important;
-    letter-spacing: 3px;">
-    <div class="container" style="text-align: center; font-size: 12px;">
-    <div class="row" style=" display: flex; align-items: center;">
-    <div class="col-md-4" style="padding: 10px;">
-        <div><ion-icon name="mail"></ion-icon> rentit@gmail.com</div>
-    </div>
-    <div class="col-md-4" style="padding: 10px;">
-    <div><ion-icon name="logo-facebook"></ion-icon> Rent IT</div>
-    </div>
-    <div class="col-md-4" style="padding: 10px;">
-    <div><ion-icon name="call"></ion-icon> +63 992 2762 412</div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12">
-    <div class="border"></div>
-    </div>
-    </div>
-    <div class="row">
-    <div class="col-md-12 text-center">
-    <p class="text-muted" style="margin-top: 10px; font-size: 10px;">Rent IT | est. 2024</p>
-    </div>
-    </div>
-    </div>
-    </div>
-    </footer>';
-}
-?>             
+                            <form id="profile-form" action="process/edit_contact.php" method="post">
+                            <h2><span class="parent">CONTACT US</span>
+                            <button type="button" id="edit-save-button" class="btn btn-primary" onclick="toggleEditSave()">Edit</button>
+                                <button type="submit" id="save-button" class="btn btn-success" style="display:none;">Save</button>
+                            </h2><br>
+                            <p id="p">'.$row["P"].'</p>
+                            <p id="pp" style="display:none;"><input name="p" class="inp" type="text" value="'.$row["P"].'" disabled></p>
+                            
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="cont">
+                                        <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
+                                        <h3 class="top">Rent IT</h3>
+                                        <p id="fb-link" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;"><a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></p>
+                                        <p id="fbb" style="display:none;"><input name="fb" class="inp" type="text" value="'.$row["FB"].'" disabled></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="cont">
+                                        <ion-icon name="call" class="call"></ion-icon><br>
+                                        <h5 class="top">Cellphone Number:</h5>
+                                        <p id="num" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;">'.$row["ContNum"].'</p>
+                                        <p id="cont" style="display:none;"><input name="cont" class="inp" type="text" value="'.$row["ContNum"].'" disabled></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="cont">
+                                        <ion-icon name="business" class="add"></ion-icon><br>
+                                        <h5 class="top">Address:</h5>
+                                        <p id="add" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; color: black;" title="'. $row["Address"] .'">'.$row["Address"].'</p>
+                                        <p id="address" style="display:none;"><input name="address" class="inp" type="text" value="'.$row["Address"].'" disabled></p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <footer>
+                            <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
+                            background: rgba(255, 255, 255, 0.6) !important;
+                            -webkit-backdrop-filter: blur(15px) !important;
+                            backdrop-filter: blur(60px) !important;
+                            border: 1px solid rgba(255,255,255,0.15) !important;
+                            align-items: center ;
+                            box-shadow: 5px 5px !important;
+                            letter-spacing: 3px; margin-bottom: 0;">
+                            <div class="container" style="text-align: center; font-size: 12px;">
+                            <div class="row" style=" display: flex; align-items: center;">
+                        
+                            <div class="col-md-4" style="padding: 10px;">
+                                <div id="ggm"style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="mail"></ion-icon> '.$row["Gmail"].'</div>
+                                <div id="ggmail" style="display:none;"><input name="gmail"  class="inp" type="text" value="'.$row["Gmail"].'" disabled></div>
+                            </div>
+                            <div class="col-md-4" style="padding: 10px;">
+                            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="logo-facebook"></ion-icon> <a href="'.$row['FB'].'" target="_blank">'.$row["FB"].'</a></div>
+                            </div>
+                            <div class="col-md-4" style="padding: 10px;">
+                            <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><ion-icon name="call"></ion-icon> '.$row["ContNum"].'</div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12">
+                            <div class="border"></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12 text-center">
+                            <p class="text-muted" style="margin-top: 10px; font-size: 10px;">Rent IT | est. 2024</p>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </footer>';
+                        } else {
+                            echo '<div class="col-md-12">
+                            <div class="dash-box">
+                            <form id="profile-form" action="process/edit_contact.php" method="post">
+                            <h2><span class="parent">Contact Us</span>
+                            <button type="button" id="edit-save-button" class="btn btn-primary" onclick="toggleEditSave()">Edit</button>
+                                <button type="submit" id="save-button" class="btn btn-success" style="display:none;">Save</button>
+                            </h2><br>
+                            <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="cont" style="background-color:rgb(219, 219, 211);">
+                                        <ion-icon name="logo-facebook" class="fb"></ion-icon><br>
+                                        <h3 class="top">Rent IT</h3>
+                                        <a href=""><input id="p" name="p" class="inp" type="text" value="" disabled></a>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="cont" style="background-color:rgb(219, 219, 211);">
+                                        <ion-icon name="call" class="call"></ion-icon><br>
+                                        <h5 class="top">Cellphone Number:</h5>
+                                        <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="cont" style="background-color:rgb(219, 219, 211);">
+                                        <ion-icon name="business" class="add"></ion-icon><br>
+                                        <h5 class="top">Address:</h5>
+                                        <p><input id="p" name="p" class="inp" type="text" value="" disabled></p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            <footer>
+                            <div class="footer-container" style="background-color: mintcream; border-top: 1px solid #e7e7e7;
+                            background: rgba(255, 255, 255, 0.6) !important;
+                            -webkit-backdrop-filter: blur(15px) !important;
+                            backdrop-filter: blur(60px) !important;
+                            border: 1px solid rgba(255,255,255,0.15) !important;
+                            align-items: center ;
+                            box-shadow: 5px 5px !important;
+                            letter-spacing: 3px;">
+                            <div class="container" style="text-align: center; font-size: 12px;">
+                            <div class="row" style=" display: flex; align-items: center;">
+                            <div class="col-md-4" style="padding: 10px;">
+                                <div><ion-icon name="mail"></ion-icon> rentit@gmail.com</div>
+                            </div>
+                            <div class="col-md-4" style="padding: 10px;">
+                            <div><ion-icon name="logo-facebook"></ion-icon> Rent IT</div>
+                            </div>
+                            <div class="col-md-4" style="padding: 10px;">
+                            <div><ion-icon name="call"></ion-icon> +63 992 2762 412</div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12">
+                            <div class="border"></div>
+                            </div>
+                            </div>
+                            <div class="row">
+                            <div class="col-md-12 text-center">
+                            <p class="text-muted" style="margin-top: 10px; font-size: 10px;">Rent IT | est. 2024</p>
+                            </div>
+                            </div>
+                            </div>
+                            </div>
+                            </footer>';
+                        }
+                        ?>             
 </form>
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -318,79 +333,59 @@ if ($result->num_rows > 0) {
             unset($_SESSION['success_message']); // Clear the success message from session
         }
         ?>
-function toggleEditSave() {
-    var button = document.getElementById('edit-save-button');
-    var saveButton = document.getElementById('save-button');
-    var inputs = document.querySelectorAll('.inp');
+        function toggleEditSave() {
+            var button = document.getElementById('edit-save-button');
+            var saveButton = document.getElementById('save-button');
+            var inputs = document.querySelectorAll('.inp');
 
-    var link1 = document.getElementById('fb-link');
-    var fb = document.getElementById('fbb');
+            var link1 = document.getElementById('fb-link');
+            var fb = document.getElementById('fbb');
 
-    var link2 = document.getElementById('num');
-    var cont = document.getElementById('cont');
+            var link2 = document.getElementById('num');
+            var cont = document.getElementById('cont');
 
-    var link3 = document.getElementById('add');
-    var address = document.getElementById('address');
+            var link3 = document.getElementById('add');
+            var address = document.getElementById('address');
 
-    var link4 = document.getElementById('p');
-    var pp = document.getElementById('pp');
+            var link4 = document.getElementById('p');
+            var pp = document.getElementById('pp');
 
-    var link5 = document.getElementById('ggm');
-    var gmail = document.getElementById('ggmail');
+            var link5 = document.getElementById('ggm');
+            var gmail = document.getElementById('ggmail');
 
-    if (button.innerText === 'Edit') {
-        // Enable the input fields
-        inputs.forEach(function(input) {
-            input.disabled = false;
-        });
-        button.style.display = 'none';
+            if (button.innerText === 'Edit') {
+                // Enable the input fields
+                inputs.forEach(function(input) {
+                    input.disabled = false;
+                });
+                button.style.display = 'none';
 
-        link1.style.display = 'none';
-        fb.style.display = 'block';
+                link1.style.display = 'none';
+                fb.style.display = 'block';
 
-        link2.style.display = 'none';
-        cont.style.display = 'block';
+                link2.style.display = 'none';
+                cont.style.display = 'block';
 
-        link3.style.display = 'none';
-        address.style.display = 'block';
+                link3.style.display = 'none';
+                address.style.display = 'block';
 
-        link4.style.display = 'none';
-        pp.style.display = 'block';
+                link4.style.display = 'none';
+                pp.style.display = 'block';
 
-        link5.style.display = 'none';
-        gmail.style.display = 'inline-block';
+                link5.style.display = 'none';
+                gmail.style.display = 'inline-block';
 
-        saveButton.style.display = 'inline-block';
+                saveButton.style.display = 'inline-block';
 
-    } else if (button.innerText === 'Save') {
-        // Submit the form
-        document.getElementById('profile-form').submit();
-    }
-}
-        function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
+            } else if (button.innerText === 'Save') {
+                // Submit the form
+                document.getElementById('profile-form').submit();
             }
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
+        }
     </script>
 </body>
 </html>

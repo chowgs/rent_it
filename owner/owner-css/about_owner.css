@@ -1,3 +1,51 @@
+/* body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-image: url('../../images/booking_system.jpg'); 
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    letter-spacing: 1px;
+    overflow: hidden;
+}
+ 
+.navbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.6);
+    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: blur(60px);
+    border: 1px solid rgba(255,255,255,0.15);
+    align-items: center;
+    box-shadow: 5px 5px;
+}
+
+.logo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 600;
+    margin-left: 40px;
+    align-items: center;
+    text-align: center;
+}
+
+.navbar a {
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+} */
+
 .dashboard-container {
     display: flex;
     justify-content: center;
@@ -72,12 +120,12 @@
 }
 
 .dashboard-form h2 {
-    letter-spacing: 3px;
-    font-size: 24px;
+    font-size: 30px;
     /* Larger heading for prominence */
-    color: black;
+    color: #fff;
     /* Blue color for the heading */
-    margin-bottom: 15px;
+    margin-top: 50px;
+    margin-bottom: 40px;
     /* Space below the heading */
     text-align: center;
     /* Center align the heading */
@@ -102,7 +150,6 @@
 
 .about {
     padding: 30px;
-    color: silver;
     margin-top: 10%;
 }
 
@@ -112,11 +159,8 @@
 
 .us {
     padding: 30px;
+    /* background-color: gainsboro; */
     border-top-right-radius: 25px !important;
     border-bottom-right-radius: 25px !important;
     border: 1px solid darkgrey;
-}
-
-.dashboard-form h2 {
-    color: #fff;
 }

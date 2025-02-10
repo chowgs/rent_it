@@ -10,9 +10,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="images/logo.png" />
     <title>Rent IT - Signup (Owner)</title>
+
+    <?php
+        // Custom font from google
+        include("css/fonts.html");
+    ?>
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <link rel="stylesheet" href="css/signup_owner.css">
+    <link rel="stylesheet" href="css/asOwner.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/modal.css">
         <style>
         .password-container {
@@ -31,79 +38,27 @@
             cursor: pointer;
             font-size: 20px;
         }
-        .burger {
-            display: none;
-            position: absolute;
-            top: 10px; /* Adjust as needed */
-            right: 20px; /* Adjust as needed */
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 2; /* Ensure it's above the dropdown */
-        }
-
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 80px; 
-            right: 10px; 
-            left: auto;
-            background: rgba(255, 255, 255, 0.9);
-            width: 200px;
-            border: 1px solid #ddd;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-
-        .dropdown-menu a {
-            padding: 10px;
-            text-decoration: none;
-            color: black;
-            display: block;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .dropdown-menu a:hover {
-            background-color: #f1f1f1;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .login-btn {
-                display: none;
-            }
-
-            .burger {
-                display: block;
-            }
-        }
     </style>
 </head>
 <body>
-    <div class="navbar">
-        <div class="logo">
-            <img src="images/logo.png" alt="Rent IT" height="50" style="margin-right: 30px; border-radius: 25px;">
-        
-        <div class="nav-links">
+<img src="images/booking_system.jpg" alt="" class="background-image" style="height: 1100px;">
+<div class="navbar">
+    <img src="images/logo.png" alt="Rent It" class="logo">
+    <div class="nav-links">
+        <div class="nav-items">
             <a href="index.php">Home</a>
             <a href="about.php">About</a>
-            <a href="contact.php">Contact Us</a>
+            <a href="contact.php">Contact us</a>
+            <a href="accredited.php">Accredited</a>
         </div>
+        <a href="login_page.php" class="login-link">Login</a>
     </div>
-        <button class="burger" onclick="toggleMenu()">☰</button>
-        <a class="login-btn" href="login_page.php">Log in</a>
+    <div class="hamburger" onclick="toggleMenu(this)">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
     </div>
-    <div class="dropdown-menu">
-        <a href="index.php">Home</a>
-        <a href="about.php">About</a>
-        <a href="contact.php">Contact Us</a>
-        <a href="login_page.php">Log in</a>
-    </div>
+</div>
     <div class="signup-container">
         <div class="signup-box">
             <div class="signup-form">
@@ -221,29 +176,9 @@
             }
         }
         function toggleMenu() {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            if (dropdown.style.display === "block") {
-                dropdown.style.display = "none";
-            } else {
-                dropdown.style.display = "block";
-            }
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
         }
-        document.addEventListener('click', function(event) {
-            var dropdown = document.getElementsByClassName("dropdown-menu")[0];
-            var burger = document.querySelector('.burger');
-            if (event.target !== dropdown && event.target !== burger && !dropdown.contains(event.target)) {
-                dropdown.style.display = 'none';
-            }
-        });
-        window.addEventListener('resize', function() {
-            var burger = document.querySelector('.burger');
-            var dropdownMenu = document.querySelector('.dropdown-menu');
-
-            if (window.innerWidth > 768) { // Adjust this value to match your media query breakpoint
-                
-                dropdownMenu.style.display = 'none';
-            }
-        });
         document.getElementById('withLandlord').addEventListener('click', function() {
             var landlordDetails = document.getElementById('landlord-details');
             landlordDetails.style.display = this.checked ? 'flex' : 'none';
