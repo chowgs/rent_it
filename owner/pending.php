@@ -138,10 +138,10 @@ if(!isset($_SESSION["AccountID"])){
                                 <table id="boarderTable">
                                     <thead>
                                         <tr>
-                                            <th colspan="6">Pending Reservation List</th>
+                                            <th colspan="14">Pending Reservation List</th>
                                         </tr>
                                         <tr>
-                                            <td colspan="6">
+                                            <td colspan="14">
                                                 <div class="filter-container">
                                                     <div class="show">
                                                         
@@ -159,6 +159,13 @@ if(!isset($_SESSION["AccountID"])){
                                             <th>Property</th>
                                             <th>Room No.</th>
                                             <th>Room Floor</th>
+                                            <th>Email</th>
+                                            <th>Year&Course</th>
+                                            <th>COR</th>
+                                            <th>Mother's Name</th>
+                                            <th>Mother's Contact No</th>
+                                            <th>Father's Name</th>
+                                            <th>Father's Contact No</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -213,6 +220,13 @@ if(!isset($_SESSION["AccountID"])){
                                                                 echo "<td class='address-cell' title='".$propertyRow["Location"]."'>" . $propertyRow["Location"] . "</td>";
                                                                 echo "<td>" . $roomRow["Room_No"] . "</td>";
                                                                 echo "<td>" . $roomRow["Room_Flr"] . "</td>";
+                                                                echo "<td>" . $boarderRow["Email"] . "</td>";
+                                                                echo "<td>" . $boarderRow["YearLvl"] . "-". $boarderRow["Course"] ."</td>";
+                                                                echo "<td><a href='". $boarderRow["COR"] . "'>View</a></td>";
+                                                                echo "<td>" . $boarderRow["M_Name"] . "</td>";
+                                                                echo "<td>" . $boarderRow["M_Cont"] . "</td>";
+                                                                echo "<td>" . $boarderRow["F_Name"] . "</td>";
+                                                                echo "<td>" . $boarderRow["F_Cont"] . "</td>";
                                                                 echo '<td><button data-boarderid="'.$boarderID.'" data-toggle="modal" data-target="#details" class="detailsBtn btn btn-primary">Details</button></td>';
                                                                 
                                                                 echo "</tr>";
@@ -222,13 +236,13 @@ if(!isset($_SESSION["AccountID"])){
                                                 }
                                             }
                                         } else {
-                                            echo "<tr><td colspan='6'>No records found</td></tr>";
+                                            echo "<tr><td colspan='14'>No records found</td></tr>";
                                         }
 
                                         $conn->close();
                                     ?>
                                     <tr class="page-tr"> 
-                                        <td colspan="6">
+                                        <td colspan="14">
                                             <div class="pagination-container">
                                                 <div>
                                                     <button id="prevBtn" onclick="prevPage()">Previous</button>

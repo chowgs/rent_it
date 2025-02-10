@@ -138,7 +138,7 @@ if(!isset($_SESSION["AccountID"])){
                                             <th colspan="5">Boarders/Tenant Info</th>
                                         </tr>
                                         <tr>
-                                            <td colspan="6">
+                                            <td colspan="12">
                                                 <div class="filter-container">
                                                     <div class="show">
                                                         
@@ -155,6 +155,12 @@ if(!isset($_SESSION["AccountID"])){
                                             <th>Contact</th>
                                             <th>Email</th>
                                             <th>Year&Course</th>
+                                            <th>Email</th>
+                                            <th>COR</th>
+                                            <th>Mother's Name</th>
+                                            <th>Mother's Contact No</th>
+                                            <th>Father's Name</th>
+                                            <th>Father's Contact No</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -184,18 +190,24 @@ if(!isset($_SESSION["AccountID"])){
                                                 echo "<td>" . $row["Contact_No"] . "</td>";
                                                 echo "<td>" . $row["Email"] . "</td>";
                                                 echo "<td>" . $row["YearLvl"] . "-". $row["Course"] ."</td>";
+                                                echo "<td>" . $row["Email"] . "</td>";
+                                                echo "<td><a href='". $row["COR"] . "'>View</a></td>";
+                                                echo "<td>" . $row["M_Name"] . "</td>";
+                                                echo "<td>" . $row["M_Cont"] . "</td>";
+                                                echo "<td>" . $row["F_Name"] . "</td>";
+                                                echo "<td>" . $row["F_Cont"] . "</td>";
                                                 echo '<td><button data-BoarderID="'. $row["BoarderID"] .'" onclick="setBoarderID(this)" class="btn btn-primary" data-toggle="modal" data-target="#checkout">Checkout</button></td>';
                                                 
                                                 echo "</tr>";
                                             }
                                         } else {
-                                            echo "<tr><td colspan='6'>No records found</td></tr>";
+                                            echo "<tr><td colspan='12'>No records found</td></tr>";
                                         }
 
                                         $conn->close();
                                     ?>
                                     <tr class="page-tr"> 
-                                        <td colspan="6">
+                                        <td colspan="12">
                                             <div class="pagination-container">
                                                 <div>
                                                     <button id="prevBtn" onclick="prevPage()">Previous</button>
