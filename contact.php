@@ -90,6 +90,9 @@
         <div class="bar"></div>
     </div>
 </div>
+<?php 
+    include('./components/ResponsiveNav.html');
+?>
     <div class="dashboard-container">
         <div class="dashboard-box">
             <div class="dashboard">
@@ -236,7 +239,7 @@
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
     function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.navbarsmall');
         navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
     }
     </script>

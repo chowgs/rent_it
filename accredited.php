@@ -36,6 +36,9 @@
         <div class="bar"></div>
     </div>
 </div>
+<?php 
+    include('./components/ResponsiveNav.html');
+?>
 
 <h2>ACCREDITED DORMITORY/BOARDING HOUSE</h2> 
 <div class="container text-center">
@@ -92,7 +95,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script>
     function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.navbarsmall');
         navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
     }
 </script>

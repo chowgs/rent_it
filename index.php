@@ -57,6 +57,9 @@ if(isset($_SESSION['loggedIn'])){
         <div class="bar"></div>
     </div>
 </div>
+<?php 
+    include('./components/ResponsiveNav.html');
+?>
 <div class="search">
     <h3>Find your next home that suits you</h3>
     <p>Easy to use. Convenient. All in one place.</p>
@@ -213,7 +216,7 @@ if(isset($_SESSION['loggedIn'])){
         
 <script>
     function toggleMenu() {
-        const navLinks = document.querySelector('.nav-links');
+        const navLinks = document.querySelector('.navbarsmall');
         navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';
     }
     // Function to initialize Leaflet map
