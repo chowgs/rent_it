@@ -363,10 +363,11 @@ if (!isset($_SESSION["AccountID"])) {
                                         echo '<img class="thumbnail" src="' . $relativePath . $room['RoomImageURL'] . '" alt="Thumbnail Image">';
                                     } else {
                                         echo '<p>No room image available</p>';
+                                        return;
                                     }
                                 }
                                 echo '</div>';
-                            }
+                            } 
                             echo '</div>';
                             echo '</div>';
                             echo '<div class="col-md-6" style="height: 96% !important; padding: 0;">';
