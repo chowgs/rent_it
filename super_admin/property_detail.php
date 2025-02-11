@@ -385,7 +385,7 @@ if (!isset($_SESSION["AccountID"])) {
                             echo '<h5>Owner: '.$property['FullName'].'</h5><br>';
                             echo '<div class="btn-container">
                             <button class="btn btn-success view-rooms-btn" data-id="'.$propertyID.'" data-toggle="modal" data-target="#viewRooms">View Rooms</button></div>';
-                            echo '<p style="margin-top:50px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['FbLink'].'</p><br>';
+                            echo '<p style="margin-top:50px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: '.$property['fblink'].'</p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
