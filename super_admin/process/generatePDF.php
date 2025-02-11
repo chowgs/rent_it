@@ -34,6 +34,7 @@ $html = '<style>
 $html .= '<h2>Owner and Property Report</h2>';
 $html .= '<table>
             <tr>
+                <th>Owner ID</th>
                 <th>Owner Name</th>
                 <th>Property ID</th>
                 <th>Type</th>
@@ -45,6 +46,7 @@ $html .= '<table>
 while ($row = $result->fetch_assoc()) {
     $vacant = $row['Total_Room'] - $row['OccupiedRooms'];
     $html .= '<tr>
+                <td>' . $row['OwnerID'] . '</td>
                 <td>' . $row['FullName'] . '</td>
                 <td>' . $row['PropertyID'] . '</td>
                 <td>' . ucfirst($row['Type']) . '</td>
