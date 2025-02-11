@@ -1,6 +1,6 @@
 <?php
     session_start();
-if(isset($_SESSION['loggedIn'])){
+    if(isset($_SESSION['loggedIn'])){
         if ($_SESSION['AccType'] === 'Super_Admin' || $_SESSION['AccType'] === 'Admin') {
             header('Location: /rent_it/super_admin/dashboard.php');
             exit();
@@ -28,11 +28,29 @@ if(isset($_SESSION['loggedIn'])){
         include("css/fonts.html");
     ?>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <!-- Toastr CSS -->
+    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="login_css/login.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="login_css/dialog.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+    <style>
+    .custom-toast {
+        background-color: #ffcccc !important; /* Light Red Background */
+        color: #333 !important; /* Dark Text */
+        font-size: 16px !important; /* Larger Font */
+        border-radius: 8px !important; /* Rounded Corners */
+        padding: 15px !important; /* Padding */
+    }
+
+    /* Add top margin */
+    .toast-top-center {
+        top: 80px !important; /* Increase Top Spacing */
+    }
+</style>
+
 
 </head>
 <body>
@@ -199,6 +217,24 @@ if(isset($_SESSION['loggedIn'])){
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- CUSTOM SCRIPT  -->
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            toastr.options = {
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": true,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "showDuration": "300",
+                "hideDuration": "1000",
+                "timeOut": "5000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            };
+        });
         $(document).ready(function() {
             $('#forgotForm').submit(function(event) {
                 event.preventDefault(); // Prevent the form from submitting normally
@@ -216,7 +252,7 @@ if(isset($_SESSION['loggedIn'])){
                             $('#questionLabel').text(response.question);
                             $('#securityQuestion').modal('show');
                         } else {
-                            toastr.error('Username not found.');
+                            toastr.error('Username not found.', 'Error');
                         }
                     },
                     error: function(xhr, status, error) {
@@ -286,25 +322,7 @@ if(isset($_SESSION['loggedIn'])){
 
     
         });
-        document.addEventListener('DOMContentLoaded', function() {
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": false,
-                "progressBar": true,
-                "positionClass": "toast-top-center",
-                "preventDuplicates": false,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "5000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            };
-        });
+        
         function togglePassword() {
             const passwordField = document.getElementById('newPassword');
             const passwordFieldType = passwordField.getAttribute('type');
@@ -363,14 +381,17 @@ if(isset($_SESSION['loggedIn'])){
         });
         <?php
 
+        
         if (isset($_SESSION['error_message'])) {
-            echo 'toastr.error("' . $_SESSION['error_message'] . '", "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-center", toastClass: "toast" });';
+            echo 'toastr.error(' . json_encode($_SESSION['error_message']) . ', "", {timeOut: 2000, extendedTimeOut: 2000, positionClass: "toast-top-center", toastClass: "custom-toast" });';
             unset($_SESSION['error_message']); // Clear the error message from session
         } elseif (isset($_SESSION['success_message'])) {
-            echo 'toastr.success("' . $_SESSION['success_message'] . '", "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-center", toastClass: "toast" });';
+            echo 'toastr.success(' . json_encode($_SESSION['success_message']) . ', "", {timeOut: 1000, extendedTimeOut: 1000, positionClass: "toast-top-center", toastClass: "custom-toast" });';
             unset($_SESSION['success_message']); // Clear the success message from session
-            echo 'setTimeout(function() { window.location.href = "super_admin/dashboard.php"; }, 1000);'; // Redirect after 2 seconds
+            echo 'setTimeout(function() { window.location.href = "super_admin/dashboard.php"; }, 1000);'; // Redirect after 1 second
         }
+
+
         ?>
     </script>
     <script>
