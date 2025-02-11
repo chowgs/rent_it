@@ -373,6 +373,7 @@ if (!isset($_SESSION["AccountID"])) {
                                         echo '<img class="thumbnail" src="' . $relativePath . $room['RoomImageURL'] . '" alt="Thumbnail Image">';
                                     } else {
                                         echo '<p>No room image available</p>';
+                                        break;
                                     }
                                 }
                                 echo '</div>';
@@ -403,7 +404,7 @@ if (!isset($_SESSION["AccountID"])) {
                                 <button data-boarderid="' . htmlspecialchars($accountID)     . '" data-ownerid="' . htmlspecialchars($property['OwnerID']) . '" class="btn btn-primary" data-toggle="modal" data-target="#message">Message</button>
                                 </div>';
                             }
-                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: <a href="'.$property['fblink'].'" target="_blank">'.$property['fblink'].'</a></p><br>';
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: <a href="'.$property['fblink'].'" target="_blank">Facebook Profile</a></p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';

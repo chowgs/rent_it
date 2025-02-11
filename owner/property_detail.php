@@ -366,6 +366,7 @@ if (!isset($_SESSION["AccountID"])) {
                                         echo '<img class="thumbnail" src="' . $relativePath . $room['RoomImageURL'] . '" alt="Thumbnail Image">';
                                     } else {
                                         echo '<p>No room image available</p>';
+                                        break;
                                     }
                                 }
                                 echo '</div>';
@@ -389,7 +390,7 @@ if (!isset($_SESSION["AccountID"])) {
                             echo '<h5>Owner: '.$property['FullName'].'</h5><br>';
                             echo '<div class="btn-container">
                             <button class="btn btn-success view-rooms-btn" data-id="'.$propertyID.'" data-toggle="modal" data-target="#viewRooms">View Rooms</button></div>';
-                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: <a href="'.$property['fblink'].'" target="_blank">'.$property['fblink'].'</a></p><br>';
+                            echo '<p style="margin-top:150px;">You can contact me through <br> Contact #: '.$property['ContNum'].'<br> Social Media: <a href="'.$property['fblink'].'" target="_blank">Facbook Profile</a></p><br>';
                             echo '</div>';
                             echo '</div>';
                             echo '</div>';
