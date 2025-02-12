@@ -48,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mname = $_POST['mname'];
     $uname = $_POST['uname'];
     $pword = $_POST['pword'];
+    $repword = $_POST['repword'];
     $contact = $_POST['contact'];
     $year = $_POST['year'];
     $course = $_POST['course'];
@@ -63,6 +64,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate required fields
     if (empty($name) || empty($lname) || empty($mname) || empty($uname) || empty($pword) || empty($email)) {
         $_SESSION['error_message'] = "Please fill all required fields.";
+        header("Location: ../signup_boarder.php");
+        exit;
+    }
+
+    if ($pword !== $repword) {
+        $_SESSION['error_message'] = "Password does not match";
         header("Location: ../signup_boarder.php");
         exit;
     }

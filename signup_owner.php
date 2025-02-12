@@ -126,10 +126,17 @@
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <label for="ContactNumber">Contact Number</label><br>
-                            <input class="form-control" type="text" name="cont_owner" placeholder="Enter your contact number" required>
+                            <label for="fullname">Re-Password</label><br>
+                            <div class="password-container">
+                                <input class="form-control" type="repassword" id="repassword" name="repass_owner" placeholder="Confirm your password" required>
+                                <span class="toggle-password toggle-repassword" onclick="toggleRePasswordVisibility()"><ion-icon name="eye-outline"></ion-icon></span>
+                            </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-1">
+                            <label for="ContactNumber">Contact</label><br>
+                            <input class="form-control" type="number" name="cont_owner" placeholder="Enter your contact number" required>
+                        </div>
+                        <div class="col-md-2">
                             <label for="fblink">Facebook Link</label><br>
                             <input class="form-control" type="text" name="fblink" placeholder="Enter your FB Link" required>
                         </div>
@@ -262,6 +269,19 @@
             const passwordField = document.getElementById('password');
             const passwordFieldType = passwordField.getAttribute('type');
             const togglePassword = document.querySelector('.toggle-password');
+
+            if (passwordFieldType === 'password') {
+                passwordField.setAttribute('type', 'text');
+                togglePassword.innerHTML = '<ion-icon name="eye-off-outline"></ion-icon>'; // Change icon to indicate visibility
+            } else {
+                passwordField.setAttribute('type', 'password');
+                togglePassword.innerHTML = '<ion-icon name="eye-outline"></ion-icon>'; // Change icon to indicate invisibility
+            }
+        }
+        function toggleRePasswordVisibility() {
+            const passwordField = document.getElementById('repassword');
+            const passwordFieldType = passwordField.getAttribute('type');
+            const togglePassword = document.querySelector('.toggle-repassword');
 
             if (passwordFieldType === 'password') {
                 passwordField.setAttribute('type', 'text');

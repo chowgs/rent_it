@@ -118,8 +118,8 @@ require_once("config/connect.php");
                             <label for="lastname">Last Name</label><br>
                             <input class="form-control" type="text" name="lname" placeholder="Enter your Last name" required>
                         </div>
-                        <div class="col-md-2">
-                            <label for="middlename">Middle Name</label><br>
+                        <div class="col-md-1">
+                            <label for="middlename">Middle I</label><br>
                             <input class="form-control" type="text" name="mname" placeholder="Enter your Middle name" required>
                         </div>
                         <div class="col-md-2">
@@ -134,8 +134,15 @@ require_once("config/connect.php");
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <label for="ContactNumber">Contact Number</label><br>
-                            <input class="form-control" type="text" name="contact" placeholder="Enter your contact number" required>
+                            <label for="fullname">Re-Password</label><br>
+                            <div class="password-container">
+                                <input class="form-control" type="password" id="repassword" name="repword" placeholder="Confirm your password" required>
+                                <span class="toggle-password" onclick="toggleRePasswordVisibility()"><ion-icon name="eye-outline"></ion-icon></span>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="ContactNumber">Contact</label><br>
+                            <input class="form-control" type="number" name="contact" placeholder="Enter your contact number" required>
                         </div>
                     </div>
                     <div class="row">
@@ -295,6 +302,19 @@ require_once("config/connect.php");
             const passwordField = document.getElementById('password');
             const passwordFieldType = passwordField.getAttribute('type');
             const togglePassword = document.querySelector('.toggle-password');
+
+            if (passwordFieldType === 'password') {
+                passwordField.setAttribute('type', 'text');
+                togglePassword.innerHTML = '<ion-icon name="eye-off-outline"></ion-icon>'; // Change icon to indicate visibility
+            } else {
+                passwordField.setAttribute('type', 'password');
+                togglePassword.innerHTML = '<ion-icon name="eye-outline"></ion-icon>'; // Change icon to indicate invisibility
+            }
+        }
+        function toggleRePasswordVisibility() {
+            const passwordField = document.getElementById('repassword');
+            const passwordFieldType = passwordField.getAttribute('type');
+            const togglePassword = document.querySelector('.toggle-repassword');
 
             if (passwordFieldType === 'password') {
                 passwordField.setAttribute('type', 'text');

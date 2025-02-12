@@ -65,6 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_owner = $_POST['user_owner'];
     $Lastn_owner = $_POST['Lastn_owner'];
     $pass_owner = $_POST['pass_owner'];
+    $repass_owner = $_POST['repass_owner'];
     $cont_owner = $_POST['cont_owner'];
     $add_owner = $_POST['add_owner'];
     $email_owner = $_POST['email_owner'];
@@ -82,6 +83,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_check_username->execute();
     $result_check_username = $stmt_check_username->get_result();
     $username_count = $result_check_username->fetch_assoc()['count'];
+
+    if ($pass_owner !== $repass_owner) {
+        $_SESSION['error_message'] = "Password does not match";
+        header("Location: ../signup_owner.php");
+        exit;
+    }
 
     if ($username_count > 0) {
         $_SESSION['error_message'] = "Username already exists. Please choose a different username.";
