@@ -188,7 +188,7 @@
                             <div class="upload-wrapper">
                                 <div id="image-preview" class="image-preview"></div>
                                 <div class="upload-container" onclick="document.getElementById('file-input').click();">
-                                    <input type="file" name="files[]" id="file-input" multiple onchange="previewImages()">
+                                    <input type="file" name="files[]" id="file-input" multiple onchange="validateFileSize()">
                                 </div>
                             </div>
                         </div>
@@ -279,6 +279,21 @@
             var landlordDetails = document.getElementById('landlord-details');
             landlordDetails.style.display = this.checked ? 'flex' : 'none';
         });
+
+        function validateFileSize() {
+            const input = document.getElementById('file-input');
+            const maxSize = 3 * 1024 * 1024; // 3MB in bytes
+
+            for (const file of input.files) {
+                if (file.size > maxSize) {
+                    alert(`File ${file.name} exceeds the 3MB size limit.`);
+                    input.value = ""; // Reset file input
+                    return;
+                }
+            }
+
+            previewImages();
+        }
 
         function previewImages() {
             var preview = document.getElementById('image-preview');

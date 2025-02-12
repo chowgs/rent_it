@@ -46,6 +46,7 @@ if (isset($_POST["login"])) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION["Type"] = "Admin";
                     $_SESSION['success_message'] = "Login successful!";
+                    $_SESSION['loggedIn'] = 1;
                     header("Location: ../super_admin/dashboard.php"); //should be directed to dashboard
                     exit;
                 } else {
@@ -60,6 +61,7 @@ if (isset($_POST["login"])) {
                         $_SESSION["AccountID"] = $row['AccountID'];
                         $_SESSION["Type"] = "Owner";
                         $_SESSION['success_message'] = "Login successful!";
+                        $_SESSION['loggedIn'] = 1;
                         header("Location: ../owner/dashboard.php");
                         exit;
                     } else {
@@ -78,6 +80,7 @@ if (isset($_POST["login"])) {
                     $_SESSION["AccountID"] = $row['AccountID'];
                     $_SESSION["Type"] = "Boarder";
                     $_SESSION['success_message'] = "Login successful!";
+                    $_SESSION['loggedIn'] = 1;
                     header("Location: ../boarder/dashboard.php");
                     exit;
                 } else {
