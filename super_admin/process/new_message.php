@@ -23,9 +23,17 @@ function generateMessageID($conn, $length = 8) {
 }
 
 if (isset($_POST['message']) && isset($_POST['receiverID'])) {
-    $message = $_POST['message'];
+    $message = trim($_POST['message']);
     $receiverID = $_POST['receiverID'];
     $boarderID = $_SESSION['AccountID'];
+    // Message length limit
+    $maxLength = 100;
+
+    if (strlen($message) > $maxLength) {
+        echo 'Message exceeds character limit of ' . $maxLength;
+        exit;
+    }
+    
     $messageID = generateMessageID($conn);
 
     // Insert the message into the database

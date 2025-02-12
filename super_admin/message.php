@@ -745,7 +745,7 @@ if(!isset($_SESSION["AccountID"])){
                             $('#messageText').val(''); // Clear message input
                             fetchMessages(); // Fetch messages immediately after sending a new one
                         } else {
-                            alert('Error sending message.');
+                            alert(response);
                         }
                     },
                     error: function() {
