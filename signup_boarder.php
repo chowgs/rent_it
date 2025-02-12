@@ -40,6 +40,47 @@ require_once("config/connect.php");
             cursor: pointer;
             font-size: 20px;
         }
+
+        .modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    
+    /* Centering fix */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    
+    /* Ensure it stays in the middle of the viewport */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+    font-weight: bold;
+}
+
     </style>
 </head>
 <body>
@@ -166,8 +207,34 @@ require_once("config/connect.php");
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="checkbox" id="termsCheckbox" style="width: 20px !important; margin-right: 10px;" required>
+                            <label for="termsCheckbox">
+                                I agree to the 
+                                <a href="#" id="openModal">Terms and Conditions</a>
+                            </label>
+                        </div>
+                    </div>
+                    <div id="termsModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Terms and Conditions</h2>
+                            <p>
+                            By using this website, you agree to our Terms and Conditions, 
+                            including providing accurate information, 
+                            respecting user rights, and not engaging in illegal activities.
+                            </p>
+                            <p>
+                            We protect your data per our Privacy Policy but are not liable for any damages from service use. 
+                            We may update these terms anytime, 
+                            and continued use means acceptance.
+                            </p>
+                            <button id="acceptTerms" class="btn btn-success">Accept</button>
+                        </div>
+                    </div>
                     <div class="button-container">
-                        <button type="submit" class="btn btn-primary" onclick="return validateFileInput()">Sign up</button>
+                        <button type="submit" class="btn btn-primary" onclick="return validateFileInput()" id="signupBtn" disabled>Sign up</button>
                     </div>
                 </form>
             </div>
@@ -180,6 +247,38 @@ require_once("config/connect.php");
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <script>
+        document.getElementById('termsCheckbox').addEventListener('change', function() {
+            document.getElementById('signupBtn').disabled = !this.checked;
+        });
+
+
+        document.getElementById('openModal').addEventListener('click', function(event) {
+            event.preventDefault();
+            document.getElementById('termsModal').style.display = 'block';
+        });
+
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('termsModal').style.display = 'none';
+        });
+
+
+        document.getElementById('acceptTerms').addEventListener('click', function() {
+            document.getElementById('termsCheckbox').checked = true;
+            document.getElementById('signupBtn').disabled = false;
+            document.getElementById('termsModal').style.display = 'none';
+        });
+
+
+        window.onclick = function(event) {
+            let modal = document.getElementById('termsModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        };
+        document.getElementById('termsCheckbox').addEventListener('change', function() {
+                document.getElementById('signupBtn').disabled = !this.checked;
+            });
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
             navLinks.style.display = (navLinks.style.display === 'flex') ? 'none' : 'flex';

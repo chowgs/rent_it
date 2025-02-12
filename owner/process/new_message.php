@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('Asia/Manila');
 require_once("../../config/connect.php");
 
 function generateMessageID($conn, $length = 8) {
