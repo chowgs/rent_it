@@ -1,13 +1,13 @@
 <?php
     session_start();
     if(isset($_SESSION['loggedIn'])){
-        if ($_SESSION['AccType'] === 'Super_Admin' || $_SESSION['AccType'] === 'Admin') {
+        if ($_SESSION['Type'] === 'Admin') {
             header('Location: /rent_it/super_admin/dashboard.php');
             exit();
-        } else if ($_SESSION['AccType'] === 'Owner') {
+        } else if ($_SESSION['Type'] === 'Owner') {
             header('Location: /rent_it/owner/dashboard.php');
             exit();
-        } else if ($_SESSION['AccType'] === 'Boarder') {
+        } else if ($_SESSION['Type'] === 'Boarder') {
             header('Location: /rent_it/boarder/dashboard.php');
             exit();
         }
