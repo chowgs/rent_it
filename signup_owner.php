@@ -4,6 +4,7 @@ ini_set('display_errors', 1);
 
     session_start();
     require_once("config/connect.php");
+    require_once("process/sendEmail.php");
 ?>
 
 <!DOCTYPE html>
@@ -212,7 +213,7 @@ ini_set('display_errors', 1);
                             </label>
                         </div>
                     </div>
-                    <div id="termsModal" class="modal">
+                    <div id="termsModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <h2>Terms and Conditions</h2>

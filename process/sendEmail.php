@@ -3,11 +3,12 @@
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\Exception;
 
-    require '../vendor/Mail/src/Exception.php';
-    require '../vendor/Mail/src/PHPMailer.php';
-    require '../vendor/Mail/src/SMTP.php';
+    require __DIR__ . '/../vendor/Mail/src/Exception.php'; // Best practice
+    require __DIR__ . '/../vendor/Mail/src/PHPMailer.php';
+    require __DIR__ . '/../vendor/Mail/src/SMTP.php';   
     
-    require_once('../config/connect.php');
+    require_once(__DIR__ . '/../config/constant.php');
+    require_once(__DIR__ . '/../config/db.php');
 
     $mail = new PHPMailer(true);
     $registerEmail = "";
@@ -295,7 +296,7 @@
             $mail->Subject = "Account Registration " .  "(" . $accountType . ")";
     
             // Embed logo
-            $mail->AddEmbeddedImage(__DIR__ . '/images/logo-modified.png', 'logo_img');
+            $mail->AddEmbeddedImage('../images/logo-modified.png', 'logo_img');
     
             // HTML Email Content
             $mail->Body = "
@@ -394,13 +395,13 @@
             $mail->Port = 587;
     
             // Set sender and recipient
-            $mail->setFrom('jgdev101613@gmail.com', 'JASDY OFFICE SUPPLIES TRADING');
+            $mail->setFrom('jgdev101613@gmail.com', 'Rent IT');
             $mail->addAddress($recipientEmail);
             $mail->isHTML(true);
             $mail->Subject = "Change Password";
     
             // Embed logo
-            $mail->AddEmbeddedImage('../../data/item_images/logowithbg.jpg', 'logo_img');
+            $mail->AddEmbeddedImage('../images/logo-modified.png', 'logo_img');
     
             // HTML Email Content
             $mail->Body = "

@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL); 
+ini_set('display_errors', 1);
 session_start();
 require_once("../config/connect.php");
 require_once("./sendEmail.php");
@@ -162,9 +164,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 }
             }
-            $email = registerSendEmail("Owner", $email_owner);
+            registerSendEmail("Owner", $email_owner);
 
-            $_SESSION['success_message'] = $emai;
+            $_SESSION['success_message'] = "Signup successfully, please check your email";
         } else {
             $_SESSION['error_message'] = "Sign up failed.";
         }

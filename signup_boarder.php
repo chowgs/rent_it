@@ -223,7 +223,7 @@ require_once("config/connect.php");
                             </label>
                         </div>
                     </div>
-                    <div id="termsModal" class="modal">
+                    <div id="termsModal" class="modal" style="display: none;">
                         <div class="modal-content">
                             <span class="close">&times;</span>
                             <h2>Terms and Conditions</h2>

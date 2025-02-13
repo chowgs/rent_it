@@ -1,4 +1,5 @@
 <?php
+    
     session_start();
     if(isset($_SESSION['loggedIn'])){
         if ($_SESSION['Type'] === 'Admin') {
@@ -99,7 +100,10 @@
             </div>
             <a href="#" data-toggle="modal" data-target="#forgot" class="forgot">Forgot password?</a>
             <button type="submit" class="login-btn" name="login">Log in</button>
+            
         </form>
+
+        <button type="submit2" class="login-btn" name="login">Send Email</button>
 
         <div class="signup-container">
             <p class="not-member-text">Not a member? <br><span class="join-now-text"><a href="#" data-toggle="modal" data-target="#myModal">Join Now</a></span></p>
@@ -239,27 +243,28 @@
             $('#forgotForm').submit(function(event) {
                 event.preventDefault(); // Prevent the form from submitting normally
 
-                var username = $('#usernamee').val();
-                $.ajax({
-                    type: 'POST',
-                    url: 'process/fetch_question.php',
-                    data: { username: username },
-                    dataType: 'json', // Expect JSON response
-                    success: function(response) {
-                        if (response.success) {
-                            $('#forgot').modal('hide');
-                            $('.modal-backdrop').remove();
-                            $('#questionLabel').text(response.question);
-                            $('#securityQuestion').modal('show');
-                        } else {
-                            toastr.error('Username not found.', 'Error');
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        console.error('AJAX Error:', status, error);
-                        console.error('Response:', xhr.responseText);
-                    }
-                });
+                forgotPass();
+                // var username = $('#usernamee').val();
+                // $.ajax({
+                //     type: 'POST',
+                //     url: 'process/fetch_question.php',
+                //     data: { username: username },
+                //     dataType: 'json', // Expect JSON response
+                //     success: function(response) {
+                //         if (response.success) {
+                //             $('#forgot').modal('hide');
+                //             $('.modal-backdrop').remove();
+                //             $('#questionLabel').text(response.question);
+                //             $('#securityQuestion').modal('show');
+                //         } else {
+                //             toastr.error('Username not found.', 'Error');
+                //         }
+                //     },
+                //     error: function(xhr, status, error) {
+                //         console.error('AJAX Error:', status, error);
+                //         console.error('Response:', xhr.responseText);
+                //     }
+                // });
             });
 
             $('#securityQuestionForm').submit(function(event) {
@@ -322,6 +327,29 @@
 
     
         });
+
+        function forgotPass(){
+            var loginUsername = $('#usernamee').val();
+
+            
+            $.ajax({
+                url: 'process/forgotPass.php',
+                method: 'POST',
+                data: {
+                    forgotPass:loginUsername,
+                },
+                success: function(data){
+                    // toastr.success("Hi");
+                    // $('#forgot').modal('hide');
+                    // $('.modal-backdrop').remove();
+                    if (data) {
+                        toastr.success(data);
+                    } else {
+                        toastr.error(data);
+                    }
+                }
+            });
+        }
         
         function togglePassword() {
             const passwordField = document.getElementById('newPassword');

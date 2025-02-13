@@ -1,9 +1,7 @@
 <?php
 session_start();
 require_once("../config/connect.php");
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-require_once '../vendor/autoload.php';
+require_once("./sendEmail.php");
 
 function generateToken($length = 32) {
     return bin2hex(random_bytes($length));  // Generate a unique token
@@ -126,25 +124,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt_boarder->execute()) {
             // Send verification email using PHPMailer
-            $mail = new PHPMailer(true);
             try {
-                $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
-                $mail->SMTPAuth = true;
-                $mail->Username = 'jaxmucles@gmail.com'; // Your Gmail account
-                $mail->Password = 'bnea rwrh szmx khia'; // Your Gmail password or App password
-                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-                $mail->Port = 587;
-
-                $mail->setFrom('jaxmucles@gmail.com', 'Rent IT');
-                $mail->addAddress($email, $name);
-
-                $mail->isHTML(true);
-                $mail->Subject = 'Verify Your Email';
-                $mail->Body    = "Hello $name,<br><br>Please click the link below to verify your email and activate your account:<br><a href='http://localhost/rent_it/process/verify.php?token=$verification_token'>Verify Email</a><br><br>Thank you!";
-
-                $mail->send();
-                $_SESSION['success_message'] = "Sign up successful! Please check your email to verify your account.";
+                registerSendEmail("Boarder", $email);
+                $_SESSION['success_message'] = "Signup successfully, please check your email";
             } catch (Exception $e) {
                 $_SESSION['error_message'] = "Verification email could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
