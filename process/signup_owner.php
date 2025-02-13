@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("../config/connect.php");
+require_once("./sendEmail.php");
 
 function accountID($conn, $length = 8) {
     $characters = '0123456789';
@@ -112,6 +113,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($stmt_account->execute()) {
         // Get the inserted account ID
         $account_id = $stmt_account->insert_id;
+    
 
         // Insert into owners table
         $stmt_owner = $conn->prepare("INSERT INTO owner (OwnerID, FullName, Lastn_owner, ContNum, fblink, Address, Email, L_Name, L_Email, L_Num, AccountID) 
@@ -160,10 +162,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     }
                 }
             }
-            $_SESSION['success_message'] = "Sign up successful!";
+            $email = registerSendEmail("Owner", $email_owner);
+
+            $_SESSION['success_message'] = $emai;
         } else {
             $_SESSION['error_message'] = "Sign up failed.";
         }
+        
 
         $stmt_owner->close();
     } else {
